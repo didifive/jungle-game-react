@@ -1,11 +1,10 @@
-import React from "react";
 import jungleGround from "../../assets/img/jungle-ground.png";
-import { Ground } from "./Ground"
+import { GroundImage } from "./GroundImage"
 
-export const GroundImage = () => {
+export const Ground = () => {
   return (
     <>
-      <Ground image={jungleGround} speed="1000s" zIndex="0" />
+      <GroundImage image={jungleGround} speed="1000s" zIndex="0" />
     </>
   )
 }

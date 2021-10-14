@@ -10,12 +10,16 @@ Link da base utilizada neste projeto: [celso-henrique/dio-dino-game](https://git
 
 Neste projeto foram realizadas modificações e aprimoramentos, as alterações mais importantes foram:
 * O projeto que era HTML/CSS/JavaScript foi reestruturado para **ReactJS**, criando uma oportunidade para aplicar e aprimorar o conhecimento em React;
-* 
+* Foram criados os componentes:
+  * `BackgroundParalax` com fundo de 5 camadas em efeito paralax;
+  * `Ground` com imagem para o "chão" do cenário;
+  * `Character` para o herói;
+* Adicionados efeitos com......
 
 &nbsp;
 
 Link do projeto para acessar online: https://xxxxx <br/>
-*Como é uma hospedagem gratuíta tenha paciência caso demore para carregar*
+*Como é uma hospedagem gratuita, tenha paciência caso demore para carregar*
 
 &nbsp;
 

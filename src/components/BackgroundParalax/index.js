@@ -1,4 +1,3 @@
-import React from "react"
 import bgPlxOne from "../../assets/img/background/plx-1.png"
 import bgPlxTwo from "../../assets/img/background/plx-2.png"
 import bgPlxThree from "../../assets/img/background/plx-3.png"

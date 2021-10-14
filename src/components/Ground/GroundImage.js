@@ -1,7 +1,7 @@
 import styled from "styled-components"; 
 import errorPng from "../../assets/img/error.png";
 
-export const Ground = styled.div.attrs(props => ({
+export const GroundImage = styled.div.attrs(props => ({
   image: props.image || {errorPng},
   speed: props.speed || '600s',
   zIndex: props.zIndex || '0'
