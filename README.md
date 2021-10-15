@@ -9,10 +9,11 @@ Projeto desenvolvido com instruções de [Celso Henrique](https://www.linkedin.c
 Link da base utilizada neste projeto: [celso-henrique/dio-dino-game](https://github.com/celso-henrique/dio-dino-game).
 
 Neste projeto foram realizadas modificações e aprimoramentos, as alterações mais importantes foram:
-* O projeto que era HTML/CSS/JavaScript foi reestruturado para **ReactJS**, criando uma oportunidade para aplicar e aprimorar o conhecimento em React;
+* O projeto foi reestruturado para **ReactJS**, criando uma oportunidade de desafio em aplicar e aprimorar o conhecimento em React;
 * Foram criados os componentes:
   * `BackgroundParalax` com fundo de 5 camadas em efeito paralax;
   * `Ground` com imagem para o "chão" do cenário;
+  * `Scenario` que engloba o `BackgroundParalax` e `Ground` para montagem do cenário;
   * `Character` para o herói;
 * Adicionados efeitos com......
 

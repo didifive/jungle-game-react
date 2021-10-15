@@ -19,8 +19,9 @@ export const GroundImage = styled.div.attrs(props => ({
   left: 0;
   background-image: url('${props => props.image}');
   background-repeat: repeat-x;
-  width: 80vw;
-  height: 32px;
+  width: 100%;
+  height: 8vh;
+  background-size: auto 100%;
   animation: slideright ${props => props.speed} infinite linear;
   -webkit-animation: slideright ${props => props.speed} infinite linear;
   z-index: ${props => props.zIndex};

@@ -4,7 +4,11 @@ import { GroundImage } from "./GroundImage"
 export const Ground = () => {
   return (
     <>
-      <GroundImage image={jungleGround} speed="1000s" zIndex="0" />
+      <GroundImage
+        image={jungleGround} 
+        speed="600s" 
+        zIndex="0"
+      />
     </>
   )
 }

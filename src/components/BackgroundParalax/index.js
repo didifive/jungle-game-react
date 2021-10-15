@@ -8,11 +8,31 @@ import { BackgroundParalax } from "./BackgroundParalax"
 export const Background = () => {
   return (
     <>
-      <BackgroundParalax image={bgPlxOne} speed="0s" zIndex="-5" />
-      <BackgroundParalax image={bgPlxTwo} speed="1800s" zIndex="-4" />
-      <BackgroundParalax image={bgPlxThree} speed="1500s" zIndex="-3" />
-      <BackgroundParalax image={bgPlxFour} speed="1250s" zIndex="-2" />
-      <BackgroundParalax image={bgPlxFive} speed="1000s" zIndex="-1" />
+      <BackgroundParalax 
+        image={bgPlxOne} 
+        speed="0s" 
+        zIndex="-5" 
+      />
+      <BackgroundParalax 
+        image={bgPlxTwo} 
+        speed="1800s" 
+        zIndex="-4" 
+      />
+      <BackgroundParalax 
+        image={bgPlxThree} 
+        speed="1500s" 
+        zIndex="-3" 
+      />
+      <BackgroundParalax 
+        image={bgPlxFour} 
+        speed="1250s" 
+        zIndex="-2" 
+      />
+      <BackgroundParalax 
+        image={bgPlxFive} 
+        speed="1000s" 
+        zIndex="-1" 
+      />
     </>
   )
 }

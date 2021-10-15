@@ -1,12 +1,12 @@
 import './App.css';
-import { Background } from './components/BackgroundParalax';
-import { Ground } from './components/Ground';
+import { Character } from './components/Character';
+import { Scenario } from './components/Scenario';
 
 function App() {
   return (
     <div className="App">
-      <Background />
-      <Ground />
+      <Scenario />
+      <Character />
     </div>
   );
 }

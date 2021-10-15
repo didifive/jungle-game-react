@@ -21,8 +21,8 @@ export const BackgroundParalax = styled.div.attrs(props => ({
   background-repeat: repeat-x;
   animation: slideright ${props => props.speed} infinite linear;
   -webkit-animation: slideright ${props => props.speed} infinite linear;
-  width: 80vw;
-  height: 50vh;
+  width: 100%;
+  height: 100%;
   background-size: auto 100%;
   -webkit-background-size: auto 100%;
   z-index: ${props => props.zIndex};
