@@ -3,7 +3,7 @@ import errorPng from "../../assets/img/error.png";
 
 export const BackgroundParalax = styled.div.attrs(props => ({
   image: props.image || {errorPng},
-  speed: props.speed || '1500s',
+  speed: props.speed || '1500',
   zIndex: props.zIndex || '0'
 }))`
   @keyframes slideright {
@@ -19,8 +19,8 @@ export const BackgroundParalax = styled.div.attrs(props => ({
   left: 0;
   background-image: url('${props => props.image}');
   background-repeat: repeat-x;
-  animation: slideright ${props => props.speed} infinite linear;
-  -webkit-animation: slideright ${props => props.speed} infinite linear;
+  animation: slideright ${props => props.speed}s infinite linear;
+  -webkit-animation: slideright ${props => props.speed}s infinite linear;
   width: 100%;
   height: 100%;
   background-size: auto 100%;

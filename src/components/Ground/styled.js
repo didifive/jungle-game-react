@@ -22,7 +22,7 @@ export const GroundImage = styled.div.attrs(props => ({
   width: 100%;
   height: 8vh;
   background-size: auto 100%;
-  animation: slideright ${props => props.speed} infinite linear;
-  -webkit-animation: slideright ${props => props.speed} infinite linear;
+  animation: slideright ${props => props.speed}s infinite linear;
+  -webkit-animation: slideright ${props => props.speed}s infinite linear;
   z-index: ${props => props.zIndex};
 `;

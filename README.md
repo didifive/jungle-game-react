@@ -2,8 +2,6 @@
 ## Digital Innovation One: Bootcamp Impulso React Web Developer
 ### Projeto: Recriando o famoso jogo do dinossauro sem internet
 
-&nbsp;
-
 Projeto desenvolvido com instruções de [Celso Henrique](https://www.linkedin.com/in/devfrontend/) na trilha de estudo do Bootcamp Impulso React Web Developer da [Digital Innovation One](https://digitalinnovation.one/).
 
 Link da base utilizada neste projeto: [celso-henrique/dio-dino-game](https://github.com/celso-henrique/dio-dino-game).
