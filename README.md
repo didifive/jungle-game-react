@@ -48,7 +48,10 @@ Para rodar o projeto localmente:
 Desenvolvido com:
 * [Visual Studio Code](https://code.visualstudio.com/) 1.61.0;
 * [NodeJS](https://nodejs.org/en/) 14.18.1 LTS;
-* [styled-components](https://styled-components.com/).
+* [styled-components](https://styled-components.com/);
+* [Google Fonts](https://fonts.google.com/);
+* [Font Awesome](https://fontawesome.com/).
+
 
 Pack de imagens encontradas no portal [itch.io](https://itch.io/):
 * [Jungle Pack](https://jesse-m.itch.io/jungle-pack)
