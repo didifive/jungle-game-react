@@ -14,7 +14,9 @@ export const HeaderStyled = styled.div`
   h1 {
     margin: 0px;
     padding: 0px;
-    font-size: 5em;
+    border: 0px;
+    font-size: 8vh;
+    font-family: 'Luckiest Guy', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #1B3835;
   }
