@@ -1,5 +1,5 @@
 import jungleGround from "../../assets/img/jungle-ground.png";
-import { GroundImage } from "./styled"
+import { GroundImage } from "./styled";
 
 export const Ground = () => {
   return (
@@ -11,4 +11,4 @@ export const Ground = () => {
       />
     </>
   )
-}
+};

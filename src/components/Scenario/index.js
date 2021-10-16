@@ -1,6 +1,5 @@
 import { Background } from "../BackgroundParalax";
 import { Ground } from "../Ground";
-import { Character } from '../Character';
 import { ScenarioStyled } from "./styled";
 
 
@@ -9,7 +8,6 @@ export const Scenario = () => {
     <ScenarioStyled>
       <Background />
       <Ground />
-      <Character />
     </ScenarioStyled>
   )
-}
+};

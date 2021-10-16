@@ -7,5 +7,5 @@ export const ScenarioStyled = styled.div`
   background-color: #ffffff;
   width: 100vw;
   height: 100vh;
-  z-index: -1;
+  z-index: -99;
 `;

@@ -1,7 +1,7 @@
-import characterIdle from "../../assets/img/character/idle.gif"
-import characterJump from "../../assets/img/character/jump.png"
-import characterLanding from "../../assets/img/character/landing.png"
-import characterRun from "../../assets/img/character/run.gif"
+import characterIdle from "../../assets/img/character/idle.gif";
+import characterJump from "../../assets/img/character/jump.png";
+import characterLanding from "../../assets/img/character/landing.png";
+import characterRun from "../../assets/img/character/run.gif";
 import { CharacterStyled } from "./styled";
 
 export const Character = () => {
@@ -15,4 +15,4 @@ export const Character = () => {
       measureUnity="vh"
     />
   )
-}
+};

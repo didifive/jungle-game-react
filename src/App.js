@@ -1,9 +1,13 @@
-import { Scenario } from './components/Scenario';
+import { Game } from './components/Game';
+import { Header } from './components/Header';
+import GlobalStyle from './components/GlobalStyles';
 
 function App() {
   return (
     <div className="App">
-      <Scenario />
+      <GlobalStyle />
+      <Header />
+      <Game />
     </div>
   );
 }
