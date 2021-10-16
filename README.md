@@ -22,7 +22,11 @@ Neste projeto foram realizadas modificações e aprimoramentos, as alterações 
 ```
 TODO:(
   * Componente Enemies para inimigos;
-  * 
+  * Adicionar sprites para o Character (herói);
+  * Componente Score;
+  * Componente Modal com informações do game;
+  * Programar os eventos (pulo, gameover);
+  * Programar aumento dificuldade de acordo com score;
   * Redux utilizado para controlar os estados do game: Load, Play e GameOver.
 )
 ```
