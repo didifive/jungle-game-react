@@ -1,5 +1,4 @@
 import goblin from "../../assets/img/enemies/goblin.gif";
-import { ReactDOM } from "react";
 import { EnemyStyled } from "./styled";
 
 export const Enemy = () => {
