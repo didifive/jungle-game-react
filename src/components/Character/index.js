@@ -41,11 +41,11 @@ export const Character = () => {
     const characterStatus = listCharacter.filter(char => char.status === characterEvent)
     return (
       <CharacterStyled 
-        position = {characterStatus[0].position}
+        position= {characterStatus[0].position}
         image={characterStatus[0].image}
         widthChar= {characterStatus[0].widthChar}
         heightChar= {characterStatus[0].heightChar}
-        zIndex= "1"
+        zIndex= "2"
         measureUnity="vh"
       />
     )

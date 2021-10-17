@@ -15,17 +15,17 @@ Neste projeto foram realizadas modificações e aprimoramentos, as alterações 
   * `Ground` com imagem para o "chão" do cenário;
   * `Scenario` que engloba `BackgroundParalax` e `Ground` para montagem do cenário;
   * `Character` para o herói;
-  * `Game` que engloba `Scenario` e `Character` para montagem do game;
+  * `Enemies` para inimigos;
+  * `Score` para marcar os pontos;
+  * `Game` que engloba `Scenario`, `Character`, `Enemies` e `Score` para montagem do game;
   * `Header` para cabeçalho na tela;
   * `GlobalStyles` para estilo global do projeto (fonte, fundo etc).
 
 ```
 TODO:(
-  * Componente Enemies para inimigos;
-  * Adicionar sprites para o Character (herói);
-  * Componente Score;
+  * Programar Score;
   * Componente Modal com informações do game;
-  * Programar os eventos (pulo, gameover);
+  * Programar os eventos (pulo, inimigo, gameover);
   * Programar aumento dificuldade de acordo com score;
   * Redux utilizado para controlar os estados do game: Load, Play e GameOver.
 )

@@ -4,7 +4,7 @@ export const HeaderStyled = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   position: absolute;
   top: 3vh;
   left: 3vw;
@@ -12,7 +12,6 @@ export const HeaderStyled = styled.div`
   height: 8vh;
   z-index: 0;
   
-
   h1 {
     margin: 0px;
     padding: 0px;
@@ -32,6 +31,7 @@ export const HeaderStyled = styled.div`
 
     &:hover {
       cursor: pointer;
+      color: #7ccfaf;
     }
   }
 
