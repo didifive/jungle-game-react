@@ -21,6 +21,7 @@ Neste projeto foram realizadas modificações e aprimoramentos, as alterações 
   * `Header` para cabeçalho na tela;
   * `GlobalStyles` para estilo global do projeto (fonte, fundo etc).
 
+
 ```
 TODO:(
   * Programar Score;
