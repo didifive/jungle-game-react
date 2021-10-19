@@ -1,47 +1,45 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, memo } from 'react'
 import goblin from "../../assets/img/enemies/goblin.gif";
 import { EnemyStyled } from "./styled";
 
-export const Enemy = (props) => {
+const Enemy = (props) => {
 
-  const { enemyId, score } = props;
+  const { enemyType } = props;
 
+  //PEGAR IMAGEM DO INIMIGO PARA MONTAR A IMAGEM CONFORME O TIPO PASSADO EM "enemyType"
+  const enemyImage = () => {
+    switch(enemyType) {
+    case "goblin":
+      return(goblin)
+    case "other":
+      return null
+    default:
+      return(goblin)
+    }
+  }
   const viewportwidth = window.innerWidth;
   const widthEnemyPx = ((viewportwidth*(-16))/100);
-
-  const listEnemy = [
-    {
-      name: 'Goblin',
-      image: `${goblin}`,
-    },
-  ];
 
   const [left, setLeft] = useState(viewportwidth);
 
   useEffect(() => {
     if (left >= widthEnemyPx) {
       const leftTimer = setInterval(() => {
-        setLeft(left - ( 20 * ( 1 + ( score / 1000 ) ) ) );
+        setLeft(left - 10);
       }, 20);
-  
       return () => clearInterval(leftTimer);
+    } else {
+      
     }
-  },[left, widthEnemyPx, score])
+  })
   
-  const renderEnemy = () => {
-    return (
-      <EnemyStyled
-        key= {`${listEnemy[0].name}-${enemyId}`}
+  return (
+    <EnemyStyled
         zIndex= "1"
         left= {`${left}px`}
-        image= {listEnemy[0].image}
-      />
-    )
-  };
-
-  return (
-    <>
-      {renderEnemy()}
-    </>
+        image= {enemyImage}
+    />
   )
 };
+
+export default memo(Enemy);

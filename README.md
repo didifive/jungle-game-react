@@ -9,7 +9,7 @@ Link da base utilizada neste projeto: [celso-henrique/dio-dino-game](https://git
 O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript, para isso o projeto foi montado do zero em **ReactJS**
 
 Neste projeto foram realizadas modificações e aprimoramentos, as alterações mais importantes foram:
-* O projeto foi construído com **ReactJS** e **Redux**;
+* O projeto foi construído do zero com `npx create-react-app`;
 * Foram criados os componentes:
   * `BackgroundParalax` com fundo de 4 camadas em efeito paralax;
   * `Ground` com imagem para o "chão" do cenário;
