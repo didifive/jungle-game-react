@@ -11,21 +11,27 @@ export const Game = () => {
   const [score, setScore] = useState(0);
 
   const [listEnemies, setListEnemies] = useState([]);
-
+  
+  const getRandomIntInclusive = (min, max) => {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }  /* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
+  
   useEffect(() => {
-    const randomTime = Math.random() * 6500;
+    const randomTime = Math.random() * 6000;
     const enemyTimer = setInterval(() => {
       setEnemyCounter(enemyCounter + 1);
-      listEnemies.push({
+      setListEnemies(listEnemies => [...listEnemies, {
         id: enemyCounter,
-        type: "goblin"
-      });
+        type: getRandomIntInclusive(0,2)
+      }]);
       setScore(score + 5);
     }, randomTime);
     return () => clearInterval(enemyTimer);
   })
   
-  /*list.splice(list.indexOf('foo'), 1);*/
+  /*updateList(list.slice(list.indexOf(e.target.name, 1)))*/
 
   useEffect(() => {
     const scoreTimer = setInterval(() => {
