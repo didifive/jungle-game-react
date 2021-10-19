@@ -24,10 +24,8 @@ Neste projeto foram realizadas modificações e aprimoramentos, as alterações 
 
 ```
 TODO:(
-  * Programar Score;
   * Componente Modal com informações do game;
   * Programar os eventos (pulo, inimigo, gameover);
-  * Programar aumento dificuldade de acordo com score;
   * Redux utilizado para controlar os estados do game: Load, Play e GameOver.
 )
 ```

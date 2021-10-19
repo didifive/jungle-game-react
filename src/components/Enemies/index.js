@@ -9,14 +9,13 @@ const Enemy = (props) => {
   //PEGAR IMAGEM DO INIMIGO PARA MONTAR A IMAGEM CONFORME O TIPO PASSADO EM "enemyType"
   const enemyImage = () => {
     switch(enemyType) {
-    case "goblin":
+    case 0:
       return(goblin)
-    case "other":
-      return null
     default:
       return(goblin)
     }
   }
+  
   const viewportwidth = window.innerWidth;
   const widthEnemyPx = ((viewportwidth*(-16))/100);
 
