@@ -6,7 +6,7 @@ Projeto desenvolvido com instruções de [Celso Henrique](https://www.linkedin.c
 
 Link da base utilizada neste projeto: [celso-henrique/dio-dino-game](https://github.com/celso-henrique/dio-dino-game).
 
-O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript, para isso o projeto foi montado do zero em **ReactJS**
+O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript, para isso o projeto foi montado do zero em **ReactJS** com **Redux**.
 
 Neste projeto foram realizadas modificações e aprimoramentos, as alterações mais importantes foram:
 * O projeto foi construído do zero com `npx create-react-app`;
@@ -26,13 +26,14 @@ Neste projeto foram realizadas modificações e aprimoramentos, as alterações 
 TODO:(
   * Componente Modal com informações do game;
   * Programar os eventos (pulo, inimigo, gameover);
-  * Redux utilizado para controlar os estados do game: Load, Play e GameOver.
+  * Redux utilizado para os estados do game: Load, Play, Pause, GameOver e Score.
 )
 ```
 
 &nbsp;
 
-Link do projeto para acessar online: https://xxxxx <br/>
+Link do projeto para acessar online: https://jungle-infinite-runner.netlify.app <br/>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b3537f4-890c-41ab-9c91-44ae3e1ff0d1/deploy-status)](https://app.netlify.com/sites/jungle-infinite-runner/deploys)<br/>
 *Como é uma hospedagem gratuita, tenha paciência caso demore para carregar*
 
 &nbsp;
