@@ -12,14 +12,15 @@ export const Game = () => {
 
   const [listEnemies, setListEnemies] = useState([]);
   
+  /* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
   const getRandomIntInclusive = (min, max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }  /* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
+  }  
   
   useEffect(() => {
-    const randomTime = Math.random() * 6000;
+    const randomTime = Math.random() * 6500;
     const enemyTimer = setInterval(() => {
       setEnemyCounter(enemyCounter + 1);
       setListEnemies(listEnemies => [...listEnemies, {
