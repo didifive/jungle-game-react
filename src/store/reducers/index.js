@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import { enemyReducer } from './enemy';
-import { scoreReducer } from './store';
+import { scoreReducer } from './score';
 
 const rootReducer = combineReducers({
   enemy: enemyReducer,
