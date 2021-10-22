@@ -3,7 +3,7 @@ import { Ground } from "../Ground";
 import { ScenarioStyled } from "./styled";
 
 
-export const Scenario = () => {
+const Scenario = () => {
   return (
     <ScenarioStyled>
       <Background />
@@ -11,3 +11,5 @@ export const Scenario = () => {
     </ScenarioStyled>
   )
 };
+
+export default Scenario;

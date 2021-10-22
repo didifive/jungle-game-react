@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import { Scenario } from '../Scenario';
-import { Character } from '../Character';
+import Scenario from '../Scenario';
+import Character from '../Character';
 import Enemy from '../Enemies';
 import Score from '../Score';
 
