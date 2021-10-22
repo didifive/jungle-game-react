@@ -17,6 +17,6 @@ export function enemyReducer(state = initialState, action) {
           defeated: [...state.defeated, action.payload]
       }
     default: 
-        return state;
+      return state;
   }
 }

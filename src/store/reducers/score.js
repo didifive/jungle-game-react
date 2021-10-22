@@ -9,6 +9,6 @@ export function scoreReducer(state = initialState, action) {
         score: state.score + action.payload.score
       }
     default: 
-        return state;
+      return state;
   }
 }
