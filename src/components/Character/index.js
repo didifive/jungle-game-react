@@ -30,11 +30,23 @@ const Character = () => {
 
   useEffect(() => {
     const jumpInterval = setInterval(() => {
-      if (isJumping) {
+      if (isJumping && !isLanding) {
         setCharacterEvent('jump');
-        setPosition(position + 5);
+        setPosition(position + 1);
+        if (position >= 42) {
+          setIsJumping(false);
+          setIsLanding(true);
+        }
+      } else if (!isJumping && isLanding) {
+        setCharacterEvent('landing');
+        setPosition(position - 1);
+        if (position <= 8) {
+          setIsLanding(false);
+        }
+      } else {
+        setCharacterEvent('run');
       }
-    }, 20);
+    }, 10);
     return () => clearInterval(jumpInterval);
   });
 
