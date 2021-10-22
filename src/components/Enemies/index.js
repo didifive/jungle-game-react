@@ -1,12 +1,16 @@
 import { useEffect, useState, memo } from 'react'
-import goblin from "../../assets/img/enemies/goblin.gif";
-import { EnemyStyled } from "./styled";
+import { connect } from 'react-redux';
+
+import goblin from '../../assets/img/enemies/goblin.gif';
+import { EnemyStyled } from './styled';
+
+import { addScore } from '../../store/actions/score';
+import { defeatEnemy } from '../../store/actions/enemy'
 
 const Enemy = (props) => {
 
-  const { enemyType } = props;
+  const { enemyType, enemyId, defeatEnemy, addScore } = props;
 
-  //PEGAR IMAGEM DO INIMIGO PARA MONTAR A IMAGEM CONFORME O TIPO PASSADO EM "enemyType"
   const enemyImage = () => {
     switch(enemyType) {
     case 0:
@@ -28,7 +32,8 @@ const Enemy = (props) => {
       }, 20);
       return () => clearInterval(leftTimer);
     } else {
-      
+      defeatEnemy(enemyId);
+      addScore(5);
     }
   })
   
@@ -41,4 +46,9 @@ const Enemy = (props) => {
   )
 };
 
-export default memo(Enemy);
+export default memo(
+  connect(
+    null,
+    { addScore, defeatEnemy }
+  )(Enemy)
+);

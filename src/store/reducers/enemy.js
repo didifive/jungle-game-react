@@ -8,7 +8,7 @@ export function enemyReducer(state = initialState, action) {
     case 'ADD_ENEMY': 
       return {
           ...state,
-          enemies: action.payload
+          enemies: [...state.enemies, action.payload]
       }
     case 'DEFEAT_ENEMY': 
       return {

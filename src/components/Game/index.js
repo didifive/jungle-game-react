@@ -1,16 +1,20 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+
 import { Scenario } from '../Scenario';
 import { Character } from '../Character';
 import Enemy from '../Enemies';
-import { Score } from '../Score';
+import Score from '../Score';
 
-export const Game = () => {
+import { addEnemy } from '../../store/actions/enemy';
+
+const Game = (props) => {
+
+  const { storeEnemy, addEnemy } = props;
   
   const [enemyCounter, setEnemyCounter] = useState(0);
-  
-  const [score, setScore] = useState(0);
 
-  const [listEnemies, setListEnemies] = useState([]);
+  let enemyList = storeEnemy.enemies;
   
   /* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
   const getRandomIntInclusive = (min, max) => {
@@ -18,50 +22,45 @@ export const Game = () => {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }  
-  
+
   useEffect(() => {
     const randomTime = Math.random() * 6500;
     const enemyTimer = setInterval(() => {
       setEnemyCounter(enemyCounter + 1);
-      setListEnemies(listEnemies => [...listEnemies, {
-        id: enemyCounter,
-        type: getRandomIntInclusive(0,2)
-      }]);
-      setScore(score + 5);
+      addEnemy(
+        enemyCounter,
+        getRandomIntInclusive(0,2)
+      );
     }, randomTime);
     return () => clearInterval(enemyTimer);
   })
-  
-  /*updateList(list.slice(list.indexOf(e.target.name, 1)))*/
 
-  useEffect(() => {
-    const scoreTimer = setInterval(() => {
-      setScore(score + 1);
-    }, 1000);
-    return () => clearInterval(scoreTimer);
-  })
   
-  const renderEnemy = (score, enemy) => {
+  const renderEnemy = (enemy) => {
     return (
       <Enemy 
         key={`${enemy.type}-${enemy.id}`}
         enemyId={enemy.id}
-        score={score}
         enemyType={enemy.type}
       />
     )
   };
-  
+
   return (
     <>
       <Scenario />
-      <Score 
-        score={score}
-      />
+      <Score />
       <Character />
-      {listEnemies.map((enemy) => (
-        renderEnemy(score, enemy)
-      ))};
+      {enemyList.map((enemy) => (renderEnemy(enemy)))}
     </>
   )
 };
+
+const mapStateToProps = (state) => ({
+  storeEnemy: state.enemyReducer
+});
+
+export default connect(
+  mapStateToProps,
+  { addEnemy }
+)(Game);

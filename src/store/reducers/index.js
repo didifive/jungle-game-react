@@ -3,8 +3,8 @@ import { enemyReducer } from './enemy';
 import { scoreReducer } from './score';
 
 const rootReducer = combineReducers({
-  enemy: enemyReducer,
-  score: scoreReducer
+  enemyReducer,
+  scoreReducer
 })
 
 export default rootReducer;
