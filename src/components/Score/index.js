@@ -7,8 +7,7 @@ import { addScore } from '../../store/actions/score'
 
 export const Score = (props) => {
   
-  const { storeScore } = props;
-  const { addScore } = props;
+  const { storeScore, addScore } = props;
 
   useEffect(() => {
     const scoreTimer = setInterval(() => {

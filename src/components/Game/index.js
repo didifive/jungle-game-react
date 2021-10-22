@@ -10,7 +10,7 @@ import { addEnemy } from '../../store/actions/enemy';
 
 const Game = (props) => {
 
-  const { storeEnemy, addEnemy } = props;
+  const { storeEnemy, storeScore, addEnemy } = props;
   
   const [enemyCounter, setEnemyCounter] = useState(0);
 
@@ -21,21 +21,23 @@ const Game = (props) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }  
+  }
 
   useEffect(() => {
-    const randomTime = Math.random() * 6500;
+    const randomTime = (Math.random() * 6000);
     const enemyTimer = setInterval(() => {
-      setEnemyCounter(enemyCounter + 1);
-      addEnemy(
-        enemyCounter,
-        getRandomIntInclusive(0,2)
-      );
+      const maxEnemiesScreen = Math.floor(storeScore.score/20);
+      if ( enemyList.length <= maxEnemiesScreen ) {
+        setEnemyCounter(enemyCounter + 1);
+        addEnemy(
+          enemyCounter,
+          getRandomIntInclusive(0,2)
+        );
+      }
     }, randomTime);
     return () => clearInterval(enemyTimer);
   })
 
-  
   const renderEnemy = (enemy) => {
     return (
       <Enemy 
@@ -57,7 +59,8 @@ const Game = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  storeEnemy: state.enemyReducer
+  storeEnemy: state.enemyReducer,
+  storeScore: state.scoreReducer
 });
 
 export default connect(
