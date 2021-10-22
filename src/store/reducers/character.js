@@ -6,7 +6,7 @@ export function characterReducer(state = initialState, action) {
   switch(action.type) {
     case 'CHAR_POSITION': 
       return {
-        position: action.payload.position
+        position: state.position + action.payload.position
       }
     default: 
       return state;

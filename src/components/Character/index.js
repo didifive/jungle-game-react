@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 
 import characterIdle from "../../assets/img/character/idle.gif";
 import characterJump from "../../assets/img/character/jump.png";
@@ -7,11 +8,14 @@ import characterRun from "../../assets/img/character/run.gif";
 
 import { CharacterStyled } from "./styled";
 
-const Character = () => {
+import { charPosition } from '../../store/actions/character'
+
+const Character = (props) => {
+
+  const { storeCharacter, charPosition } = props;
   
   const [isJumping, setIsJumping] = useState(false);
   const [isLanding, setIsLanding] = useState(false);
-  const [position, setPosition] = useState(7);
   const [characterEvent, setCharacterEvent] = useState('run');
   
   useEffect(() => {
@@ -23,24 +27,22 @@ const Character = () => {
       } 
     }
     window.document.addEventListener('keyup', handleKeyUp);
-    return () => {
-      window.document.removeEventListener('keyup', handleKeyUp);
-    }
+    return () => window.document.removeEventListener('keyup', handleKeyUp);
   });
 
   useEffect(() => {
     const jumpInterval = setInterval(() => {
       if (isJumping && !isLanding) {
         setCharacterEvent('jump');
-        setPosition(position + 1);
-        if (position >= 42) {
+        charPosition(1);
+        if (storeCharacter.position >= 42) {
           setIsJumping(false);
           setIsLanding(true);
         }
       } else if (!isJumping && isLanding) {
         setCharacterEvent('landing');
-        setPosition(position - 1);
-        if (position <= 8) {
+        charPosition(-1);
+        if (storeCharacter.position <= 8) {
           setIsLanding(false);
         }
       } else {
@@ -73,7 +75,7 @@ const Character = () => {
     const characterStatus = listCharacter.filter(char => char.status === characterEvent)
     return (
       <CharacterStyled 
-        position= {position}
+        position= {storeCharacter.position}
         image={characterStatus[0].image}
         widthChar= "10"
         heightChar= "15"
@@ -90,4 +92,11 @@ const Character = () => {
   )
 };
 
-export default Character;
+const mapStateToProps = (state) => ({
+  storeCharacter: state.characterReducer
+});
+
+export default connect(
+  mapStateToProps,
+  { charPosition }
+)(Character);
