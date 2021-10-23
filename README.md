@@ -8,19 +8,23 @@ Link da base utilizada neste projeto: [celso-henrique/dio-dino-game](https://git
 
 O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript nativo, para isso o projeto foi montado do zero em **ReactJS** com **Redux**, criando um desafio que permite entender melhor o desenvolvimento utilizando as bibliotecas.
 
-Neste projeto foram realizadas modificações e aprimoramentos, as alterações mais importantes foram:
-* O projeto foi construído do zero com `npx create-react-app`;
+Neste projeto os destaques são:
+* Construção do zero iniciando com o `npx create-react-app`;
 * Foram criados os componentes:
   * `BackgroundParalax` com fundo de 4 camadas em efeito paralax;
   * `Ground` com imagem para o "chão" do cenário;
   * `Scenario` que engloba `BackgroundParalax` e `Ground` para montagem do cenário;
   * `Character` para o herói com programação de pulo;
-  * `Enemies` para inimigos que possuem três tipos diferentes;
+  * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
   * `Score` para controlar e mostrar os pontos;
   * `Game` que engloba `Scenario`, `Character`, `Enemies` e `Score` para montagem do game;
   * `Header` para cabeçalho na tela;
+  * `Modal` ;
   * `GlobalStyles` para estilo global do projeto.
-* Com Redux foi criada store, as actions e reducers `character`, `enemy`, `game` e `score`, permitindo compartilhar diversos estados em toda a aplicação;
+* Para o comando do personagem foram definidos os eventos `keyup` e `touchend`, assim para acionar o pulo basta apertar (e soltar) a barra de espaço ou, para dispositivos com touchscreen, tocar (e soltar) a tela.
+* Com Redux foram criadas stores permitindo compartilhar e manipular diversos estados em toda a aplicação com:
+  * Actions: `CHAR_POSITION`, `ADD_ENEMY`, `DEFEAT_ENEMY`, `GAME_START`, `GAME_OVER`, `GAME_PAUSE` e `ADD_SCORE`;
+  * Reducers: `characterReducer`, `enemyReducer`, `gameReducer`, `scoreReducer`.
 * Foi adicionado nível de dificuldade controlando o limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
 * 
 

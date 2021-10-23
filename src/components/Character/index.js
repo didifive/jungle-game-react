@@ -19,15 +19,19 @@ const Character = (props) => {
   const [characterEvent, setCharacterEvent] = useState('run');
   
   useEffect(() => {
-    const handleKeyUp = (e) => {
-      if (e.keyCode === 32) {
+    const handleKeyUpAndTouch = (e) => {
+      if (e.keyCode === 32 || e.type === 'touchend' ) {
         if (!isJumping && !isLanding) {
           setIsJumping(true);
         }
       } 
     }
-    window.document.addEventListener('keyup', handleKeyUp);
-    return () => window.document.removeEventListener('keyup', handleKeyUp);
+    window.document.addEventListener('keyup', handleKeyUpAndTouch);
+    window.document.addEventListener('touchend', handleKeyUpAndTouch);
+    return () => {
+      window.document.removeEventListener('keyup', handleKeyUpAndTouch);
+      window.document.removeEventListener('touchend', handleKeyUpAndTouch);
+    } 
   });
 
   useEffect(() => {
