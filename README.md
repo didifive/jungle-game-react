@@ -26,12 +26,13 @@ Neste projeto os destaques são:
   * Actions: `CHAR_POSITION`, `ADD_ENEMY`, `DEFEAT_ENEMY`, `GAME_START`, `GAME_OVER`, `GAME_PAUSE` e `ADD_SCORE`;
   * Reducers: `characterReducer`, `enemyReducer`, `gameReducer`, `scoreReducer`.
 * Foi adicionado nível de dificuldade controlando o limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
-* 
+* Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries.
 
 ```
 TODO:(
   * Componente Modal com informações do game;
-  * Configurar store e componentes para os estados do game: Play, Pause e GameOver.
+  * Configurar store e componentes para os estados do game: Play, Pause e GameOver;
+  * Configurar os botões Play, Pause e Info
 )
 ```
 

@@ -22,22 +22,22 @@ export const ScoreStyled = styled.div`
     -webkit-text-stroke-width: 2px;
     -webkit-text-stroke-color: #1B3835;
   }
-
-  @media screen and (max-width:418px){
-    h2 {
-      font-size: 1.5em;
-    }
-  }
-  
-  @media screen and (max-width:767.98px){
-    h2 {
-      font-size: 1.8em;
-    }
-  }
   
   @media screen and (max-width:1199px){
     h2 {
       font-size: 2.8em;
+    }
+  }
+
+  @media screen and (max-width:767.98px){
+    h2 {
+      font-size: 2.2em;
+    }
+  }
+
+  @media screen and (max-width:418px){
+    h2 {
+      font-size: 1.6em;
     }
   }
 `;

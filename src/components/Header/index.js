@@ -9,7 +9,6 @@ export const Header = () => {
       <nav>
         <span><i className="fas fa-play-circle"></i></span>
         <span><i className="fas fa-pause-circle"></i></span>
-        <span><i className="fas fa-stop-circle"></i></span>
         <span><i className="fas fa-info-circle"></i></span>
       </nav>
     </HeaderStyled>
