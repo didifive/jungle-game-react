@@ -5,6 +5,7 @@ import Scenario from '../Scenario';
 import Character from '../Character';
 import Enemy from '../Enemies';
 import Score from '../Score';
+import Controls from '../Controls';
 
 import { addEnemy } from '../../store/actions/enemy';
 
@@ -52,6 +53,7 @@ const Game = (props) => {
     <>
       <Scenario />
       <Score />
+      <Controls />
       <Character />
       {enemyList.map((enemy) => (renderEnemy(enemy)))}
     </>

@@ -17,6 +17,7 @@ Neste projeto os destaques são:
   * `Character` para o herói com programação de pulo;
   * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
   * `Score` para controlar e mostrar os pontos;
+  * `Constrols` para informar os comandos para pular (tecla espaço ou toque);
   * `Game` que engloba `Scenario`, `Character`, `Enemies` e `Score` para montagem do game;
   * `Header` para cabeçalho na tela;
   * `Modal` ;
@@ -31,6 +32,8 @@ Neste projeto os destaques são:
 ```
 TODO:(
   * Componente Modal com informações do game;
+  * Componente Lifes para contador de vidas;
+  * Componente Hud para englobar o Score e Lifes;
   * Configurar store e componentes para os estados do game: Play, Pause e GameOver;
   * Configurar os botões Play, Pause e Info
 )
@@ -56,11 +59,12 @@ Para rodar o projeto localmente:
 &nbsp;
 
 Desenvolvido com:
-* [Visual Studio Code](https://code.visualstudio.com/) 1.61.0;
+* [Visual Studio Code](https://code.visualstudio.com/) 1.61.2;
 * [NodeJS](https://nodejs.org/en/) 14.18.1 LTS;
 * [styled-components](https://styled-components.com/);
 * [Google Fonts](https://fonts.google.com/);
-* [Font Awesome](https://fontawesome.com/).
+* [Font Awesome](https://fontawesome.com/);
+* [ICONS8](https://icons8.com/).
 
 Pack de imagens encontradas no portal [itch.io](https://itch.io/):
 * [Jungle Pack](https://jesse-m.itch.io/jungle-pack)
