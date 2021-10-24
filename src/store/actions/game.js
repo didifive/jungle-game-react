@@ -18,9 +18,9 @@ export function gameOver(){
 
 export function gamePause(){
   return {
-    type: 'GAME_PAUSE',
+    type: 'GAME_STOP',
     payload: {
-      game: 'pause'
+      game: 'stop'
     }
   }
 }

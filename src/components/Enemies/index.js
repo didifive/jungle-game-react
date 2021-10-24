@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import { EnemyStyled, enemyImg } from './styled';
 
 import { addScore } from '../../store/actions/score';
-import { defeatEnemy } from '../../store/actions/enemy'
+import { defeatEnemy } from '../../store/actions/enemy';
+import { handleLife } from '../../store/actions/life';
+import { gameOver } from '../../store/actions/game';
 
 const Enemy = (props) => {
 
-  const { enemyType, enemyId, defeatEnemy, addScore, storeCharacter } = props;
+  const { enemyType, enemyId, defeatEnemy, addScore, handleLife, storeCharacter, storeLife, storeGame } = props;
 
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
@@ -31,15 +33,23 @@ const Enemy = (props) => {
     }
   },[addScore,defeatEnemy,enemyId,left,widthEnemyPx])
   
-  const minEnemyAttackPx = (viewportHeight * 0.05);
-  const maxEnemyAttackPx = (viewportHeight * 0.10);
-  const charPosition = storeCharacter.position;
-  if ((left >= minEnemyAttackPx) && (left <= maxEnemyAttackPx) && (charPosition <= 22)) {
-    if (!perdeuVida) {
-      console.log("Perdeu Vida")
-      setPerdeuVida(true);
+  useEffect(() => {
+    const minEnemyAttackPx = (viewportHeight * 0.03);
+    const maxEnemyAttackPx = (viewportHeight * 0.07);
+    const charPosition = storeCharacter.position;
+    if ((left >= minEnemyAttackPx) && (left <= maxEnemyAttackPx) && (charPosition <= 22)) {
+      if (!perdeuVida) {
+        if (storeLife.life > 0){
+          handleLife(-1);
+          setPerdeuVida(true);
+        } else {
+          gameOver();
+        }
+      }
     }
-  }
+  },[handleLife, left, perdeuVida, storeCharacter.position, storeLife.life, viewportHeight])
+  
+  console.log (storeGame.game)
 
   return (
     <EnemyStyled
@@ -51,10 +61,12 @@ const Enemy = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  storeCharacter: state.characterReducer
+  storeCharacter: state.characterReducer,
+  storeLife: state.lifeReducer,
+  storeGame: state.gameReducer
 });
 
 export default connect(
   mapStateToProps,
-    { addScore, defeatEnemy }
+  { addScore, defeatEnemy, handleLife, gameOver }
   )(Enemy);

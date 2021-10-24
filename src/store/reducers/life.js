@@ -1,5 +1,5 @@
 const initialState = {
-  life: 3
+  life: 5
 }
 
 export function lifeReducer(state = initialState, action) {

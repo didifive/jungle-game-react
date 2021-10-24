@@ -1,5 +1,5 @@
 const initialState = {
-  game: 'initial'
+  game: 'loaded'
 }
 
 export function gameReducer(state = initialState, action) {
@@ -12,7 +12,7 @@ export function gameReducer(state = initialState, action) {
       return {
         game: action.payload.game
       }
-    case 'GAME_PAUSE': 
+    case 'GAME_STOP': 
       return {
         game: action.payload.game
       }

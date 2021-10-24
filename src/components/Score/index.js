@@ -22,7 +22,7 @@ export const Score = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  storeScore: state.scoreReducer,
+  storeScore: state.scoreReducer
 });
 
 export default connect(

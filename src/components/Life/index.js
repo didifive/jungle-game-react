@@ -2,16 +2,14 @@ import { connect } from "react-redux";
 
 import characterIdle from "../../assets/img/character/idle.gif";
 
-import { handleLife } from '../../store/actions/life'
-
-export const Score = (props) => {
+export const Life = (props) => {
   
-  const { storeScore, storeLife, handleLife } = props;
+  const { storeLife } = props;
 
   return (
       <>
         <img 
-          alt="Character"
+          alt="Character Hud"
           src={characterIdle}
         />
         <h3>
@@ -22,11 +20,9 @@ export const Score = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  storeScore: state.scoreReducer,
-  storeLife: state.lifeReducer,
+  storeLife: state.lifeReducer
 });
 
 export default connect(
-  mapStateToProps,
-  { handleLife }
-)(Score);
+  mapStateToProps
+)(Life);
