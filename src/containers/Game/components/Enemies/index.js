@@ -10,14 +10,14 @@ import { gameOver } from '../../../../store/actions/game';
 
 const Enemy = (props) => {
 
-  const { enemyType, enemyId, defeatEnemy, addScore, handleLife, storeCharacter, storeLife, storeGame } = props;
+  const { enemyType, enemyId, defeatEnemy, addScore, handleLife, storeCharacter, storeLife, storeGame, gameOver } = props;
 
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
   const widthEnemyPx = viewportHeight * (0.15);
   
   const [left, setLeft] = useState(viewportWidth);
-  const [perdeuVida, setPerdeuVida] = useState(false);
+  const [lostLife, setLostLife] = useState(false);
   
   const enemyImage = enemyImg(enemyType);
 
@@ -39,16 +39,16 @@ const Enemy = (props) => {
   const lifes = storeLife.life
   useEffect(() => {
     if ((left >= minEnemyAttackPx) && (left <= maxEnemyAttackPx) && (charPosition <= 22)) {
-      if (!perdeuVida) {
+      if (!lostLife) {
         if (lifes > 0){
           handleLife(-1);
-          setPerdeuVida(true);
+          setLostLife(true);
         } else {
           gameOver();
         }
       }
     }
-  },[charPosition, handleLife, left, lifes, minEnemyAttackPx, maxEnemyAttackPx, perdeuVida])
+  },[charPosition, handleLife, left, lifes, minEnemyAttackPx, maxEnemyAttackPx, lostLife, gameOver])
   
   console.log (storeGame.game)
 
