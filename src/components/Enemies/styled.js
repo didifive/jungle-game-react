@@ -1,5 +1,16 @@
 import styled from "styled-components"; 
+
 import errorPng from "../../assets/img/error.png";
+import goblin from '../../assets/img/enemies/goblin.gif';
+
+export const enemyImg = (enemyType) => {
+  switch(enemyType) {
+  case 0:
+    return(goblin)
+  default:
+    return(goblin)
+  }
+}
 
 export const EnemyStyled = styled.div.attrs(props => ({
   image: props.image || {errorPng},

@@ -6,9 +6,10 @@ export const GlobalStyle = createGlobalStyle`
     background-color: #eeeeee;
     background: url(${bgImg}) center repeat;  
     color: #000000;
-    padding: 0;
-    margin: 0;
+    display: flex;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
     overflow: hidden;
+    padding: 0;
   }
 `;

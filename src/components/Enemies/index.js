@@ -1,32 +1,26 @@
-import { useEffect, useState, memo } from 'react'
+import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import goblin from '../../assets/img/enemies/goblin.gif';
-import { EnemyStyled } from './styled';
+import { EnemyStyled, enemyImg } from './styled';
 
 import { addScore } from '../../store/actions/score';
 import { defeatEnemy } from '../../store/actions/enemy'
 
 const Enemy = (props) => {
 
-  const { enemyType, enemyId, defeatEnemy, addScore } = props;
+  const { enemyType, enemyId, defeatEnemy, addScore, storeCharacter } = props;
 
-  const enemyImage = () => {
-    switch(enemyType) {
-    case 0:
-      return(goblin)
-    default:
-      return(goblin)
-    }
-  }
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
+  const widthEnemyPx = viewportHeight * (0.15);
   
-  const viewportwidth = window.innerWidth;
-  const widthEnemyPx = ((viewportwidth*(-16))/100);
-
-  const [left, setLeft] = useState(viewportwidth);
+  const [left, setLeft] = useState(viewportWidth);
+  const [perdeuVida, setPerdeuVida] = useState(false);
+  
+  const enemyImage = enemyImg(enemyType);
 
   useEffect(() => {
-    if (left >= widthEnemyPx) {
+    if (left >= ( widthEnemyPx * -1)) {
       const leftTimer = setInterval(() => {
         setLeft(left - 10);
       }, 20);
@@ -35,8 +29,18 @@ const Enemy = (props) => {
       defeatEnemy(enemyId);
       addScore(5);
     }
-  })
+  },[addScore,defeatEnemy,enemyId,left,widthEnemyPx])
   
+  const minEnemyAttackPx = (viewportHeight * 0.05);
+  const maxEnemyAttackPx = (viewportHeight * 0.10);
+  const charPosition = storeCharacter.position;
+  if ((left >= minEnemyAttackPx) && (left <= maxEnemyAttackPx) && (charPosition <= 22)) {
+    if (!perdeuVida) {
+      console.log("Perdeu Vida")
+      setPerdeuVida(true);
+    }
+  }
+
   return (
     <EnemyStyled
         zIndex= "1"
@@ -46,9 +50,11 @@ const Enemy = (props) => {
   )
 };
 
-export default memo(
-  connect(
-    null,
+const mapStateToProps = (state) => ({
+  storeCharacter: state.characterReducer
+});
+
+export default connect(
+  mapStateToProps,
     { addScore, defeatEnemy }
-  )(Enemy)
-);
+  )(Enemy);

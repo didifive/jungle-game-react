@@ -8,23 +8,20 @@ export const ControlsStyled = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  left: 3vw;
+  margin: 0px auto;
+  max-width: 650px;
+  min-width: 410px;
   padding: 5px;
   position: absolute;
   transform: scale(1);
-  max-width: 500px;
-  width: 94vw;
   z-index: 2;
   
   p {
-    align-items: center;
     color: #efefef;
     font-size: 1em;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-
-  img {
-    margin: 0 5px;
+    margin: 0 8px;
+    text-align: center;
   }
 
   @media screen and (max-width:1199px){
@@ -36,10 +33,10 @@ export const ControlsStyled = styled.div`
   }
 
   @media screen and (max-width:418px){
-    transform: scale(.72);
+    transform: scale(.70);
   }
 
   @media screen and (max-width:360px){
-    transform: scale(.68);
+    transform: scale(.60);
   }
 `;

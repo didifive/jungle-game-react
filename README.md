@@ -16,9 +16,11 @@ Neste projeto os destaques são:
   * `Scenario` que engloba `BackgroundParalax` e `Ground` para montagem do cenário;
   * `Character` para o herói com programação de pulo;
   * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
+  * `Controls` para informar os comandos para pular (tecla espaço ou toque);
+  * `Life` para controlar e mostrar os pontos de vida;
   * `Score` para controlar e mostrar os pontos;
-  * `Constrols` para informar os comandos para pular (tecla espaço ou toque);
-  * `Game` que engloba `Scenario`, `Character`, `Enemies` e `Score` para montagem do game;
+  * `Hud` que engloba `Life` e `Score`;
+  * `Game` que engloba `Scenario`, `Character`, `Enemies`, `Controls` e `Hud` para montagem do game;
   * `Header` para cabeçalho na tela;
   * `Modal` ;
   * `GlobalStyles` para estilo global do projeto.
@@ -32,8 +34,6 @@ Neste projeto os destaques são:
 ```
 TODO:(
   * Componente Modal com informações do game;
-  * Componente Lifes para contador de vidas;
-  * Componente Hud para englobar o Score e Lifes;
   * Configurar store e componentes para os estados do game: Play, Pause e GameOver;
   * Configurar os botões Play, Pause e Info
 )

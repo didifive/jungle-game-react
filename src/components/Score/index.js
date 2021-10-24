@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { connect } from "react-redux";
 
-import { ScoreStyled } from "./styled";
-
 import { addScore } from '../../store/actions/score'
 
 export const Score = (props) => {
@@ -17,16 +15,14 @@ export const Score = (props) => {
   })
 
   return (
-    <ScoreStyled>
       <h2>
         Score: {storeScore.score}
       </h2>
-    </ScoreStyled>
   )
 };
 
 const mapStateToProps = (state) => ({
-  storeScore: state.scoreReducer
+  storeScore: state.scoreReducer,
 });
 
 export default connect(

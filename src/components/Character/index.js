@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import characterIdle from "../../assets/img/character/idle.gif";
-import characterJump from "../../assets/img/character/jump.png";
-import characterLanding from "../../assets/img/character/landing.png";
-import characterRun from "../../assets/img/character/run.gif";
-
-import { CharacterStyled } from "./styled";
+import { CharacterStyled, characterImg } from "./styled";
 
 import { charPosition } from '../../store/actions/character'
 
@@ -56,31 +51,11 @@ const Character = (props) => {
     return () => clearInterval(jumpInterval);
   });
 
-  const listCharacter = [
-    {
-      status: 'idle',
-      image: `${characterIdle}`,
-    },
-    {
-      status: 'run',
-      image: `${characterRun}`,
-    },
-    {
-      status: 'jump',
-      image: `${characterJump}`,
-    },
-    {
-      status: 'landing',
-      image: `${characterLanding}`,
-    }
-  ];
-  
   const renderCharacter = () => {
-    const characterStatus = listCharacter.filter(char => char.status === characterEvent)
     return (
       <CharacterStyled 
         position= {storeCharacter.position}
-        image={characterStatus[0].image}
+        image={characterImg(characterEvent)}
         widthChar= "10"
         heightChar= "15"
         zIndex= "2"

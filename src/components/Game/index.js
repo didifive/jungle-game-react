@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import Scenario from '../Scenario';
 import Character from '../Character';
-import Enemy from '../Enemies';
-import Score from '../Score';
 import Controls from '../Controls';
+import Enemy from '../Enemies';
+import Hud from '../Hud';
+import Scenario from '../Scenario';
+
 
 import { addEnemy } from '../../store/actions/enemy';
 
 const Game = (props) => {
 
   const { storeEnemy, storeScore, addEnemy } = props;
-  
+
   const [enemyCounter, setEnemyCounter] = useState(0);
 
   let enemyList = storeEnemy.enemies;
@@ -25,8 +26,8 @@ const Game = (props) => {
   }
 
   useEffect(() => {
-    const randomTime = (Math.random() * 6000);
-    const enemyTimer = setInterval(() => {
+    const randomTime = Math.random() * 4000;
+    const enemyTimer = setTimeout(() => {
       const maxEnemiesScreen = Math.floor(storeScore.score/20);
       if ( enemyList.length <= maxEnemiesScreen ) {
         setEnemyCounter(enemyCounter + 1);
@@ -52,7 +53,7 @@ const Game = (props) => {
   return (
     <>
       <Scenario />
-      <Score />
+      <Hud />
       <Controls />
       <Character />
       {enemyList.map((enemy) => (renderEnemy(enemy)))}

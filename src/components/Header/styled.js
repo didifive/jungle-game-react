@@ -1,14 +1,15 @@
 import styled from "styled-components"; 
 
 export const HeaderStyled = styled.header`
+  align-items: center;
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: space-between;
-  position: absolute;
   left: 3vw;
+  max-height: 10vh;
+  min-height: 8vh;
+  position: absolute;
   top: 3vh;
-  height: 8vh;
   width: 94vw;
   z-index: 0;
   
