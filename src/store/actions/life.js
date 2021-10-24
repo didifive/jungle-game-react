@@ -1,6 +1,6 @@
 export function handleLife(life){
   return {
-    type: 'ADD_LIFE',
+    type: 'HANDLE_LIFE',
     payload: {
       life: life
     }

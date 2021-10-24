@@ -28,7 +28,7 @@ Neste projeto os destaques são:
 * Com Redux foram criadas stores permitindo compartilhar e manipular diversos estados em toda a aplicação com:
   * Actions: `CHAR_POSITION`, `ADD_ENEMY`, `DEFEAT_ENEMY`, `GAME_START`, `GAME_OVER`, `GAME_PAUSE` e `ADD_SCORE`;
   * Reducers: `characterReducer`, `enemyReducer`, `gameReducer`, `scoreReducer`.
-* Foi adicionado nível de dificuldade controlando o limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
+* Foi adicionado um pequeno controle de nível de dificuldade com limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
 * Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries.
 
 ```
@@ -61,11 +61,12 @@ Para rodar o projeto localmente:
 Desenvolvido com:
 * [Visual Studio Code](https://code.visualstudio.com/) 1.61.2;
 * [NodeJS](https://nodejs.org/en/) 14.18.1 LTS;
+* [React](https://reactjs.org/) 17.0.2;
 * [styled-components](https://styled-components.com/);
 * [Google Fonts](https://fonts.google.com/);
 * [Font Awesome](https://fontawesome.com/);
-* [ICONS8](https://icons8.com/).
-
-Pack de imagens encontradas no portal [itch.io](https://itch.io/):
-* [Jungle Pack](https://jesse-m.itch.io/jungle-pack)
-* [Monsters Creatures Fantasy](https://luizmelo.itch.io/monsters-creatures-fantasy)
+* [ICONS8](https://icons8.com/);
+* [GIFMaker](https://www.gifmaker.me/);
+* [itch.io](https://itch.io/):
+  * [Jungle Pack](https://jesse-m.itch.io/jungle-pack);
+  * [Monsters Creatures Fantasy](https://luizmelo.itch.io/monsters-creatures-fantasy).

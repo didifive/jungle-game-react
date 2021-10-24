@@ -1,8 +1,9 @@
-import bgPlxZero from "../../assets/img/background/plx-0.png";
-import bgPlxOne from "../../assets/img/background/plx-1.png";
-import bgPlxTwo from "../../assets/img/background/plx-2.png";
-import bgPlxThree from "../../assets/img/background/plx-3.png";
 import { BackgroundParalax } from "./styled";
+
+import bgPlxZero from "../../../../assets/img/background/plx-0.png";
+import bgPlxOne from "../../../../assets/img/background/plx-1.png";
+import bgPlxTwo from "../../../../assets/img/background/plx-2.png";
+import bgPlxThree from "../../../../assets/img/background/plx-3.png";
 
 export const Background = () => {
   const listBgPlx = [

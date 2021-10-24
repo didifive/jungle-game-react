@@ -2,21 +2,28 @@ import styled from "styled-components";
 
 export const ControlsStyled = styled.div`
   align-items: center;
-  background-color: #1B3835aa;
   top: 22vh;
-  border-radius: 10px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0px auto;
-  max-width: 650px;
-  min-width: 410px;
-  padding: 5px;
+  margin: 0px;
   position: absolute;
   transform: scale(1);
+  width: 100vw;
   z-index: 2;
   
-  p {
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #1B3835aa;
+    border-radius: 10px;
+    max-width: 650px;
+    min-width: 410px;
+    padding: 5px;
+  }
+
+  div p {
     color: #efefef;
     font-size: 1em;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;

@@ -4,7 +4,7 @@ const initialState = {
 
 export function lifeReducer(state = initialState, action) {
   switch(action.type) {
-    case 'ADD_LIFE': 
+    case 'HANDLE_LIFE': 
       return {
         life: state.life + action.payload.life
       }

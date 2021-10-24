@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
-import Character from '../Character';
-import Controls from '../Controls';
-import Enemy from '../Enemies';
+import Character from './components/Character';
+import Controls from './components/Controls';
+import Enemy from './components/Enemies';
+
 import Hud from '../Hud';
 import Scenario from '../Scenario';
-
 
 import { addEnemy } from '../../store/actions/enemy';
 

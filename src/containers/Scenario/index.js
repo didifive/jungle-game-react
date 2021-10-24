@@ -1,5 +1,5 @@
-import { Background } from "../BackgroundParalax";
-import { Ground } from "../Ground";
+import { Background } from "./components/BackgroundParalax";
+import { Ground } from "./components/Ground";
 import { ScenarioStyled } from "./styled";
 
 

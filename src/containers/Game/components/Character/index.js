@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { CharacterStyled, characterImg } from "./styled";
 
-import { charPosition } from '../../store/actions/character'
+import { charPosition } from '../../../../store/actions/character'
 
 const Character = (props) => {
 
@@ -54,12 +54,11 @@ const Character = (props) => {
   const renderCharacter = () => {
     return (
       <CharacterStyled 
-        position= {storeCharacter.position}
+        heightChar= "15vh"
         image={characterImg(characterEvent)}
-        widthChar= "10"
-        heightChar= "15"
+        position= {`${storeCharacter.position}vh`}
+        widthChar= "10vh"
         zIndex= "2"
-        measureUnity="vh"
       />
     )
   };

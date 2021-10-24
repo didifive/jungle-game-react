@@ -1,4 +1,4 @@
-import jungleGround from "../../assets/img/jungle-ground.png";
+import jungleGround from "../../../../assets/img/jungle-ground.png";
 import { GroundImage } from "./styled";
 
 export const Ground = () => {

@@ -1,6 +1,6 @@
 import { HudStyled } from './styled';
-import Life from '../Life';
-import Score from '../Score';
+import Life from './components/Life';
+import Score from './components/Score';
 
 function Hud() {
   return (

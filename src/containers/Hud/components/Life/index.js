@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import characterIdle from "../../assets/img/character/idle.gif";
+import characterIdle from "../../../../assets/img/character/idle.gif";
 
 export const Life = (props) => {
   

@@ -1,5 +1,6 @@
 import styled from "styled-components"; 
-import errorPng from "../../assets/img/error.png";
+
+import errorPng from "../../../../assets/img/error.png";
 
 export const BackgroundParalax = styled.div.attrs(props => ({
   image: props.image || {errorPng},
