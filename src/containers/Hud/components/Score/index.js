@@ -19,7 +19,7 @@ export const Score = (props) => {
     }, 1000);
     if (
         ((score / (45 * addLifeBreak)) > 1) &&
-        (lifes < 6) 
+        (lifes < 5) 
       ){
       handleLife(1);
       setAddLifeBreak(addLifeBreak + 1);
