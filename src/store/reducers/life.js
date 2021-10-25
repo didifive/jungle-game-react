@@ -8,6 +8,11 @@ export function lifeReducer(state = initialState, action) {
       return {
         life: state.life + action.payload.life
       }
+    case 'RESET_LIFE': 
+      return {
+        ...state,
+        life: 3
+      }
     default: 
       return state;
   }

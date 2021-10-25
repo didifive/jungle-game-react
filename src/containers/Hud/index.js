@@ -1,12 +1,17 @@
 import { HudStyled } from './styled';
+
 import Life from './components/Life';
+import Record from './components/Record';
 import Score from './components/Score';
 
 function Hud() {
   return (
     <HudStyled>
-      <Life />
-      <Score />
+      <div>
+        <Life />
+        <Score />
+      </div>
+      <Record />
     </HudStyled>
   );
 }

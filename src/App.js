@@ -1,4 +1,4 @@
-import { Header } from './components/Header';
+import Header from './components/Header';
 import GlobalStyle from './components/GlobalStyles';
 
 import Game from './containers/Game';

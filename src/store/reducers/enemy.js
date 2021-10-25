@@ -16,6 +16,12 @@ export function enemyReducer(state = initialState, action) {
           enemies: state.enemies.filter((i) => i.id !== action.payload.id),
           defeated: [...state.defeated, action.payload]
       }
+    case 'RESET_ENEMIES': 
+      return {
+          ...state,
+          enemies: [],
+          defeated: []
+      }
     default: 
       return state;
   }

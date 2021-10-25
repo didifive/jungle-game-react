@@ -37,10 +37,10 @@ const Background = (props) => {
   const renderBgPlx = (bgPlx, index) => {
     return (
       <BackgroundParalax 
-        className={(storeGame.game === 'start') ? 'animate' : 'paused'}
+        animate={(storeGame.game === 'start') ? 'running' : 'paused'}
         key={`bgPlx-${index}`}
         image={bgPlx.image} 
-        speed={(storeGame.game === 'start') ? bgPlx.speed : 0} 
+        speed={bgPlx.speed} 
         zIndex={bgPlx.zIndex}
       />
     )

@@ -16,11 +16,20 @@ export function gameOver(){
   }
 }
 
-export function gamePause(){
+export function gameStop(){
   return {
     type: 'GAME_STOP',
     payload: {
       game: 'stop'
+    }
+  }
+}
+
+export function gameReset(){
+  return {
+    type: 'GAME_STOP',
+    payload: {
+      game: 'loaded'
     }
   }
 }

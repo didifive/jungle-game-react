@@ -19,6 +19,11 @@ export function gameReducer(state = initialState, action) {
         ...state,
         game: action.payload.game
       }
+    case 'GAME_RESET': 
+      return {
+        ...state,
+        game: action.payload.game
+      }
     default: 
       return state;
   }

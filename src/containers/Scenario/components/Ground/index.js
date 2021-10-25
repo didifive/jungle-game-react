@@ -12,7 +12,7 @@ const Ground = (props) => {
   return (
     <>
       <GroundImage
-        className={(storeGame.game === 'start') ? 'animate' : 'paused'}
+        animate={(storeGame.game === 'start') ? 'running' : 'paused'}
         image={jungleGround} 
         speed="600" 
         zIndex="0"

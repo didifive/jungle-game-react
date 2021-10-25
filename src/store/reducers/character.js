@@ -8,6 +8,11 @@ export function characterReducer(state = initialState, action) {
       return {
         position: state.position + action.payload.position
       }
+    case 'CHAR_RESET': 
+      return {
+        ...state,
+        position: 7
+      }
     default: 
       return state;
   }

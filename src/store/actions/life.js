@@ -6,3 +6,9 @@ export function handleLife(life){
     }
   }
 }
+
+export function resetLife(){
+  return {
+    type: 'RESET_LIFE'
+  }
+}

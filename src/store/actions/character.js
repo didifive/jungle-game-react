@@ -6,3 +6,9 @@ export function charPosition(position){
     }
   }
 }
+
+export function charReset(){
+  return {
+    type: 'CHAR_RESET'
+  }
+}

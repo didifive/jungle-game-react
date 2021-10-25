@@ -12,6 +12,8 @@ const Enemy = (props) => {
 
   const { enemyType, enemyId, defeatEnemy, addScore, handleLife, storeCharacter, storeLife, storeGame, gameOver } = props;
 
+  const gameState = storeGame.game
+
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
   const widthEnemyPx = viewportHeight * (0.15);
@@ -22,36 +24,38 @@ const Enemy = (props) => {
   const enemyImage = enemyImg(enemyType);
 
   useEffect(() => {
-    if (left >= ( widthEnemyPx * -1)) {
-      const leftTimer = setInterval(() => {
-        setLeft(left - 10);
-      }, 20);
-      return () => clearInterval(leftTimer);
-    } else {
-      defeatEnemy(enemyId);
-      addScore(5);
+    if (gameState === 'start') {
+      if (left >= ( widthEnemyPx * -1)) {
+        const leftTimer = setInterval(() => {
+          setLeft(left - 10);
+        }, 20);
+        return () => clearInterval(leftTimer);
+      } else {
+        defeatEnemy(enemyId);
+        addScore(5);
+      }
     }
-  },[addScore,defeatEnemy,enemyId,left,widthEnemyPx])
+  },[addScore,defeatEnemy,enemyId,left,widthEnemyPx, gameState])
   
   const minEnemyAttackPx = (viewportHeight * 0.03);
   const maxEnemyAttackPx = (viewportHeight * 0.05);
   const charPosition = storeCharacter.position;
   const lifes = storeLife.life
   useEffect(() => {
-    if ((left >= minEnemyAttackPx) && (left <= maxEnemyAttackPx) && (charPosition <= 22)) {
-      if (!lostLife) {
-        if (lifes > 0){
-          handleLife(-1);
-          setLostLife(true);
-        } else {
-          gameOver();
+    if (gameState === 'start') {
+      if ((left >= minEnemyAttackPx) && (left <= maxEnemyAttackPx) && (charPosition <= 22)) {
+        if (!lostLife) {
+          if (lifes > 0){
+            handleLife(-1);
+            setLostLife(true);
+          } else {
+            gameOver();
+          }
         }
       }
     }
-  },[charPosition, handleLife, left, lifes, minEnemyAttackPx, maxEnemyAttackPx, lostLife, gameOver])
+  },[charPosition, handleLife, left, lifes, minEnemyAttackPx, maxEnemyAttackPx, lostLife, gameOver, gameState])
   
-  console.log (storeGame.game)
-
   return (
     <EnemyStyled
       image= {enemyImage}

@@ -6,3 +6,12 @@ export function addScore(score){
     }
   }
 }
+
+export function resetScore(record){
+  return {
+    type: 'RESET_SCORE',
+    payload: {
+      record: record
+    }
+  }
+}

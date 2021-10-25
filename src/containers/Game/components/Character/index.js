@@ -14,26 +14,28 @@ const Character = (props) => {
   const [characterEvent, setCharacterEvent] = useState('run');
   
   useEffect(() => {
-    const handleKeyUpAndTouch = (e) => {
-      if (e.keyCode === 32 || e.type === 'touchend' ) {
-        if (!isJumping && !isLanding) {
-          setIsJumping(true);
-        }
-      } 
-    }
-    window.document.addEventListener('keyup', handleKeyUpAndTouch);
-    window.document.addEventListener('touchend', handleKeyUpAndTouch);
-    return () => {
-      window.document.removeEventListener('keyup', handleKeyUpAndTouch);
-      window.document.removeEventListener('touchend', handleKeyUpAndTouch);
+    if (gameState === 'start') {
+      const handleKeyUpAndTouch = (e) => {
+        if (e.keyCode === 32 || e.type === 'touchend' ) {
+          if (!isJumping && !isLanding) {
+            setIsJumping(true);
+          }
+        } 
+      }
+      window.document.addEventListener('keyup', handleKeyUpAndTouch);
+      window.document.addEventListener('touchend', handleKeyUpAndTouch);
+      return () => {
+        window.document.removeEventListener('keyup', handleKeyUpAndTouch);
+        window.document.removeEventListener('touchend', handleKeyUpAndTouch);
+      }
     } 
   });
 
   const gameState = storeGame.game
   
   useEffect(() => {
-    const jumpInterval = setInterval(() => {
-      if (gameState === 'start') {
+    if (gameState === 'start') {
+      const jumpInterval = setInterval(() => {
         if (isJumping && !isLanding) {
           setCharacterEvent('jump');
           charPosition(1);
@@ -50,18 +52,16 @@ const Character = (props) => {
         } else {
           setCharacterEvent('run');
         }
-      } else {
-        setCharacterEvent('idle');
-      }
-    }, 10);
-    return () => clearInterval(jumpInterval);
+      }, 10);
+      return () => clearInterval(jumpInterval);
+    }
   });
 
   const renderCharacter = () => {
     return (
       <CharacterStyled 
         heightChar= "15vh"
-        image={characterImg(characterEvent)}
+        image={(storeGame.game === 'start') ? characterImg(characterEvent) : characterImg('idle')}
         position= {`${storeCharacter.position}vh`}
         widthChar= "10vh"
         zIndex= "2"

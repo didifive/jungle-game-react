@@ -4,13 +4,20 @@ export const HudStyled = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   position: absolute;
   top: 13vh;
   left: 3vw;
   width: 94vw;
   height: 7vh;
   z-index: 0;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
   
   h2 {
     border: 0px;

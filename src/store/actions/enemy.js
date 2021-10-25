@@ -16,3 +16,9 @@ export function defeatEnemy(enemyId){
     }
   }
 }
+
+export function resetEnemies(){
+  return {
+    type: 'RESET_ENEMIES'
+  }
+}
