@@ -19,7 +19,6 @@ Neste projeto os destaques são:
     * `Character` para o herói com programação de pulo;
     * `Controls` para informar ao jogador os comandos disponíveis;
     * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
-    * `GameOver`;
     * `Header` para cabeçalho na tela;
     * `Info` painel modal com informações gerais do game;
   * `Hud` (Heads-Up Display) que engloba:
@@ -37,7 +36,6 @@ Neste projeto os destaques são:
 
 ```
 TODO:(
-  * Game Over;
   * Adicionar Sons;
   * Configurar o Record.
 )
