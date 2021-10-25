@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { HeaderStyled } from "./styled";
 
-import { gameStart, gameStop } from "../../store/actions/game"
+import { gameStart, gameStop } from "../../../../store/actions/game"
 
 const Header = (props) => {
 

@@ -12,17 +12,18 @@ Neste projeto os destaques são:
 * Construção do zero iniciando com o `npx create-react-app`;
 * O projeto com organizado em *containers* e respectivos *components* conforme segue:
   * Raiz (importados diretamente no App):
-    * `Header` para cabeçalho na tela;
     * `GlobalStyles` para estilo global do projeto;
-    * `Info` painel modal com informações gerais do projeto;
+    * `Modal` em styled-component para ser utilizado em compomente, como `Info` e `GameOver`;
   * `Game` que engloba:
     * `Character` para o herói com programação de pulo;
     * `Controls` para informar os comandos para pular (tecla espaço ou toque);
     * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
-    * `Notice`;
+    * `Header` para cabeçalho na tela;
+    * `Info` painel modal com informações gerais do projeto;
+    * `Notice` para informar o jogador para clicar em play ou informação;
   * `Hud` (Heads-Up Display) que engloba:
     * `Life` para controlar e mostrar os pontos de vida;
-    * `Record`;
+    * `Record` ;
     * `Score` para controlar e mostrar os pontos;
   * `Scenario` que engloba:
     * `BackgroundParalax` com fundo de 4 camadas em efeito paralax;
@@ -35,10 +36,11 @@ Neste projeto os destaques são:
 
 ```
 TODO:(
-  * Componente Modal com informações do game;
+  * Componente Modal;
+  * Informações do game;
+  * Game Over;
   * Configurar os botão Info;
   * Configurar o Record.
-
 )
 ```
 

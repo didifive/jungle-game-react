@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 
 import { CharacterStyled, characterImg } from "./styled";
 
-import { charPosition } from '../../../../store/actions/character'
+import { charPosition, charReset } from '../../../../store/actions/character'
 
 const Character = (props) => {
 
-  const { storeCharacter, charPosition, storeGame } = props;
+  const { storeCharacter, charPosition, charReset, storeGame } = props;
   
   const [isJumping, setIsJumping] = useState(false);
   const [isLanding, setIsLanding] = useState(false);
@@ -54,6 +54,8 @@ const Character = (props) => {
         }
       }, 10);
       return () => clearInterval(jumpInterval);
+    } else {
+      charReset();
     }
   });
 
@@ -83,5 +85,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
   mapStateToProps,
-  { charPosition }
+  { charPosition, charReset }
 )(Character);
