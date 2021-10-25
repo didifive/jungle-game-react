@@ -28,7 +28,7 @@ export const HeaderStyled = styled.header`
 
   nav span {
     color: #e0f3eb;
-    font-size: 3em;
+    font-size: 4em;
     margin-right: 10px;
     
     &:hover {
@@ -44,7 +44,7 @@ export const HeaderStyled = styled.header`
     }
 
     nav span {
-      font-size: 1.8em;
+      font-size: 2em;
       margin-right: 8px;
     }
   }

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Character from './components/Character';
 import Controls from './components/Controls';
 import Enemy from './components/Enemies';
+import Notice from './components/Notice';
 
 import Hud from '../Hud';
 import Scenario from '../Scenario';
@@ -54,6 +55,9 @@ const Game = (props) => {
     <>
       <Scenario />
       <Character />
+      {(storeGame.game === 'loaded' || storeGame.game === 'stop') &&
+        <Notice />
+      }
       {storeGame.game === 'start' &&
         <>
           <Hud />

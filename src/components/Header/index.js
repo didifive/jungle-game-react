@@ -12,10 +12,10 @@ const Header = (props) => {
     gameStart();
   }
 
-  const handleClickStop = () => {
+  const handleClickPause = () => {
     gameStop();
   }
-
+  
   const handleClickInfo = () => {
     gameStop();
   }
@@ -32,8 +32,8 @@ const Header = (props) => {
           </span>
         }
         {(storeGame.game === 'start') && 
-          <span onClick={handleClickStop}>
-            <i className="fas fa-stop-circle"></i>
+          <span onClick={handleClickPause}>
+            <i className="fas fa-pause-circle"></i>
           </span>
         }
         <span onClick={handleClickInfo}>

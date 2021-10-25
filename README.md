@@ -6,36 +6,39 @@ Projeto desenvolvido com instruções de [Celso Henrique](https://www.linkedin.c
 
 Link da base utilizada neste projeto: [celso-henrique/dio-dino-game](https://github.com/celso-henrique/dio-dino-game).
 
-O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript nativo, para isso o projeto foi montado do zero em **ReactJS** com **Redux**, criando um desafio que permite entender melhor o desenvolvimento utilizando as bibliotecas.
+O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript nativo/puro, para isso o projeto foi montado do zero em **React** com **Redux**, criando um desafio que proporcionou melhor entendimento sobre hooks, store, renderização condicional, styled-components e como juntar as peças para desenvolver o game.
 
 Neste projeto os destaques são:
 * Construção do zero iniciando com o `npx create-react-app`;
-* Foram criados os componentes:
-  * `BackgroundParalax` com fundo de 4 camadas em efeito paralax;
-  * `Ground` com imagem para o "chão" do cenário;
-  * `Scenario` que engloba `BackgroundParalax` e `Ground` para montagem do cenário;
-  * `Character` para o herói com programação de pulo;
-  * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
-  * `Controls` para informar os comandos para pular (tecla espaço ou toque);
-  * `Life` para controlar e mostrar os pontos de vida;
-  * `Score` para controlar e mostrar os pontos;
-  * `Hud` que engloba `Life` e `Score`;
-  * `Game` que engloba `Scenario`, `Character`, `Enemies`, `Controls` e `Hud` para montagem do game;
-  * `Header` para cabeçalho na tela;
-  * `Modal` ;
-  * `GlobalStyles` para estilo global do projeto.
-* Para o comando do personagem foram definidos os eventos `keyup` e `touchend`, assim para acionar o pulo basta apertar (e soltar) a barra de espaço ou, para dispositivos com touchscreen, tocar (e soltar) a tela.
-* Com Redux foram criadas stores permitindo compartilhar e manipular diversos estados em toda a aplicação com:
-  * Actions: `CHAR_POSITION`, `ADD_ENEMY`, `DEFEAT_ENEMY`, `GAME_START`, `GAME_OVER`, `GAME_PAUSE` e `ADD_SCORE`;
-  * Reducers: `characterReducer`, `enemyReducer`, `gameReducer`, `scoreReducer`.
+* O projeto com organizado em *containers* e respectivos *components* conforme segue:
+  * Raiz (importados diretamente no App):
+    * `Header` para cabeçalho na tela;
+    * `GlobalStyles` para estilo global do projeto;
+    * `Info` painel modal com informações gerais do projeto;
+  * `Game` que engloba:
+    * `Character` para o herói com programação de pulo;
+    * `Controls` para informar os comandos para pular (tecla espaço ou toque);
+    * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
+    * `Notice`;
+  * `Hud` (Heads-Up Display) que engloba:
+    * `Life` para controlar e mostrar os pontos de vida;
+    * `Record`;
+    * `Score` para controlar e mostrar os pontos;
+  * `Scenario` que engloba:
+    * `BackgroundParalax` com fundo de 4 camadas em efeito paralax;
+    * `Ground` com imagem para o "chão" do cenário.
+* Para o comando do personagem foram definidos os eventos `keyup` e `touchend`, assim para acionar o pulo basta apertar (e soltar) a barra de espaço ou, para dispositivos com touchscreen, tocar (e soltar) a tela;
+* Com Redux foram criada store permitindo compartilhar e manipular diversos estados em toda a aplicação com os redurcers:
+  * `characterReducer`, `enemyReducer`, `gameReducer`,  `lifeReducer`, `scoreReducer`.
 * Foi adicionado um pequeno controle de nível de dificuldade com limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
 * Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries.
 
 ```
 TODO:(
   * Componente Modal com informações do game;
-  * Configurar store e componentes para os estados do game: Play, Pause e GameOver;
-  * Configurar os botões Play, Pause e Info
+  * Configurar os botão Info;
+  * Configurar o Record.
+
 )
 ```
 

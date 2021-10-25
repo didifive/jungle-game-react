@@ -27,7 +27,7 @@ export function gameStop(){
 
 export function gameReset(){
   return {
-    type: 'GAME_STOP',
+    type: 'GAME_RESET',
     payload: {
       game: 'loaded'
     }
