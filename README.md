@@ -36,13 +36,11 @@ Neste projeto os destaques são:
 * Configuradas renderizações condicionais em vários componentes para mostrar, ou não, o componente conforme o estado do game;
 * Criada também renderização com método `.map()` permitindo renderizar inimigos diversos aleatoriamente e simultaneamente;  
 * Foi adicionado controle de nível de dificuldade com limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
-* Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries.
-
-```
-TODO:(
-  * Adicionar Sons;
-)
-```
+* Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries;
+* Adicionados sons para:
+  * Som de fundo ambiente;
+  * Som ao pular;
+  * Som quando ocorre o Game Over.
 
 &nbsp;
 
