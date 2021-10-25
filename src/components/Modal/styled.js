@@ -5,8 +5,8 @@ export const ModalStyled = styled.div`
     background-color: #1B3835;
     border-radius: 2em;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+    flex-flow: column wrap;
+    justify-content: flex-start;
     height: 90vh;
     left: 15vw;
     overflow: hidden;
@@ -17,10 +17,27 @@ export const ModalStyled = styled.div`
     z-index: 10001;
   }
 
-  div p{
+  div a {
+    color: #cdcdcd;
+    text-decoration: none;
+
+    &:hover {
+      color: #7ccfaf;
+    }
+  }
+  
+  div h3 {
     color: #efefef;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 2em;
+    font-weight: bold;
+    text-align: justify;
+  }
+  
+  div p {
+    color: #efefef;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1em;
     text-align: justify;
   }
 

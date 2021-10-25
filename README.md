@@ -19,6 +19,7 @@ Neste projeto os destaques são:
     * `Character` para o herói com programação de pulo;
     * `Controls` para informar ao jogador os comandos disponíveis;
     * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
+    * `GameOver`;
     * `Header` para cabeçalho na tela;
     * `Info` painel modal com informações gerais do game;
   * `Hud` (Heads-Up Display) que engloba:
@@ -36,10 +37,8 @@ Neste projeto os destaques são:
 
 ```
 TODO:(
-  * Componente Modal;
-  * Informações do game;
   * Game Over;
-  * Configurar os botão Info;
+  * Adicionar Sons;
   * Configurar o Record.
 )
 ```
@@ -47,8 +46,7 @@ TODO:(
 &nbsp;
 
 Link do projeto para acessar online: https://jungle-infinite-runner.netlify.app <br/>
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9b3537f4-890c-41ab-9c91-44ae3e1ff0d1/deploy-status)](https://app.netlify.com/sites/jungle-infinite-runner/deploys)<br/>
-*Como é uma hospedagem gratuita, tenha paciência caso demore para carregar*
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b3537f4-890c-41ab-9c91-44ae3e1ff0d1/deploy-status)](https://app.netlify.com/sites/jungle-infinite-runner/deploys)
 
 &nbsp;
 
