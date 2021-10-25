@@ -1,5 +1,3 @@
-import { connect } from 'react-redux';
-
 import { BackgroundParalax } from "./styled";
 
 import bgPlxZero from "../../../../assets/img/background/plx-0.png";
@@ -9,7 +7,7 @@ import bgPlxThree from "../../../../assets/img/background/plx-3.png";
 
 const Background = (props) => {
 
-  const { storeGame } = props;
+  const { gameState } = props;
 
   const listBgPlx = [
     {
@@ -37,7 +35,7 @@ const Background = (props) => {
   const renderBgPlx = (bgPlx, index) => {
     return (
       <BackgroundParalax 
-        animate={(storeGame.game === 'start') ? 'running' : 'paused'}
+        animate={(gameState === 'start') ? 'running' : 'paused'}
         key={`bgPlx-${index}`}
         image={bgPlx.image} 
         speed={bgPlx.speed} 
@@ -53,10 +51,4 @@ const Background = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
-  storeGame: state.gameReducer
-});
-
-export default connect(
-  mapStateToProps
-)(Background);
+export default Background;

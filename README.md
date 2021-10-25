@@ -1,4 +1,4 @@
-# Jungle Game Infite Runner in ReactJS
+# Jungle Game Infite Runner in React
 ## Digital Innovation One: Bootcamp Impulso React Web Developer
 ### Projeto: Recriando o famoso jogo do dinossauro sem internet
 
@@ -12,15 +12,15 @@ Neste projeto os destaques são:
 * Construção do zero iniciando com o `npx create-react-app`;
 * O projeto com organizado em *containers* e respectivos *components* conforme segue:
   * Raiz (importados diretamente no App):
-    * `GlobalStyles` para estilo global do projeto;
-    * `Modal` em styled-component para ser utilizado em compomente, como `Info` e `GameOver`;
+    * `GlobalStyles` em styled-componentpara estilo global do projeto;
+    * `Modal` em styled-component utilizado em `Info` e `GameOver`;
+    * `Notice` em styled-component utilizado em `Controls`;
   * `Game` que engloba:
     * `Character` para o herói com programação de pulo;
-    * `Controls` para informar os comandos para pular (tecla espaço ou toque);
+    * `Controls` para informar ao jogador os comandos disponíveis;
     * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
     * `Header` para cabeçalho na tela;
-    * `Info` painel modal com informações gerais do projeto;
-    * `Notice` para informar o jogador para clicar em play ou informação;
+    * `Info` painel modal com informações gerais do game;
   * `Hud` (Heads-Up Display) que engloba:
     * `Life` para controlar e mostrar os pontos de vida;
     * `Record` ;

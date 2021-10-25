@@ -1,5 +1,3 @@
-import { connect } from 'react-redux';
-
 import { GroundImage } from "./styled";
 
 import jungleGround from "../../../../assets/img/jungle-ground.png";
@@ -7,12 +5,12 @@ import jungleGround from "../../../../assets/img/jungle-ground.png";
 
 const Ground = (props) => {
 
-  const { storeGame } = props;
+  const { gameState } = props;
 
   return (
     <>
       <GroundImage
-        animate={(storeGame.game === 'start') ? 'running' : 'paused'}
+        animate={(gameState === 'start') ? 'running' : 'paused'}
         image={jungleGround} 
         speed="600" 
         zIndex="0"
@@ -21,10 +19,4 @@ const Ground = (props) => {
   )
 };
 
-const mapStateToProps = (state) => ({
-  storeGame: state.gameReducer
-});
-
-export default connect(
-  mapStateToProps
-)(Ground);
+export default Ground;

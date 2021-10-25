@@ -1,6 +1,6 @@
-import GlobalStyle from './components/GlobalStyles';
+import GlobalStyle from '../../components/GlobalStyles';
 
-import Game from './containers/Game';
+import Game from '../Game';
 
 function App() {
   return (

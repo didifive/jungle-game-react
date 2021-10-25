@@ -3,11 +3,18 @@ import { ScenarioStyled } from "./styled";
 import Background from "./components/BackgroundParalax";
 import Ground from "./components/Ground";
 
-const Scenario = () => {
+const Scenario = (props) => {
+
+  const { gameState } = props;
+  
   return (
     <ScenarioStyled>
-      <Background />
-      <Ground />
+      <Background
+        gameState = {gameState}
+      />
+      <Ground 
+        gameState = {gameState}
+      />
     </ScenarioStyled>
   )
 };

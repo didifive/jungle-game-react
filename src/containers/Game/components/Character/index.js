@@ -7,11 +7,13 @@ import { charPosition, charReset } from '../../../../store/actions/character'
 
 const Character = (props) => {
 
-  const { storeCharacter, charPosition, charReset, storeGame } = props;
+  const { storeCharacter, charPosition, charReset, gameState } = props;
   
   const [isJumping, setIsJumping] = useState(false);
   const [isLanding, setIsLanding] = useState(false);
   const [characterEvent, setCharacterEvent] = useState('run');
+
+  const charCurrentPosition = storeCharacter.position;
   
   useEffect(() => {
     if (gameState === 'start') {
@@ -29,24 +31,22 @@ const Character = (props) => {
         window.document.removeEventListener('touchend', handleKeyUpAndTouch);
       }
     } 
-  });
+  },[gameState, isJumping, isLanding]);
 
-  const gameState = storeGame.game
-  
   useEffect(() => {
     if (gameState === 'start') {
       const jumpInterval = setInterval(() => {
         if (isJumping && !isLanding) {
           setCharacterEvent('jump');
           charPosition(1);
-          if (storeCharacter.position >= 42) {
+          if (charCurrentPosition >= 42) {
             setIsJumping(false);
             setIsLanding(true);
           }
         } else if (!isJumping && isLanding) {
           setCharacterEvent('landing');
           charPosition(-1);
-          if (storeCharacter.position <= 8) {
+          if (charCurrentPosition <= 8) {
             setIsLanding(false);
           }
         } else {
@@ -57,14 +57,14 @@ const Character = (props) => {
     } else {
       charReset();
     }
-  });
+  },[charCurrentPosition, charPosition, charReset, gameState, isJumping, isLanding]);
 
   const renderCharacter = () => {
     return (
       <CharacterStyled 
         heightChar= "15vh"
-        image={(storeGame.game === 'start') ? characterImg(characterEvent) : characterImg('idle')}
-        position= {`${storeCharacter.position}vh`}
+        image={(gameState === 'start') ? characterImg(characterEvent) : characterImg('idle')}
+        position= {`${charCurrentPosition}vh`}
         widthChar= "10vh"
         zIndex= "2"
       />
@@ -79,8 +79,7 @@ const Character = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  storeCharacter: state.characterReducer,
-  storeGame: state.gameReducer
+  storeCharacter: state.characterReducer
 });
 
 export default connect(

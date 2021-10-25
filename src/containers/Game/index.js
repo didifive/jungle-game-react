@@ -5,7 +5,7 @@ import Character from './components/Character';
 import Controls from './components/Controls';
 import Enemy from './components/Enemies';
 import Header from './components/Header';
-import Notice from './components/Notice';
+import Info from './components/Info';
 
 import Hud from '../Hud';
 import Scenario from '../Scenario';
@@ -55,17 +55,23 @@ const Game = (props) => {
   return (
     <>
       <Header />
-      <Scenario />
-      <Character />
-      {(storeGame.game === 'loaded' || storeGame.game === 'stop') &&
-        <Notice />
-      }
+      <Scenario 
+        gameState = {(storeGame.game)}
+      />
+      <Character 
+        gameState = {(storeGame.game)}
+      />
+      <Controls 
+        gameState = {(storeGame.game)}
+      />
       {storeGame.game === 'start' &&
         <>
           <Hud />
-          <Controls />
           {enemyList.map((enemy) => (renderEnemy(enemy)))}
         </>
+      }
+      {storeGame.game === 'stop' &&
+        <Info />
       }
     </>
   )
