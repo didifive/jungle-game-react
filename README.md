@@ -76,6 +76,6 @@ Desenvolvido com:
   * [Jungle Pack](https://jesse-m.itch.io/jungle-pack);
   * [Monsters Creatures Fantasy](https://luizmelo.itch.io/monsters-creatures-fantasy);
 * [freesound](https://freesound.org/);
- * [hop4.wav](https://freesound.org/people/szegvari/sounds/578056/);
- * [Forest jungle nature dark Atmo](https://freesound.org/people/felixyadomi/sounds/456371/);
- * [Robotic Voice 'Now You Are Dead'](https://freesound.org/people/MuzoTV/sounds/384903/).
+  * [hop4.wav](https://freesound.org/people/szegvari/sounds/578056/);
+  * [Forest jungle nature dark Atmo](https://freesound.org/people/felixyadomi/sounds/456371/);
+  * [Robotic Voice 'Now You Are Dead'](https://freesound.org/people/MuzoTV/sounds/384903/).
