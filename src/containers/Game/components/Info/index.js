@@ -4,18 +4,34 @@ import { ModalStyled } from '../../../../components/Modal';
 
 import elyonLogo from '../../../../assets/img/elyon-logo.png';
 
-import { gameStart } from "../../../../store/actions/game";
+import { charReset } from "../../../../store/actions/character";
+import { resetEnemies } from "../../../../store/actions/enemy";
+import { gameReset, gameStart } from "../../../../store/actions/game";
+import { resetLife } from "../../../../store/actions/life";
+import { addRecord, resetScore } from "../../../../store/actions/score";
+
 
 const Info = (props) => {
 
-  const { storeGame, gameStart } = props;
+  const { addRecord, charReset, storeGame, storeScore, gameReset, gameStart, resetEnemies, resetLife, resetScore } = props;
 
   const handleClickPlay = () => {
     gameStart();
   }
 
   const handleClickReset = () => {
-    gameStart();
+    console.log (storeScore.score)
+    console.log (storeScore.record)
+
+    if (storeScore.score > storeScore.record) {
+      console.log (storeScore.score)
+      addRecord(storeScore.score);
+    }
+    resetScore();
+    charReset();
+    resetEnemies();
+    resetLife();
+    gameReset();
   }
 
   return (
@@ -23,7 +39,7 @@ const Info = (props) => {
       <div>
         {storeGame.game === 'over' &&
           <h3>
-            GAME OVER!
+            Você Morreu! Game Over!
           </h3>
         }
         {storeGame.game === 'stop' &&
@@ -60,12 +76,91 @@ const Info = (props) => {
           </a>
           .
         </p>
-        <p>
+        <p
+          className="highResolution"
+        >
           Quer aprender e fazer um também? Acesse:{'\u00A0'}
            <a 
             href="https://digitalinnovation.one"
             target="_new">
             Digital Innovation One
+          </a>
+          .
+        </p>
+        <p
+          className="highResolution"
+        >
+          Fontes e links úteis:{'\u00A0'}
+           <a 
+            href="https://code.visualstudio.com/"
+            target="_new">
+            Visual Studio Code
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://nodejs.org/en/"
+            target="_new">
+            NodeJS
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://reactjs.org/"
+            target="_new">
+            React
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://styled-components.com/"
+            target="_new">
+            styled-components
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://fonts.google.com/"
+            target="_new">
+            Google Fonts
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://fontawesome.com/"
+            target="_new">
+            Font Awesome
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://icons8.com/"
+            target="_new">
+            ICONS8
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://www.gifmaker.me/"
+            target="_new">
+            GIFMaker
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://favicon.io/"
+            target="_new">
+            Favicon.io
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://itch.io/"
+            target="_new">
+            itch.io
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://jesse-m.itch.io/jungle-pack"
+            target="_new">
+            Jungle Pack
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://luizmelo.itch.io/monsters-creatures-fantasy"
+            target="_new">
+            Monsters Creatures Fantasy
           </a>
           .
         </p>
@@ -94,7 +189,7 @@ const Info = (props) => {
       </div>
       <span 
         className="background"
-        onClick={handleClickPlay}
+        onClick={storeGame.game === 'stop' ? handleClickPlay : handleClickReset}
       ></span>
     </ModalStyled>
   )
@@ -102,9 +197,10 @@ const Info = (props) => {
 
 const mapStateToProps = (state) => ({
   storeGame: state.gameReducer,
+  storeScore: state.scoreReducer,
 });
 
 export default connect(
   mapStateToProps,
-  { gameStart }
+  { addRecord, charReset, gameReset, gameStart, resetEnemies, resetLife, resetScore }
 )(Info);

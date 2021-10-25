@@ -70,7 +70,7 @@ const Game = (props) => {
           {enemyList.map((enemy) => (renderEnemy(enemy)))}
         </>
       }
-      {storeGame.game === 'stop' &&
+      {(storeGame.game === 'stop' || storeGame.game === 'over') &&
         <Info />
       }
     </>

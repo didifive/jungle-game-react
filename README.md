@@ -10,7 +10,7 @@ O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript n
 
 Neste projeto os destaques são:
 * Construção do zero iniciando com o `npx create-react-app`;
-* O projeto com organizado em *containers* e respectivos *components* conforme segue:
+* O projeto foi organizado em *containers* e respectivos *components* conforme segue:
   * Raiz (importados diretamente no App):
     * `GlobalStyles` em styled-componentpara estilo global do projeto;
     * `Modal` em styled-component utilizado em `Info` e `GameOver`;
@@ -20,24 +20,25 @@ Neste projeto os destaques são:
     * `Controls` para informar ao jogador os comandos disponíveis;
     * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
     * `Header` para cabeçalho na tela;
-    * `Info` painel modal com informações gerais do game;
+    * `Info` painel modal com Informações Gerais ou Game Over (conforme estado do game);
   * `Hud` (Heads-Up Display) que engloba:
     * `Life` para controlar e mostrar os pontos de vida;
-    * `Record` ;
+    * `Record` que mostra a pontuação mais alta obtida antes do Game Over;
     * `Score` para controlar e mostrar os pontos;
   * `Scenario` que engloba:
     * `BackgroundParalax` com fundo de 4 camadas em efeito paralax;
     * `Ground` com imagem para o "chão" do cenário.
 * Para o comando do personagem foram definidos os eventos `keyup` e `touchend`, assim para acionar o pulo basta apertar (e soltar) a barra de espaço ou, para dispositivos com touchscreen, tocar (e soltar) a tela;
-* Com Redux foram criada store permitindo compartilhar e manipular diversos estados em toda a aplicação com os redurcers:
-  * `characterReducer`, `enemyReducer`, `gameReducer`,  `lifeReducer`, `scoreReducer`.
-* Foi adicionado um pequeno controle de nível de dificuldade com limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
+* Com Redux foi criada store permitindo compartilhar e manipular diversos estados em toda a aplicação com os redurcers:
+  * `characterReducer`, `enemyReducer`, `gameReducer`,  `lifeReducer`, `scoreReducer`;
+  * E actions que permitem controlar os estados de character, enemy, game, life e score;
+  * Criadas actions de reset para que o jogador possa reiniciar o jogo após o "Game Over" e ter registrado o maior score em `Record`;
+* Foi adicionado controle de nível de dificuldade com limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
 * Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries.
 
 ```
 TODO:(
   * Adicionar Sons;
-  * Configurar o Record.
 )
 ```
 
@@ -68,6 +69,7 @@ Desenvolvido com:
 * [Font Awesome](https://fontawesome.com/);
 * [ICONS8](https://icons8.com/);
 * [GIFMaker](https://www.gifmaker.me/);
+* [Favicon.io](https://favicon.io/);
 * [itch.io](https://itch.io/):
   * [Jungle Pack](https://jesse-m.itch.io/jungle-pack);
   * [Monsters Creatures Fantasy](https://luizmelo.itch.io/monsters-creatures-fantasy).

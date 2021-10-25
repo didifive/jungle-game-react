@@ -6,7 +6,7 @@ export const Record = (props) => {
 
   return (
       <h2>
-        Record: 00000{storeScore.record}
+        Record: {storeScore.record}
       </h2>
   )
 };

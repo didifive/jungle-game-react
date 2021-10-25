@@ -7,9 +7,15 @@ export function addScore(score){
   }
 }
 
-export function resetScore(record){
+export function resetScore(){
   return {
     type: 'RESET_SCORE',
+  }
+}
+
+export function addRecord(record){
+  return {
+    type: 'ADD_RECORD',
     payload: {
       record: record
     }

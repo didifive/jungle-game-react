@@ -1,19 +1,30 @@
+import { connect } from "react-redux";
+
 import { HudStyled } from './styled';
 
 import Life from './components/Life';
 import Record from './components/Record';
 import Score from './components/Score';
 
-function Hud() {
+function Hud(props) {
+
+  const { storeScore } = props;
+
   return (
     <HudStyled>
       <div>
         <Life />
         <Score />
       </div>
-      <Record />
+      {storeScore.record > 0 && <Record />}
     </HudStyled>
   );
 }
 
-export default Hud;
+const mapStateToProps = (state) => ({
+  storeScore: state.scoreReducer,
+});
+
+export default connect(
+  mapStateToProps
+)(Hud);

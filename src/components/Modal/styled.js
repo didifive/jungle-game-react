@@ -5,7 +5,7 @@ export const ModalStyled = styled.div`
     background-color: #1B3835;
     border-radius: 2em;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: flex-start;
     height: calc(100vh - 10vh - 3em);
     left: 8vw;
@@ -31,9 +31,9 @@ export const ModalStyled = styled.div`
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 2em;
     font-weight: bold;
-    text-align: justify;
     margin: 0;
     margin-bottom: 0.75em;
+    text-align: left;
   }
   
   div p {
@@ -62,12 +62,19 @@ export const ModalStyled = styled.div`
     border-radius: 5px;
     color: #1B3835;
     cursor: pointer;
-    padding: 4px;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 5px;
     text-align: center;
 
     &:hover {
       background-color: #7ccfaf;
     }
+  }
+
+  .highResolution {
+    display: block;
+    text-align: left;
   }
 
   @media screen and (max-width:1199px){
@@ -87,6 +94,14 @@ export const ModalStyled = styled.div`
     div p {
       font-size: 0.8em;
       margin-bottom: 0.5em;
+    }
+
+    .gameload {
+      font-size: 1em;
+    }
+
+    .highResolution {
+      font-size: 0.8em;
     }
   }
 
@@ -111,6 +126,14 @@ export const ModalStyled = styled.div`
       margin-bottom: 0.3em;
       margin-top: 0.3em;
     }
+
+    .gameload {
+      font-size: 0.9em;
+    }
+
+    .highResolution {
+      display: none;
+    }
   }
 
   @media screen and (max-width:418px){
@@ -120,6 +143,14 @@ export const ModalStyled = styled.div`
       left: 10px;
       top: 10px;
       width: calc(100vw - 20px - 3em);
+    }
+
+    .gameload {
+      font-size: 0.7em;
+    }
+
+    .highResolution {
+      display: none;
     }
   }
 }`;
