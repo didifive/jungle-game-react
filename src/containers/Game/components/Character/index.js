@@ -7,7 +7,7 @@ import { charPosition } from '../../../../store/actions/character'
 
 const Character = (props) => {
 
-  const { storeCharacter, charPosition } = props;
+  const { storeCharacter, charPosition, storeGame } = props;
   
   const [isJumping, setIsJumping] = useState(false);
   const [isLanding, setIsLanding] = useState(false);
@@ -29,23 +29,29 @@ const Character = (props) => {
     } 
   });
 
+  const gameState = storeGame.game
+  
   useEffect(() => {
     const jumpInterval = setInterval(() => {
-      if (isJumping && !isLanding) {
-        setCharacterEvent('jump');
-        charPosition(1);
-        if (storeCharacter.position >= 42) {
-          setIsJumping(false);
-          setIsLanding(true);
-        }
-      } else if (!isJumping && isLanding) {
-        setCharacterEvent('landing');
-        charPosition(-1);
-        if (storeCharacter.position <= 8) {
-          setIsLanding(false);
+      if (gameState === 'start') {
+        if (isJumping && !isLanding) {
+          setCharacterEvent('jump');
+          charPosition(1);
+          if (storeCharacter.position >= 42) {
+            setIsJumping(false);
+            setIsLanding(true);
+          }
+        } else if (!isJumping && isLanding) {
+          setCharacterEvent('landing');
+          charPosition(-1);
+          if (storeCharacter.position <= 8) {
+            setIsLanding(false);
+          }
+        } else {
+          setCharacterEvent('run');
         }
       } else {
-        setCharacterEvent('run');
+        setCharacterEvent('idle');
       }
     }, 10);
     return () => clearInterval(jumpInterval);
@@ -71,7 +77,8 @@ const Character = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  storeCharacter: state.characterReducer
+  storeCharacter: state.characterReducer,
+  storeGame: state.gameReducer
 });
 
 export default connect(

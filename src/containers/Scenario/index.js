@@ -1,7 +1,7 @@
-import { Background } from "./components/BackgroundParalax";
-import { Ground } from "./components/Ground";
 import { ScenarioStyled } from "./styled";
 
+import Background from "./components/BackgroundParalax";
+import Ground from "./components/Ground";
 
 const Scenario = () => {
   return (

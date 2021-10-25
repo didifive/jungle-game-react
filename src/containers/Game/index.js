@@ -12,7 +12,7 @@ import { addEnemy } from '../../store/actions/enemy';
 
 const Game = (props) => {
 
-  const { storeEnemy, storeScore, addEnemy } = props;
+  const { storeEnemy, storeScore, addEnemy, storeGame } = props;
 
   const [enemyCounter, setEnemyCounter] = useState(0);
 
@@ -53,17 +53,22 @@ const Game = (props) => {
   return (
     <>
       <Scenario />
-      <Hud />
-      <Controls />
       <Character />
-      {enemyList.map((enemy) => (renderEnemy(enemy)))}
+      {storeGame.game === 'start' &&
+        <>
+          <Hud />
+          <Controls />
+          {enemyList.map((enemy) => (renderEnemy(enemy)))}
+        </>
+      }
     </>
   )
 };
 
 const mapStateToProps = (state) => ({
   storeEnemy: state.enemyReducer,
-  storeScore: state.scoreReducer
+  storeScore: state.scoreReducer,
+  storeGame: state.gameReducer,
 });
 
 export default connect(

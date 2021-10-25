@@ -7,6 +7,7 @@ export const BackgroundParalax = styled.div.attrs(props => ({
   speed: props.speed || '1500',
   zIndex: props.zIndex || '0'
 }))`
+
   @keyframes slideright {
     from {
         background-position: 100000px;
@@ -20,14 +21,6 @@ export const BackgroundParalax = styled.div.attrs(props => ({
   left: 0;
   background-image: url('${props => props.image}');
   background-repeat: repeat-x;
-  animation: slideright 
-             ${props => props.speed}s 
-             infinite 
-             linear;
-  -webkit-animation: slideright
-                     ${props => props.speed}s 
-                     infinite 
-                     linear;
   width: 100%;
   height: 100%;
   background-size: auto 
@@ -35,4 +28,15 @@ export const BackgroundParalax = styled.div.attrs(props => ({
   -webkit-background-size: auto 
                            100%;
   z-index: ${props => props.zIndex};
+
+  .animate {
+    animation: slideright 
+                ${props => props.speed}s 
+                infinite
+                linear;
+    -webkit-animation: slideright
+                        ${props => props.speed}s 
+                        infinite
+                        linear;
+  }
 `;
