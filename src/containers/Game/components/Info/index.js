@@ -96,61 +96,61 @@ const Info = (props) => {
             target="_new">
             Visual Studio Code
           </a>
-          ,{'\u00A0'}
+          ,{'\u00A0'} 
           <a 
             href="https://nodejs.org/en/"
             target="_new">
             NodeJS
           </a>
-          ,{'\u00A0'}
+          ,{'\u00A0'} 
           <a 
             href="https://reactjs.org/"
             target="_new">
             React
           </a>
-          ,{'\u00A0'}
+          ,{'\u00A0'} 
           <a 
             href="https://styled-components.com/"
             target="_new">
             styled-components
           </a>
-          ,{'\u00A0'}
+          ,{'\u00A0'} 
           <a 
             href="https://fonts.google.com/"
             target="_new">
             Google Fonts
           </a>
-          ,{'\u00A0'}
+          ,{'\u00A0'} 
           <a 
             href="https://fontawesome.com/"
             target="_new">
             Font Awesome
           </a>
-          ,{'\u00A0'}
+          ,{'\u00A0'} 
           <a 
             href="https://icons8.com/"
             target="_new">
             ICONS8
           </a>
-          ,{'\u00A0'}
+          ,{'\u00A0'} 
           <a 
             href="https://www.gifmaker.me/"
             target="_new">
             GIFMaker
           </a>
-          ,{'\u00A0'}
+          ,{'\u00A0'} 
           <a 
             href="https://favicon.io/"
             target="_new">
             Favicon.io
           </a>
-          ,{'\u00A0'}
+          ,{'\u00A0'} 
           <a 
             href="https://itch.io/"
             target="_new">
             itch.io
           </a>
-          ,{'\u00A0'}
+          ,{'\u00A0'} 
           <a 
             href="https://jesse-m.itch.io/jungle-pack"
             target="_new">
@@ -161,6 +161,30 @@ const Info = (props) => {
             href="https://luizmelo.itch.io/monsters-creatures-fantasy"
             target="_new">
             Monsters Creatures Fantasy
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://freesound.org/"
+            target="_new">
+            freesound
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://freesound.org/people/felixyadomi/sounds/456371/"
+            target="_new">
+            hop4.wav
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://freesound.org/people/szegvari/sounds/578056/"
+            target="_new">
+            Forest jungle nature dark Atmo
+          </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://freesound.org/people/MuzoTV/sounds/384903/"
+            target="_new">
+            Robotic Voice 'Now You Are Dead'
           </a>
           .
         </p>

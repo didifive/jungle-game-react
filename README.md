@@ -6,7 +6,7 @@ Projeto desenvolvido com instruções de [Celso Henrique](https://www.linkedin.c
 
 Link da base utilizada neste projeto: [celso-henrique/dio-dino-game](https://github.com/celso-henrique/dio-dino-game).
 
-O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript nativo/puro, para isso o projeto foi montado do zero em **React** com **Redux**, criando um desafio que proporcionou melhor entendimento sobre hooks, store, renderização condicional, styled-components e como juntar as peças para desenvolver o game.
+O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript nativo/puro, para isso o projeto foi montado do zero em **React** com **Redux**, criando um desafio que proporcionou melhor entendimento sobre hooks, store, renderização, styled-components, além de como juntar as peças para desenvolver o game.
 
 Neste projeto os destaques são:
 * Construção do zero iniciando com o `npx create-react-app`;
@@ -33,6 +33,8 @@ Neste projeto os destaques são:
   * `characterReducer`, `enemyReducer`, `gameReducer`,  `lifeReducer`, `scoreReducer`;
   * E actions que permitem controlar os estados de character, enemy, game, life e score;
   * Criadas actions de reset para que o jogador possa reiniciar o jogo após o "Game Over" e ter registrado o maior score em `Record`;
+* Configuradas renderizações condicionais em vários componentes para mostrar, ou não, o componente conforme o estado do game;
+* Criada também renderização com método `.map()` permitindo renderizar inimigos diversos aleatoriamente e simultaneamente;  
 * Foi adicionado controle de nível de dificuldade com limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
 * Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries.
 
@@ -72,4 +74,8 @@ Desenvolvido com:
 * [Favicon.io](https://favicon.io/);
 * [itch.io](https://itch.io/):
   * [Jungle Pack](https://jesse-m.itch.io/jungle-pack);
-  * [Monsters Creatures Fantasy](https://luizmelo.itch.io/monsters-creatures-fantasy).
+  * [Monsters Creatures Fantasy](https://luizmelo.itch.io/monsters-creatures-fantasy);
+* [freesound](https://freesound.org/);
+ * [hop4.wav](https://freesound.org/people/szegvari/sounds/578056/);
+ * [Forest jungle nature dark Atmo](https://freesound.org/people/felixyadomi/sounds/456371/);
+ * [Robotic Voice 'Now You Are Dead'](https://freesound.org/people/MuzoTV/sounds/384903/).

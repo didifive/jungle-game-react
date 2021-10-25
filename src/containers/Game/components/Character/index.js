@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import Sound from 'react-sound';
 
-import { CharacterStyled, characterImg } from "./styled";
+import { CharacterStyled, characterImg } from './styled';
 
-import { charPosition, charReset } from '../../../../store/actions/character'
+import characterJump from '../../../../assets/sound/456371_felixyadomi_hop4.mp3';
+
+import { charPosition, charReset } from '../../../../store/actions/character';
 
 const Character = (props) => {
 
@@ -55,19 +58,33 @@ const Character = (props) => {
       }, 10);
       return () => clearInterval(jumpInterval);
     } else {
+      setIsJumping(false);
+      setIsLanding(false);
       charReset();
     }
   },[charCurrentPosition, charPosition, charReset, gameState, isJumping, isLanding]);
 
+  const soundLoop = false;
+  const soundVolume = 100;
+
+
   const renderCharacter = () => {
     return (
-      <CharacterStyled 
-        heightChar= "15vh"
-        image={(gameState === 'start') ? characterImg(characterEvent) : characterImg('idle')}
-        position= {`${charCurrentPosition}vh`}
-        widthChar= "10vh"
-        zIndex= "2"
-      />
+      <>
+        <CharacterStyled 
+          heightChar= "15vh"
+          image={(gameState === 'start') ? characterImg(characterEvent) : characterImg('idle')}
+          position= {`${charCurrentPosition}vh`}
+          widthChar= "10vh"
+          zIndex= "2"
+        />
+        <Sound
+          loop={soundLoop}
+          playStatus={isJumping ? 'PLAYING' : 'STOPPED'}
+          url={characterJump}
+          volume={soundVolume}
+        />
+      </>
     )
   };
 
