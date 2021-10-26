@@ -39,7 +39,7 @@ Neste projeto os destaques são:
 * Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries;
 * Adicionados sons para:
   * Som de fundo ambiente;
-  * Som ao pular;
+  * Som ao pular (apenas para Browsers, visto que em Mobile o som do pulo gera conflito no som ambiente);
   * Som quando ocorre o Game Over.
 
 &nbsp;
@@ -65,6 +65,8 @@ Desenvolvido com:
 * [NodeJS](https://nodejs.org/en/) 14.18.1 LTS;
 * [React](https://reactjs.org/) 17.0.2;
 * [styled-components](https://styled-components.com/);
+* [react-sound](https://www.npmjs.com/package/react-sound);
+* [react-device-detect](https://www.npmjs.com/package/react-device-detect);
 * [Google Fonts](https://fonts.google.com/);
 * [Font Awesome](https://fontawesome.com/);
 * [ICONS8](https://icons8.com/);

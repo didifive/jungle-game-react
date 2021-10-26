@@ -116,6 +116,18 @@ const Info = (props) => {
           </a>
           ,{'\u00A0'} 
           <a 
+            href="https://www.npmjs.com/package/react-sound"
+            target="_new">
+            react-sound
+          </a>
+          ,{'\u00A0'} 
+          <a 
+            href="https://www.npmjs.com/package/react-device-detect"
+            target="_new">
+            react-device-detect
+          </a>
+          ,{'\u00A0'} 
+          <a 
             href="https://fonts.google.com/"
             target="_new">
             Google Fonts

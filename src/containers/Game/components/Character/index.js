@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import Sound from 'react-sound';
+import { isBrowser } from 'react-device-detect';
 
 import { CharacterStyled, characterImg } from './styled';
 
-import characterJump from '../../../../assets/sound/456371_felixyadomi_hop4.mp3';
+import characterJumpSound from '../../../../assets/sound/456371_felixyadomi_hop4.mp3';
 
 import { charPosition, charReset } from '../../../../store/actions/character';
 
@@ -64,9 +65,9 @@ const Character = (props) => {
     }
   },[charCurrentPosition, charPosition, charReset, gameState, isJumping, isLanding]);
 
+  const soundAutoLoad = true;
   const soundLoop = false;
   const soundVolume = 100;
-
 
   const renderCharacter = () => {
     return (
@@ -78,12 +79,15 @@ const Character = (props) => {
           widthChar= "10vh"
           zIndex= "2"
         />
-        <Sound
-          loop={soundLoop}
-          playStatus={isJumping ? 'PLAYING' : 'STOPPED'}
-          url={characterJump}
-          volume={soundVolume}
-        />
+        {isBrowser &&
+          <Sound
+            autoLoad={soundAutoLoad}
+            loop={soundLoop}
+            playStatus={isJumping ? 'PLAYING' : 'STOPPED'}
+            url={characterJumpSound}
+            volume={soundVolume}
+          />
+        }
       </>
     )
   };
