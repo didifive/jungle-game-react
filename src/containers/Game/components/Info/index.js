@@ -13,15 +13,16 @@ import { addRecord, resetScore } from "../../../../store/actions/score";
 
 const Info = (props) => {
 
-  const { addRecord, charReset, storeGame, storeScore, gameReset, gameStart, resetEnemies, resetLife, resetScore } = props;
-
+  const { addRecord, charReset, gameReset, gameStart, resetEnemies, resetLife, resetScore } = props;
+  const { gameState, record, score } = props;
+  
   const handleClickPlay = () => {
     gameStart();
   }
 
   const handleClickReset = () => {
-    if (storeScore.score > storeScore.record) {
-      addRecord(storeScore.score);
+    if (score > record) {
+      addRecord(score);
     }
     resetScore();
     charReset();
@@ -33,12 +34,12 @@ const Info = (props) => {
   return (
     <ModalStyled>
       <div>
-        {storeGame.game === 'over' &&
+        {gameState === 'over' &&
           <h3>
             Você Morreu! Game Over!
           </h3>
         }
-        {storeGame.game === 'stop' &&
+        {gameState === 'stop' &&
           <h3>
             Bem-vindo ao game Jungle Infinte Runner.
           </h3>
@@ -178,9 +179,9 @@ const Info = (props) => {
           </a>
           ,{'\u00A0'}
           <a 
-            href="https://freesound.org/people/felixyadomi/sounds/456371/"
+            href="https://freesound.org/people/felixyadomi/sounds/456373/"
             target="_new">
-            hop4.wav
+            Jump Hop » hop9.wav
           </a>
           ,{'\u00A0'}
           <a 
@@ -194,9 +195,15 @@ const Info = (props) => {
             target="_new">
             Robotic Voice 'Now You Are Dead'
           </a>
+          ,{'\u00A0'}
+          <a 
+            href="https://freesound.org/people/dersuperanton/sounds/437651/"
+            target="_new">
+            Damage Hit Voice Vocal
+          </a>
           .
         </p>
-        {storeGame.game === 'over' &&
+        {gameState === 'over' &&
           <p 
             className="gameload"
             onClick={handleClickReset}
@@ -204,7 +211,7 @@ const Info = (props) => {
             Reiniciar game
           </p>
         }
-        {storeGame.game === 'stop' &&
+        {gameState === 'stop' &&
           <p 
             className="gameload"
             onClick={handleClickPlay}
@@ -221,18 +228,13 @@ const Info = (props) => {
       </div>
       <span 
         className="background"
-        onClick={storeGame.game === 'stop' ? handleClickPlay : handleClickReset}
+        onClick={gameState === 'stop' ? handleClickPlay : handleClickReset}
       ></span>
     </ModalStyled>
   )
 };
 
-const mapStateToProps = (state) => ({
-  storeGame: state.gameReducer,
-  storeScore: state.scoreReducer,
-});
-
 export default connect(
-  mapStateToProps,
+  null,
   { addRecord, charReset, gameReset, gameStart, resetEnemies, resetLife, resetScore }
 )(Info);

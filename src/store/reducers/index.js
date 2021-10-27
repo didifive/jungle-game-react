@@ -5,6 +5,7 @@ import { enemyReducer } from './enemy';
 import { gameReducer } from './game';
 import { lifeReducer } from './life';
 import { scoreReducer } from './score';
+import { soundsReducer } from './sounds';
 
 
 
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   enemyReducer,
   gameReducer,
   lifeReducer,
-  scoreReducer
+  scoreReducer,
+  soundsReducer
 })
 
 export default rootReducer;

@@ -7,13 +7,12 @@ import { ScenarioStyled } from './styled';
 import Background from './components/BackgroundParalax';
 import Ground from './components/Ground';
 
-const soundBgAutoLoad = true;
 const soundBgLoop = true;
 const soundBgVolume = 40;
 
 const Scenario = (props) => {
 
-  const { gameState } = props;
+  const { bgm, gameState } = props;
 
   return (
     <ScenarioStyled>
@@ -24,9 +23,8 @@ const Scenario = (props) => {
         gameState = {gameState}
       />
       <Sound
-        autoLoad={soundBgAutoLoad}
         loop={soundBgLoop}
-        playStatus={gameState === 'start' ? 'PLAYING' : 'PAUSED'}
+        playStatus={(bgm && gameState === 'start') ? 'PLAYING' : 'PAUSED'}
         url={backgroundSound}
         volume={soundBgVolume}
       />

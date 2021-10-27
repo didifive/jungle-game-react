@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { CharacterStyled, characterImg } from './styled';
 
-import characterJumpSound from '../../../../assets/sound/456371_felixyadomi_hop4.mp3';
+import characterJumpSound from '../../../../assets/sound/456373__felixyadomi__hop9.mp3';
 
 import { charPosition, charReset } from '../../../../store/actions/character';
 
@@ -11,13 +11,12 @@ const audioCharacterJump = new Audio(characterJumpSound);
 
 const Character = (props) => {
 
-  const { storeCharacter, charPosition, charReset, gameState } = props;
+  const { charPosition, charReset } = props;
+  const { characterCurrentPosition, gameState, soundEffects } = props;
   
   const [isJumping, setIsJumping] = useState(false);
   const [isLanding, setIsLanding] = useState(false);
   const [characterEvent, setCharacterEvent] = useState('run');
-  
-  const charCurrentPosition = useMemo(() => storeCharacter.position,[storeCharacter.position]);
   
   useEffect(() => {
     if (gameState === 'start') {
@@ -33,17 +32,17 @@ const Character = (props) => {
         if (isJumping && !isLanding) {
           setCharacterEvent('jump');
           charPosition(1);
-          if (charCurrentPosition === 8) {
+          if (soundEffects && characterCurrentPosition === 8) {
             audioCharacterJump.play();
           }
-          if (charCurrentPosition >= 42) {
+          if (characterCurrentPosition >= 42) {
             setIsJumping(false);
             setIsLanding(true);
           }
         } else if (!isJumping && isLanding) {
           setCharacterEvent('landing');
           charPosition(-1);
-          if (charCurrentPosition <= 8) {
+          if (characterCurrentPosition <= 8) {
             setIsLanding(false);
           }
         } else {
@@ -63,7 +62,7 @@ const Character = (props) => {
       setIsLanding(false);
       charReset();
     }
-  },[charCurrentPosition, charPosition, charReset, gameState, isJumping, isLanding]);
+  },[characterCurrentPosition, charPosition, charReset, gameState, isJumping, isLanding, soundEffects]);
 
   const renderCharacter = () => {
     return (
@@ -71,7 +70,7 @@ const Character = (props) => {
         <CharacterStyled 
           heightChar= "15vh"
           image={(gameState === 'start') ? characterImg(characterEvent) : characterImg('idle')}
-          position= {`${charCurrentPosition}vh`}
+          position= {`${characterCurrentPosition}vh`}
           widthChar= "10vh"
           zIndex= "2"
         />
@@ -86,11 +85,7 @@ const Character = (props) => {
   )
 };
 
-const mapStateToProps = (state) => ({
-  storeCharacter: state.characterReducer
-});
-
 export default connect(
-  mapStateToProps,
+  null,
   { charPosition, charReset }
 )(Character);

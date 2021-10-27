@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from "react-redux";
 
 import { addScore } from '../../../../store/actions/score'
@@ -6,12 +6,10 @@ import { handleLife } from '../../../../store/actions/life';
 
 export const Score = (props) => {
   
-  const { storeScore, addScore, handleLife, storeLife } = props;
+  const { addScore, handleLife } = props;
+  const { score, life } = props;
 
   const [addLifeBreak, setAddLifeBreak] = useState(1);
-
-  const score = useMemo(() => storeScore.score,[storeScore.score]);
-  const lifes = useMemo(() => storeLife.life,[storeLife.life]);
 
   useEffect(() => {
     const scoreTimer = setInterval(() => {
@@ -19,13 +17,13 @@ export const Score = (props) => {
     }, 1000);
     if (
         ((score / (200 * addLifeBreak)) > 1) &&
-        (lifes < 5) 
+        (life < 5) 
       ){
       handleLife(1);
       setAddLifeBreak(a => addLifeBreak + 1);
     }
     return () => clearInterval(scoreTimer);
-  },[addLifeBreak, addScore, handleLife, lifes, score])
+  },[addLifeBreak, addScore, handleLife, life, score])
 
 
   return (
@@ -35,12 +33,7 @@ export const Score = (props) => {
   )
 };
 
-const mapStateToProps = (state) => ({
-  storeScore: state.scoreReducer,
-  storeLife: state.lifeReducer
-});
-
 export default connect(
-  mapStateToProps,
+  null,
   { addScore, handleLife }
 )(Score);

@@ -37,10 +37,7 @@ Neste projeto os destaques são:
 * Criada também renderização com método `.map()` permitindo renderizar inimigos diversos aleatoriamente e simultaneamente;  
 * Foi adicionado controle de nível de dificuldade com limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
 * Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries;
-* Adicionados sons para:
-  * Som de fundo ambiente;
-  * Som ao pular (apenas para Browsers, visto que em Mobile o som do pulo gera conflito no som ambiente);
-  * Som quando ocorre o Game Over.
+* Adicionados controlador para sons (ligado/desligado) para BGM e efeitos sonoros.
 
 &nbsp;
 
@@ -76,6 +73,7 @@ Desenvolvido com:
   * [Jungle Pack](https://jesse-m.itch.io/jungle-pack);
   * [Monsters Creatures Fantasy](https://luizmelo.itch.io/monsters-creatures-fantasy);
 * [freesound](https://freesound.org/);
-  * [hop4.wav](https://freesound.org/people/szegvari/sounds/578056/);
+  * [Jump Hop » hop9.wav](https://freesound.org/people/felixyadomi/sounds/456373/);
   * [Forest jungle nature dark Atmo](https://freesound.org/people/felixyadomi/sounds/456371/);
-  * [Robotic Voice 'Now You Are Dead'](https://freesound.org/people/MuzoTV/sounds/384903/).
+  * [Robotic Voice 'Now You Are Dead'](https://freesound.org/people/MuzoTV/sounds/384903/);
+  * [Damage Hit Voice Vocal](https://freesound.org/people/dersuperanton/sounds/437651/).

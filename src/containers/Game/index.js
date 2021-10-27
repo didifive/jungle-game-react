@@ -14,11 +14,16 @@ import { addEnemy } from '../../store/actions/enemy';
 
 const Game = (props) => {
 
-  const { storeEnemy, storeScore, addEnemy, storeGame } = props;
+  const { addEnemy, storeCharacter, storeEnemy, storeGame, storeLife, storeScore, storeSounds } = props;
 
+  const bgm = useMemo(() => storeSounds.bgm,[storeSounds.bgm]);
+  const characterCurrentPosition = useMemo(() => storeCharacter.position,[storeCharacter.position]);
   const enemyList = useMemo(() => storeEnemy.enemies,[storeEnemy.enemies]);
   const gameState = useMemo(() => storeGame.game,[storeGame.game]);
+  const life = useMemo(() => storeLife.life,[storeLife.life]);
+  const record = useMemo(() => storeScore.record,[storeScore.record]);
   const score = useMemo(() => storeScore.score,[storeScore.score]);
+  const soundEffects = useMemo(() => storeSounds.soundEffects,[storeSounds.soundEffects]);
 
   const [enemyCounter, setEnemyCounter] = useState(0);
 
@@ -48,41 +53,65 @@ const Game = (props) => {
     return (
       <Enemy 
         key={`${enemy.type}-${enemy.id}`}
+        characterCurrentPosition = {characterCurrentPosition}
         enemyId={enemy.id}
         enemyType={enemy.type}
+        gameState={gameState}
+        life = {life}
+        record = {record}
+        score = {score}
+        soundEffects = {soundEffects}
       />
     )
   };
 
   return (
     <>
-      <Header />
+      <Header 
+        gameState = {gameState}
+        bgm = {bgm}
+        soundEffects = {soundEffects}
+      />
       <Scenario 
         gameState = {gameState}
+        bgm = {bgm}
       />
       <Character 
+        characterCurrentPosition = {characterCurrentPosition}
         gameState = {gameState}
+        soundEffects = {soundEffects}
       />
       <Controls 
         gameState = {gameState}
       />
       {gameState === 'start' &&
         <>
-          <Hud />
+          <Hud
+            life = {life}
+            record = {record}
+            score = {score}
+          />
           {enemyList.map((enemy) => (renderEnemy(enemy)))}
         </>
       }
       {(gameState === 'stop' || gameState === 'over') &&
-        <Info />
+        <Info 
+          gameState = {gameState}
+          record = {record}
+          score = {score}
+        />
       }
     </>
   )
 };
 
 const mapStateToProps = (state) => ({
-  storeEnemy: state.enemyReducer,
-  storeScore: state.scoreReducer,
+  storeCharacter: state.characterReducer,
   storeGame: state.gameReducer,
+  storeEnemy: state.enemyReducer,
+  storeLife: state.lifeReducer,
+  storeScore: state.scoreReducer,
+  storeSounds: state.soundsReducer
 });
 
 export default connect(

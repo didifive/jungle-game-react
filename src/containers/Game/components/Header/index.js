@@ -1,23 +1,35 @@
 import { connect } from 'react-redux';
 
-import { HeaderStyled } from "./styled";
+import { HeaderStyled } from './styled';
 
-import { gameStart, gameStop } from "../../../../store/actions/game"
+import { gameStart, gameStop } from '../../../../store/actions/game'
+import { playBgm, playSoundEffects, stopBgm, stopSoundEffects } from '../../../../store/actions/sounds';
 
 const Header = (props) => {
 
-  const { gameStart, gameStop, storeGame } = props;
+  const { gameStart, gameStop, playBgm, playSoundEffects, stopBgm, stopSoundEffects } = props;
+  const { bgm, gameState, soundEffects } = props;
 
-  const handleClickPlay = () => {
-    gameStart();
-  }
-
-  const handleClickPause = () => {
+  const handleClickInfo = () => {
     gameStop();
   }
   
-  const handleClickInfo = () => {
+  const playGame = () => {
+    gameStart();
+  }
+  
+  const pauseGame = () => {
     gameStop();
+  }
+  
+  const volumeOff = () => {
+    stopBgm();
+    stopSoundEffects();
+  }
+  
+  const volumeOn = () => {
+    playBgm();
+    playSoundEffects();
   }
 
   return (
@@ -26,29 +38,35 @@ const Header = (props) => {
         Jungle IR
       </h1>
       <nav>
-        {(storeGame.game === 'loaded' || storeGame.game === 'stop') && 
-          <span onClick={handleClickPlay}>
+        {(gameState === 'loaded' || gameState === 'stop') && 
+          <span onClick={playGame}>
             <i className="fas fa-play-circle"></i>
           </span>
         }
-        {(storeGame.game === 'start') && 
-          <span onClick={handleClickPause}>
+        {(gameState === 'start') && 
+          <span onClick={pauseGame}>
             <i className="fas fa-pause-circle"></i>
           </span>
         }
         <span onClick={handleClickInfo}>
           <i className="fas fa-info-circle"></i>
         </span>
+        {(bgm && soundEffects) && 
+          <span onClick={volumeOff}>
+            <i className="fas fa-volume-up"></i>
+          </span>
+        }
+        {(!bgm && !soundEffects) && 
+          <span onClick={volumeOn}>
+            <i className="fas fa-volume-mute"></i>
+          </span>
+        }
       </nav>
     </HeaderStyled>
   )
 };
 
-const mapStateToProps = (state) => ({
-  storeGame: state.gameReducer,
-});
-
 export default connect(
-  mapStateToProps,
-  { gameStart, gameStop }
+  null,
+  { gameStart, gameStop, playBgm, playSoundEffects, stopBgm, stopSoundEffects }
 )(Header);

@@ -1,20 +1,12 @@
-import { connect } from "react-redux";
-
 export const Record = (props) => {
   
-  const { storeScore } = props;
+  const { record } = props;
 
   return (
       <h2>
-        Record: {storeScore.record}
+        Record: {record}
       </h2>
   )
 };
 
-const mapStateToProps = (state) => ({
-  storeScore: state.scoreReducer,
-});
-
-export default connect(
-  mapStateToProps
-)(Record);
+export default Record;
