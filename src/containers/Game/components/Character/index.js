@@ -1,13 +1,13 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { connect } from 'react-redux';
-import Sound from 'react-sound';
-import { isBrowser } from 'react-device-detect';
 
 import { CharacterStyled, characterImg } from './styled';
 
 import characterJumpSound from '../../../../assets/sound/456371_felixyadomi_hop4.mp3';
 
 import { charPosition, charReset } from '../../../../store/actions/character';
+
+const audioCharacterJump = new Audio(characterJumpSound);
 
 const Character = (props) => {
 
@@ -16,8 +16,8 @@ const Character = (props) => {
   const [isJumping, setIsJumping] = useState(false);
   const [isLanding, setIsLanding] = useState(false);
   const [characterEvent, setCharacterEvent] = useState('run');
-
-  const charCurrentPosition = storeCharacter.position;
+  
+  const charCurrentPosition = useMemo(() => storeCharacter.position,[storeCharacter.position]);
   
   useEffect(() => {
     if (gameState === 'start') {
@@ -28,21 +28,14 @@ const Character = (props) => {
           }
         } 
       }
-      window.document.addEventListener('keyup', handleKeyUpAndTouch);
-      window.document.addEventListener('touchend', handleKeyUpAndTouch);
-      return () => {
-        window.document.removeEventListener('keyup', handleKeyUpAndTouch);
-        window.document.removeEventListener('touchend', handleKeyUpAndTouch);
-      }
-    } 
-  },[gameState, isJumping, isLanding]);
-
-  useEffect(() => {
-    if (gameState === 'start') {
+      
       const jumpInterval = setInterval(() => {
         if (isJumping && !isLanding) {
           setCharacterEvent('jump');
           charPosition(1);
+          if (charCurrentPosition === 8) {
+            audioCharacterJump.play();
+          }
           if (charCurrentPosition >= 42) {
             setIsJumping(false);
             setIsLanding(true);
@@ -57,17 +50,20 @@ const Character = (props) => {
           setCharacterEvent('run');
         }
       }, 10);
-      return () => clearInterval(jumpInterval);
+
+      window.document.addEventListener('keyup', handleKeyUpAndTouch);
+      window.document.addEventListener('touchend', handleKeyUpAndTouch);
+      return () => {
+        window.document.removeEventListener('keyup', handleKeyUpAndTouch);
+        window.document.removeEventListener('touchend', handleKeyUpAndTouch);
+        clearInterval(jumpInterval);
+      }
     } else {
       setIsJumping(false);
       setIsLanding(false);
       charReset();
     }
   },[charCurrentPosition, charPosition, charReset, gameState, isJumping, isLanding]);
-
-  const soundAutoLoad = true;
-  const soundLoop = false;
-  const soundVolume = 100;
 
   const renderCharacter = () => {
     return (
@@ -79,15 +75,6 @@ const Character = (props) => {
           widthChar= "10vh"
           zIndex= "2"
         />
-        {isBrowser &&
-          <Sound
-            autoLoad={soundAutoLoad}
-            loop={soundLoop}
-            playStatus={isJumping ? 'PLAYING' : 'STOPPED'}
-            url={characterJumpSound}
-            volume={soundVolume}
-          />
-        }
       </>
     )
   };

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
 
 import Character from './components/Character';
@@ -16,21 +16,23 @@ const Game = (props) => {
 
   const { storeEnemy, storeScore, addEnemy, storeGame } = props;
 
+  const enemyList = useMemo(() => storeEnemy.enemies,[storeEnemy.enemies]);
+  const gameState = useMemo(() => storeGame.game,[storeGame.game]);
+  const score = useMemo(() => storeScore.score,[storeScore.score]);
+
   const [enemyCounter, setEnemyCounter] = useState(0);
 
-  let enemyList = storeEnemy.enemies;
-  
   /* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
-  const getRandomIntInclusive = (min, max) => {
+  const getRandomIntInclusive = (min,max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  };
 
   useEffect(() => {
     const randomTime = Math.random() * 4000;
     const enemyTimer = setTimeout(() => {
-      const maxEnemiesScreen = Math.floor(storeScore.score/20);
+      const maxEnemiesScreen = Math.floor(score/25);
       if ( enemyList.length <= maxEnemiesScreen ) {
         setEnemyCounter(enemyCounter + 1);
         addEnemy(
@@ -40,7 +42,7 @@ const Game = (props) => {
       }
     }, randomTime);
     return () => clearInterval(enemyTimer);
-  })
+  },[addEnemy, enemyCounter, enemyList.length, score])
 
   const renderEnemy = (enemy) => {
     return (
@@ -56,21 +58,21 @@ const Game = (props) => {
     <>
       <Header />
       <Scenario 
-        gameState = {(storeGame.game)}
+        gameState = {gameState}
       />
       <Character 
-        gameState = {(storeGame.game)}
+        gameState = {gameState}
       />
       <Controls 
-        gameState = {(storeGame.game)}
+        gameState = {gameState}
       />
-      {storeGame.game === 'start' &&
+      {gameState === 'start' &&
         <>
           <Hud />
           {enemyList.map((enemy) => (renderEnemy(enemy)))}
         </>
       }
-      {(storeGame.game === 'stop' || storeGame.game === 'over') &&
+      {(gameState === 'stop' || gameState === 'over') &&
         <Info />
       }
     </>

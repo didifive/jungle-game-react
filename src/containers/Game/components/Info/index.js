@@ -20,11 +20,7 @@ const Info = (props) => {
   }
 
   const handleClickReset = () => {
-    console.log (storeScore.score)
-    console.log (storeScore.record)
-
     if (storeScore.score > storeScore.record) {
-      console.log (storeScore.score)
       addRecord(storeScore.score);
     }
     resetScore();

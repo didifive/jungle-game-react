@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { connect } from 'react-redux';
 
 import { EnemyStyled, enemyImg } from './styled';
@@ -8,20 +8,25 @@ import { defeatEnemy } from '../../../../store/actions/enemy';
 import { handleLife } from '../../../../store/actions/life';
 import { gameOver } from '../../../../store/actions/game';
 
+import gameOverSound from '../../../../assets/sound/384903__muzotv__robotic-voice-now-you-are-dead-hd.mp3'
+
+const audioGameOver = new Audio(gameOverSound);
+
 const Enemy = (props) => {
 
   const { enemyType, enemyId, defeatEnemy, addScore, handleLife, storeCharacter, storeLife, storeGame, gameOver } = props;
 
-  const gameState = storeGame.game
+  const enemyImage = useMemo(() => enemyImg(enemyType), [enemyType]);
+
+  const gameState = useMemo(() => storeGame.game, [storeGame.game]);
 
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
-  const widthEnemyPx = viewportHeight * (0.15);
+  const widthEnemyPx = useMemo(() => (viewportHeight * (0.15)), [viewportHeight]);
   
   const [left, setLeft] = useState(viewportWidth);
   const [lostLife, setLostLife] = useState(false);
   
-  const enemyImage = enemyImg(enemyType);
 
   useEffect(() => {
     if (gameState === 'start') {
@@ -33,14 +38,15 @@ const Enemy = (props) => {
       } else {
         defeatEnemy(enemyId);
         addScore(5);
+
       }
     }
-  },[addScore,defeatEnemy,enemyId,left,widthEnemyPx, gameState])
+  },[addScore, defeatEnemy, enemyId, gameState, left, widthEnemyPx])
   
-  const minEnemyAttackPx = (viewportHeight * 0.03);
-  const maxEnemyAttackPx = (viewportHeight * 0.05);
-  const charPosition = storeCharacter.position;
-  const lifes = storeLife.life
+  const minEnemyAttackPx = useMemo(() => (viewportHeight * 0.02), [viewportHeight]);
+  const maxEnemyAttackPx = useMemo(() => (viewportHeight * 0.04), [viewportHeight]);
+  const charPosition = useMemo(() => storeCharacter.position, [storeCharacter.position]);
+  const lifes = useMemo(() => storeLife.life, [storeLife.life]);
   useEffect(() => {
     if (gameState === 'start') {
       if ((left >= minEnemyAttackPx) && (left <= maxEnemyAttackPx) && (charPosition <= 22)) {
@@ -49,12 +55,13 @@ const Enemy = (props) => {
             handleLife(-1);
             setLostLife(true);
           } else {
+            audioGameOver.play();
             gameOver();
           }
         }
       }
     }
-  },[charPosition, handleLife, left, lifes, minEnemyAttackPx, maxEnemyAttackPx, lostLife, gameOver, gameState])
+  },[charPosition, gameOver, gameState, handleLife, left, lifes, lostLife, maxEnemyAttackPx, minEnemyAttackPx])
   
   return (
     <EnemyStyled

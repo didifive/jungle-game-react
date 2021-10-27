@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { connect } from "react-redux";
 
 import { addScore } from '../../../../store/actions/score'
@@ -10,8 +10,8 @@ export const Score = (props) => {
 
   const [addLifeBreak, setAddLifeBreak] = useState(1);
 
-  const score = storeScore.score ;
-  const lifes = storeLife.life;
+  const score = useMemo(() => storeScore.score,[storeScore.score]);
+  const lifes = useMemo(() => storeLife.life,[storeLife.life]);
 
   useEffect(() => {
     const scoreTimer = setInterval(() => {
@@ -22,7 +22,7 @@ export const Score = (props) => {
         (lifes < 5) 
       ){
       handleLife(1);
-      setAddLifeBreak(addLifeBreak + 1);
+      setAddLifeBreak(a => addLifeBreak + 1);
     }
     return () => clearInterval(scoreTimer);
   },[addLifeBreak, addScore, handleLife, lifes, score])
