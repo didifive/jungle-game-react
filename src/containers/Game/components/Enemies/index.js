@@ -46,7 +46,6 @@ const Enemy = (props) => {
   
   useEffect(() => {
     if (gameState === 'start') {
-      console.log(gameState)
       if ((left >= minEnemyAttackPx) && (left <= maxEnemyAttackPx) && (characterCurrentPosition <= 22)) {
         if (!lostLife) {
           if (life > 0) {
