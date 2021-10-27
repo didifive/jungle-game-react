@@ -34,8 +34,8 @@ const Enemy = (props) => {
     if (gameState === 'start') {
       if (left >= ( widthEnemyPx * -1)) {
         const leftTimer = setInterval(() => {
-          setLeft(left - 15);
-        }, 30);
+          setLeft(left - 10);
+        }, 20);
         return () => clearInterval(leftTimer);
       } else {
         defeatEnemy(enemyId);
