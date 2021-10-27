@@ -30,7 +30,7 @@ Neste projeto os destaques são:
     * `Ground` com imagem para o "chão" do cenário.
 * Para o comando do personagem foram definidos os eventos `keyup` e `touchend`, assim para acionar o pulo basta apertar (e soltar) a barra de espaço ou, para dispositivos com touchscreen, tocar (e soltar) a tela;
 * Com Redux foi criada store permitindo compartilhar e manipular diversos estados em toda a aplicação com os redurcers:
-  * `characterReducer`, `enemyReducer`, `gameReducer`,  `lifeReducer`, `scoreReducer`;
+  * `characterReducer`, `enemyReducer`, `gameReducer`,  `lifeReducer`, `scoreReducer`, `soundsReducer`;
   * E actions que permitem controlar os estados de character, enemy, game, life e score;
   * Criadas actions de reset para que o jogador possa reiniciar o jogo após o "Game Over" e ter registrado o maior score em `Record`;
 * Configuradas renderizações condicionais em vários componentes para mostrar, ou não, o componente conforme o estado do game;
