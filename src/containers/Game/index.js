@@ -21,9 +21,14 @@ const Game = (props) => {
   const enemyList = useMemo(() => storeEnemy.enemies,[storeEnemy.enemies]);
   const gameState = useMemo(() => storeGame.game,[storeGame.game]);
   const life = useMemo(() => storeLife.life,[storeLife.life]);
-  const record = useMemo(() => storeScore.record,[storeScore.record]);
+  const record = useMemo(() =>
+    localStorage.getItem('record') > storeScore.record ?
+      localStorage.getItem('record') :
+      storeScore.record
+    ,[localStorage.getItem('record'),storeScore.record]
+  );
   const score = useMemo(() => storeScore.score,[storeScore.score]);
-  const soundEffects = useMemo(() => storeSounds.soundEffects,[storeSounds.soundEffects]);
+  const soundEffects = useMemo(() => storeSounds.soundEffects,[storeSounds.soundEffects]);                   
 
   const [enemyCounter, setEnemyCounter] = useState(0);
 
@@ -84,15 +89,14 @@ const Game = (props) => {
       <Controls 
         gameState = {gameState}
       />
+      <Hud
+        gameState = {gameState}
+        life = {life}
+        record = {record}
+        score = {score}
+      />
       {gameState === 'start' &&
-        <>
-          <Hud
-            life = {life}
-            record = {record}
-            score = {score}
-          />
-          {enemyList.map((enemy) => (renderEnemy(enemy)))}
-        </>
+        {enemyList.map((enemy) => (renderEnemy(enemy)))}
       }
       {(gameState === 'stop' || gameState === 'over') &&
         <Info 
