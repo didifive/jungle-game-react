@@ -37,7 +37,8 @@ Neste projeto os destaques são:
 * Criada também renderização com método `.map()` permitindo renderizar inimigos diversos aleatoriamente e simultaneamente;  
 * Foi adicionado controle de nível de dificuldade com limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
 * Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries;
-* Adicionados controlador para sons (ligado/desligado) para BGM e efeitos sonoros.
+* Adicionados controlador para sons (ligado/desligado) para BGM e efeitos sonoros;
+* Adicionado localStorage para guardar o record no browser e ajustes de condicional rendering no HUD.
 
 &nbsp;
 
