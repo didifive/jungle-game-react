@@ -1,3 +1,23 @@
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/didifive/jungle-game-react">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/didifive/jungle-game-react">
+  <a href="https://www.linkedin.com/in/luis-carlos-zancanela/">
+    <img alt="Made by Didi" src="https://img.shields.io/badge/made%20by-Didi-green">
+  </a>
+  <a href="https://github.com/didifive/pokedex-old/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/didifive/jungle-game-react?color=green">
+  </a>
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?color=blue">
+</p>
+<p align="center">
+  <a href="https://reactjs.org/">
+    <img alt="ReactJS" src="https://img.shields.io/static/v1?color=blue&label=React&message=JS&?style=plastic&logo=React">
+  </a>
+   <a href="https://redux.js.org/">
+    <img alt="Redux" src="https://img.shields.io/static/v1?color=blue&label=Redux&message=JS&?style=plastic&logo=Redux">
+  </a>
+</p>
+
 # Jungle Game Infite Runner in React
 ## Digital Innovation One: Bootcamp Impulso React Web Developer
 ### Projeto: Recriando o famoso jogo do dinossauro sem internet
@@ -77,4 +97,5 @@ Desenvolvido com:
   * [Jump Hop » hop9.wav](https://freesound.org/people/felixyadomi/sounds/456373/);
   * [Forest jungle nature dark Atmo](https://freesound.org/people/felixyadomi/sounds/456371/);
   * [Robotic Voice 'Now You Are Dead'](https://freesound.org/people/MuzoTV/sounds/384903/);
-  * [Damage Hit Voice Vocal](https://freesound.org/people/dersuperanton/sounds/437651/).
+  * [Damage Hit Voice Vocal](https://freesound.org/people/dersuperanton/sounds/437651/);
+* [Shields.io](https://shields.io).
