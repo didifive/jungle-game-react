@@ -6,19 +6,21 @@ import Score from './components/Score';
 
 function Hud(props) {
 
-  const { life, record, score } = props;
+  const { gameState, life, record, score } = props;
 
   return (
     <HudStyled>
-      <div>
-        <Life 
-          life = {life}
-        />
-        <Score
-          life = {life} 
-          score = {score}
-        />
-      </div>
+      {gameState === 'start' &&
+          <div>
+          <Life 
+            life = {life}
+          />
+          <Score
+            life = {life} 
+            score = {score}
+          />
+        </div>
+      }
       {record > 0 &&
         <Record 
           record = {record}
