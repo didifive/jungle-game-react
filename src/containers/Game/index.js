@@ -21,12 +21,9 @@ const Game = (props) => {
   const enemyList = useMemo(() => storeEnemy.enemies,[storeEnemy.enemies]);
   const gameState = useMemo(() => storeGame.game,[storeGame.game]);
   const life = useMemo(() => storeLife.life,[storeLife.life]);
-  const record = useMemo(() =>
-    localStorage.getItem('record') > storeScore.record ?
-      localStorage.getItem('record') :
-      storeScore.record
-    ,[localStorage.getItem('record'),storeScore.record]
-  );
+  const recordLocalStorage = useMemo(() => localStorage.getItem('record'), [localStorage.getItem('record')]);
+  const recordStore = useMemo(() => storeScore.record, [storeScore.record]);
+  const record = localStorage.getItem('record') > storeScore.record ? localStorage.getItem('record') : storeScore.record
   const score = useMemo(() => storeScore.score,[storeScore.score]);
   const soundEffects = useMemo(() => storeSounds.soundEffects,[storeSounds.soundEffects]);                   
 
