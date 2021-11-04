@@ -96,7 +96,9 @@ const Game = (props) => {
         score = {score}
       />
       {gameState === 'start' &&
-        {enemyList.map((enemy) => (renderEnemy(enemy)))}
+        <>
+          {enemyList.map((enemy) => (renderEnemy(enemy)))}
+        </>
       }
       {(gameState === 'stop' || gameState === 'over') &&
         <Info 
