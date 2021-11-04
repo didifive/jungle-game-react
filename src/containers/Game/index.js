@@ -23,9 +23,6 @@ const Game = (props) => {
   const life = useMemo(() => storeLife.life,[storeLife.life]);
   const recordLocalStorage = localStorage.getItem('record');
   const recordStore = useMemo(() => storeScore.record, [storeScore.record]);
-  const record = () => {
-    recordLocalStorage > recordStore ? recordLocalStorage : recordStore
-  };
   const score = useMemo(() => storeScore.score,[storeScore.score]);
   const soundEffects = useMemo(() => storeSounds.soundEffects,[storeSounds.soundEffects]);                   
 
@@ -62,7 +59,7 @@ const Game = (props) => {
         enemyType={enemy.type}
         gameState={gameState}
         life = {life}
-        record = {record}
+        record = {recordLocalStorage > recordStore ? recordLocalStorage : recordStore}
         score = {score}
         soundEffects = {soundEffects}
       />
@@ -91,7 +88,7 @@ const Game = (props) => {
       <Hud
         gameState = {gameState}
         life = {life}
-        record = {record}
+        record = {recordLocalStorage > recordStore ? recordLocalStorage : recordStore}
         score = {score}
       />
       {gameState === 'start' &&
@@ -102,7 +99,7 @@ const Game = (props) => {
       {(gameState === 'stop' || gameState === 'over') &&
         <Info 
           gameState = {gameState}
-          record = {record}
+          record = {recordLocalStorage > recordStore ? recordLocalStorage : recordStore}
           score = {score}
         />
       }
