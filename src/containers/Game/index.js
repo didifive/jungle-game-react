@@ -24,7 +24,7 @@ const Game = (props) => {
   const recordLocalStorage = localStorage.getItem('record');
   const recordStore = useMemo(() => storeScore.record, [storeScore.record]);
   const record = () => {
-    recordLocalStorage > recordStore ? return recordLocalStorage : return recordStore
+    recordLocalStorage > recordStore ? recordLocalStorage : recordStore
   };
   const score = useMemo(() => storeScore.score,[storeScore.score]);
   const soundEffects = useMemo(() => storeSounds.soundEffects,[storeSounds.soundEffects]);                   
