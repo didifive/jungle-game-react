@@ -22,6 +22,7 @@ const Info = (props) => {
 
   const handleClickReset = () => {
     if (score > record) {
+      localStorage.setItem('record', score);
       addRecord(score);
     }
     resetScore();
