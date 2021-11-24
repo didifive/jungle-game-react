@@ -4,7 +4,7 @@
   <a href="https://www.linkedin.com/in/luis-carlos-zancanela/">
     <img alt="Made by Didi" src="https://img.shields.io/badge/made%20by-Didi-green">
   </a>
-  <a href="https://github.com/didifive/pokedex-old/commits/master">
+  <a href="https://github.com/didifive/jungle-game-react/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/didifive/jungle-game-react?color=green">
   </a>
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?color=blue">
