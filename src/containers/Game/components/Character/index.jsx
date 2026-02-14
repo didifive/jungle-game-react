@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { connect } from 'react-redux';
 
 import { CharacterStyled, characterImg } from './styled';
@@ -16,17 +16,30 @@ const Character = (props) => {
   const [isLanding, setIsLanding] = useState(false);
   const [characterEvent, setCharacterEvent] = useState('run');
   const audioRef = useRef(null);
+  const isJumpingRef = useRef(false);
+  const isLandingRef = useRef(false);
+  
+  // Sincroniza refs com states
+  useEffect(() => {
+    isJumpingRef.current = isJumping;
+    isLandingRef.current = isLanding;
+  }, [isJumping, isLanding]);
+  
+  // Memoiza a imagem do personagem
+  const currentCharacterImage = useMemo(() => characterImg(characterEvent), [characterEvent]);
+  
+  // useCallback para event handler evitar recriação
+  const handleKeyUpAndTouch = useCallback((e) => {
+    if (e.keyCode === 32 || e.type === 'touchend') {
+      // Só permite pular se não estiver pulando nem pousando
+      if (!isJumpingRef.current && !isLandingRef.current) {
+        setIsJumping(true);
+      }
+    }
+  }, []);
   
   useEffect(() => {
     if (gameState === 'start') {
-      const handleKeyUpAndTouch = (e) => {
-        if (e.keyCode === 32 || e.type === 'touchend' ) {
-          if (!isJumping && !isLanding) {
-            setIsJumping(true);
-          }
-        } 
-      }
-      
       const jumpInterval = setInterval(() => {
         if (isJumping && !isLanding) {
           setCharacterEvent('jump');
@@ -66,26 +79,18 @@ const Character = (props) => {
       setIsLanding(false);
       charReset();
     }
-  },[characterCurrentPosition, charPosition, charReset, gameState, isJumping, isLanding, soundEffects]);
-
-  const renderCharacter = () => {
-    return (
-      <>
-        <audio ref={audioRef} src={characterJumpSound} />
-        <CharacterStyled 
-          $heightChar="15vh"
-          $image={characterImg(characterEvent)}
-          $position={`${characterCurrentPosition}vh`}
-          $widthChar="10vh"
-          $zIndex="2"
-        />
-      </>
-    )
-  };
+  },[characterCurrentPosition, charPosition, charReset, gameState, isJumping, isLanding, soundEffects, handleKeyUpAndTouch]);
 
   return (
     <>
-      {renderCharacter()}
+      <audio ref={audioRef} src={characterJumpSound} />
+      <CharacterStyled 
+        $heightChar="15vh"
+        $image={currentCharacterImage}
+        $position={`${characterCurrentPosition}vh`}
+        $widthChar="10vh"
+        $zIndex="2"
+      />
     </>
   )
 };

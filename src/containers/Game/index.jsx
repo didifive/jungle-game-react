@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useRef } from 'react';
+import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import { connect } from 'react-redux';
 
 import Character from './components/Character';
@@ -36,11 +36,11 @@ const Game = (props) => {
   }, [score]);
 
   /* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
-  const getRandomIntInclusive = (min,max) => {
+  const getRandomIntInclusive = useCallback((min,max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
+  }, []);
 
   // Reset do contador quando o jogo reinicia
   useEffect(() => {
@@ -88,10 +88,10 @@ const Game = (props) => {
       setTriggerSpawn(prev => prev + 1);
     }, randomTime);
     return () => clearTimeout(enemyTimer);
-  },[enemyList.length, gameState, triggerSpawn])
+  },[enemyList.length, gameState, triggerSpawn, getRandomIntInclusive, addEnemy])
   // Removido 'score' e 'addEnemy' das dependências para evitar cancelamento do timeout
 
-  const renderEnemy = (enemy) => {
+  const renderEnemy = useCallback((enemy) => {
     return (
       <Enemy 
         key={`${enemy.type}-${enemy.id}`}
@@ -105,7 +105,7 @@ const Game = (props) => {
         soundEffects = {soundEffects}
       />
     )
-  };
+  }, [characterCurrentPosition, gameState, life, recordLocalStorage, recordStore, score, soundEffects]);
 
   return (
     <>

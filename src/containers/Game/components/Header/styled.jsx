@@ -26,7 +26,11 @@ export const HeaderStyled = styled.header`
     
   }
 
-  nav span {
+  nav span,
+  nav button {
+    background: none;
+    border: none;
+    padding: 0;
     color: #e0f3eb;
     font-size: 4em;
     margin-right: 10px;
@@ -43,7 +47,8 @@ export const HeaderStyled = styled.header`
       margin-right: 25px;
     }
 
-    nav span {
+    nav span,
+    nav button {
       font-size: 2em;
       margin-right: 8px;
     }
