@@ -61,9 +61,9 @@ const Game = (props) => {
     
     let randomTime;
     if (isCloseSpawn) {
-      // Spawn próximo: 800-1100ms (distância de um pulo)
-      const minClose = Math.max(700, 1000 - (difficulty * 50));
-      const maxClose = Math.max(900, 1200 - (difficulty * 50));
+      // Spawn próximo: 600-1000ms (distância de um pulo - mais próximos)
+      const minClose = Math.max(550, 900 - (difficulty * 60));
+      const maxClose = Math.max(750, 1100 - (difficulty * 60));
       randomTime = minClose + Math.random() * (maxClose - minClose);
     } else {
       // Spawn distante: 1500-2500ms (precisa pousar e pular novamente)
