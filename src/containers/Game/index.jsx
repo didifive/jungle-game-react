@@ -36,6 +36,9 @@ const Game = (props) => {
   };
 
   useEffect(() => {
+    // Não cria inimigos quando o jogo não está rodando
+    if (gameState !== 'start') return;
+
     const randomTime = Math.random() * 4000;
     const enemyTimer = setTimeout(() => {
       const maxEnemiesScreen = Math.floor(score/25);
@@ -47,8 +50,8 @@ const Game = (props) => {
         );
       }
     }, randomTime);
-    return () => clearInterval(enemyTimer);
-  },[addEnemy, enemyCounter, enemyList.length, score])
+    return () => clearTimeout(enemyTimer);
+  },[addEnemy, enemyCounter, enemyList.length, score, gameState])
 
   const renderEnemy = (enemy) => {
     return (

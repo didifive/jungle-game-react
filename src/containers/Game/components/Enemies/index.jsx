@@ -57,21 +57,15 @@ const Enemy = (props) => {
           if (life > 0) {
             handleLife(-1);
             if (soundEffects) {
+              audioHitDamage.pause();
               audioHitDamage.currentTime = 0;
               audioHitDamage.play().catch(() => {});
             }
             setLostLife(true);
-          } else {
-            // Chama gameOver primeiro para mostrar o modal
+          } else if (life === 0) {
+            // Garante que gameOver seja chamado quando vida chegar a 0
             gameOver();
-            
-            // Depois toca o som com um pequeno atraso (400ms)
-            setTimeout(() => {
-              if (soundEffects) {
-                audioGameOver.currentTime = 0;
-                audioGameOver.play().catch(() => {});
-              }
-            }, 400);
+            setLostLife(true);
           }
         }
       }
