@@ -71,11 +71,11 @@ const Character = (props) => {
       <>
         <audio ref={audioRef} src={characterJumpSound} />
         <CharacterStyled 
-          heightChar= "15vh"
-          image={(gameState === 'start') ? characterImg(characterEvent) : characterImg('idle')}
-          position= {`${characterCurrentPosition}vh`}
-          widthChar= "10vh"
-          zIndex= "2"
+          $heightChar="15vh"
+          $image={characterImg(characterEvent)}
+          $position={`${characterCurrentPosition}vh`}
+          $widthChar="10vh"
+          $zIndex="2"
         />
       </>
     )

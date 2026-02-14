@@ -65,6 +65,13 @@ const Enemy = (props) => {
           } else if (life === 0) {
             // Garante que gameOver seja chamado quando vida chegar a 0
             gameOver();
+            if (soundEffects) {
+              setTimeout(() => {
+                audioGameOver.pause();
+                audioGameOver.currentTime = 0;
+                audioGameOver.play().catch(() => {});
+              }, 400);
+            }
             setLostLife(true);
           }
         }
@@ -74,9 +81,9 @@ const Enemy = (props) => {
   
   return (
     <EnemyStyled
-      image= {enemyImage}
-      left= {`${left}px`}
-      zIndex= "1"
+      $image={enemyImage}
+      $left={`${left}px`}
+      $zIndex="1"
     />
   )
 };

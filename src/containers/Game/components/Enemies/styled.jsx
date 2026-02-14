@@ -18,15 +18,13 @@ export const enemyImg = (enemyType) => {
   }
 }
 
-export const EnemyStyled = styled.div.attrs(
-  ({ image, left, zIndex }) => ({
-    style: {
-      backgroundImage: `url(${image})` || errorPng,
-      left: left || '100px',
-      zIndex: zIndex || 0
-    }
-  })
-)`
+export const EnemyStyled = styled.div.attrs(props => ({
+  style: {
+    backgroundImage: `url(${props.$image})`,
+    left: props.$left || '100px',
+    zIndex: props.$zIndex || 0
+  }
+}))`
   position: absolute;
   background-size: auto 100%;
   background-repeat: no-repeat;
