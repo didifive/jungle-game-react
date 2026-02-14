@@ -11,6 +11,10 @@ import { gameOver } from '../../../../store/actions/game';
 import gameOverSound from '../../../../assets/sound/384903__muzotv__robotic-voice-now-you-are-dead-hd.mp3'
 import hitDamageSound from '../../../../assets/sound/437651__dersuperanton__damage-hit-voice-vocal.mp3'
 
+// Criar instâncias de áudio globais (fora do componente)
+const audioGameOver = new Audio(gameOverSound);
+const audioHitDamage = new Audio(hitDamageSound);
+
 const Enemy = (props) => {
 
   const { addScore, defeatEnemy, gameOver, handleLife } = props;
@@ -20,14 +24,17 @@ const Enemy = (props) => {
 
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
+  
+  // Dimensões do inimigo
   const widthEnemyPx = useMemo(() => (viewportHeight * (0.15)), [viewportHeight]);
-  const minEnemyAttackPx = useMemo(() => (viewportHeight * 0.02), [viewportHeight]);
-  const maxEnemyAttackPx = useMemo(() => (viewportHeight * 0.04), [viewportHeight]);
+  
+  // Área de colisão ajustada (mais precisa que antes)
+  // Considerando o personagem tem ~10vh de largura em left: 3vh
+  const minEnemyAttackPx = useMemo(() => (viewportHeight * 0.008), [viewportHeight]); // Reduzido
+  const maxEnemyAttackPx = useMemo(() => (viewportHeight * 0.035), [viewportHeight]); // Ajustado
   
   const [left, setLeft] = useState(viewportWidth);
   const [lostLife, setLostLife] = useState(false);
-  const audioGameOverRef = useRef(null);
-  const audioHitDamageRef = useRef(null);
 
   useEffect(() => {
     if (gameState === 'start') {
@@ -49,40 +56,34 @@ const Enemy = (props) => {
         if (!lostLife) {
           if (life > 0) {
             handleLife(-1);
-            if (soundEffects && audioHitDamageRef.current) {
-              audioHitDamageRef.current.currentTime = 0;
-              audioHitDamageRef.current.play().catch(() => {});
+            if (soundEffects) {
+              audioHitDamage.currentTime = 0;
+              audioHitDamage.play().catch(() => {});
             }
             setLostLife(true);
           } else {
-            console.log('Game Over - Tocando som');
-            if (audioGameOverRef.current && soundEffects) {
-              audioGameOverRef.current.currentTime = 0;
-              audioGameOverRef.current.play()
-                .then(() => console.log('Som tocou'))
-                .catch((err) => console.log('Erro ao tocar som:', err));
-            }
-            // Delay maior para garantir que o som toca
+            // Chama gameOver primeiro para mostrar o modal
+            gameOver();
+            
+            // Depois toca o som com um pequeno atraso (400ms)
             setTimeout(() => {
-              console.log('Chamando gameOver()');
-              gameOver();
-            }, 500);
+              if (soundEffects) {
+                audioGameOver.currentTime = 0;
+                audioGameOver.play().catch(() => {});
+              }
+            }, 400);
           }
         }
       }
     }
-  },[characterCurrentPosition, gameOver,gameState, handleLife, left, life, lostLife, minEnemyAttackPx, maxEnemyAttackPx, soundEffects])
+  },[characterCurrentPosition, gameOver, gameState, handleLife, left, life, lostLife, minEnemyAttackPx, maxEnemyAttackPx, soundEffects])
   
   return (
-    <>
-      <audio ref={audioGameOverRef} src={gameOverSound} />
-      <audio ref={audioHitDamageRef} src={hitDamageSound} />
-      <EnemyStyled
-        image= {enemyImage}
-        left= {`${left}px`}
-        zIndex= "1"
-      />
-    </>
+    <EnemyStyled
+      image= {enemyImage}
+      left= {`${left}px`}
+      zIndex= "1"
+    />
   )
 };
 
