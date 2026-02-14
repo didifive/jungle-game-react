@@ -1,104 +1,255 @@
-<p align="center">
-  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/didifive/jungle-game-react">
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/didifive/jungle-game-react">
-  <a href="https://www.linkedin.com/in/luis-carlos-zancanela/">
-    <img alt="Made by Didi" src="https://img.shields.io/badge/made%20by-Didi-green">
-  </a>
-  <a href="https://github.com/didifive/jungle-game-react/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/didifive/jungle-game-react?color=green">
-  </a>
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?color=blue">
-</p>
-<p align="center">
-  <a href="https://reactjs.org/">
-    <img alt="ReactJS" src="https://img.shields.io/static/v1?color=blue&label=React&message=JS&?style=plastic&logo=React">
-  </a>
-   <a href="https://redux.js.org/">
-    <img alt="Redux" src="https://img.shields.io/static/v1?color=blue&label=Redux&message=JS&?style=plastic&logo=Redux">
-  </a>
-</p>
+<div align="center">
 
-# Jungle Game Infite Runner in React
-## Digital Innovation One: Bootcamp Impulso React Web Developer
-### Projeto: Recriando o famoso jogo do dinossauro sem internet
+# Jungle Infinite Runner
 
-Projeto desenvolvido com instruções de [Celso Henrique](https://www.linkedin.com/in/devfrontend/) na trilha de estudo do Bootcamp Impulso React Web Developer da [Digital Innovation One](https://digitalinnovation.one/).
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![React](https://img.shields.io/badge/React-19.2.4-61DAFB?logo=react)](https://reactjs.org/)
+[![Redux](https://img.shields.io/badge/Redux-State%20Management-764ABC?logo=redux)](https://redux.js.org/)
+[![Vite](https://img.shields.io/badge/Vite-5.4.6-646CFF?logo=vite)](https://vitejs.dev/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b3537f4-890c-41ab-9c91-44ae3e1ff0d1/deploy-status)](https://app.netlify.com/projects/jungle-infinite-runner/deploys)
 
-Link da base utilizada neste projeto: [celso-henrique/dio-dino-game](https://github.com/celso-henrique/dio-dino-game).
+**A modern infinite runner game built with React, Redux, and Vite**
 
-O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript nativo/puro, para isso o projeto foi montado do zero com **Vite**, **React** com **Redux**, criando um desafio que proporcionou melhor entendimento sobre hooks, store, renderização, styled-components, além de como juntar as peças para desenvolver o game.
+[Live Demo](https://jungle-ir.zancanela.dev.br) · [Report Bug](https://github.com/didifive/jungle-game-react/issues) · [Request Feature](https://github.com/didifive/jungle-game-react/issues)
 
-Neste projeto os destaques são:
-* Construção utilizando **Vite** (ferramenta de build moderna e rápida);
-* Migração do Create React App (descontinuado) para Vite;
-* O projeto foi organizado em *containers* e respectivos *components* conforme segue:
-  * Raiz (importados diretamente no App):
-    * `GlobalStyles` em styled-componentpara estilo global do projeto;
-    * `Modal` em styled-component utilizado em `Info` e `GameOver`;
-    * `Notice` em styled-component utilizado em `Controls`;
-  * `Game` que engloba:
-    * `Character` para o herói com programação de pulo;
-    * `Controls` para informar ao jogador os comandos disponíveis;
-    * `Enemies` para inimigos com três tipos diferentes (goblin, mushroom e skeleton);
-    * `Header` para cabeçalho na tela;
-    * `Info` painel modal com Informações Gerais ou Game Over (conforme estado do game);
-  * `Hud` (Heads-Up Display) que engloba:
-    * `Life` para controlar e mostrar os pontos de vida;
-    * `Record` que mostra a pontuação mais alta obtida antes do Game Over;
-    * `Score` para controlar e mostrar os pontos;
-  * `Scenario` que engloba:
-    * `BackgroundParalax` com fundo de 4 camadas em efeito paralax;
-    * `Ground` com imagem para o "chão" do cenário.
-* Para o comando do personagem foram definidos os eventos `keyup` e `touchend`, assim para acionar o pulo basta apertar (e soltar) a barra de espaço ou, para dispositivos com touchscreen, tocar (e soltar) a tela;
-* Com Redux foi criada store permitindo compartilhar e manipular diversos estados em toda a aplicação com os redurcers:
-  * `characterReducer`, `enemyReducer`, `gameReducer`,  `lifeReducer`, `scoreReducer`, `soundsReducer`;
-  * E actions que permitem controlar os estados de character, enemy, game, life, score e sons do game;
-  * Criadas actions de reset para que o jogador possa reiniciar o jogo após o "Game Over" e ter registrado o maior score em `Record`;
-* Configuradas renderizações condicionais em vários componentes para mostrar, ou não, o componente conforme o estado do game;
-* Criada também renderização com método `.map()` permitindo renderizar inimigos diversos aleatoriamente e simultaneamente;  
-* Foi adicionado controle de nível de dificuldade com limite de inimigos na tela (`maxEnemiesScreen` no componente `Game`);
-* Os estilos foram configurados para responsividade, utilizando unidades como `em` para tamanhos de fontes e `vh` e `vw` para dimensões de camadas, além de `@media` queries;
-* Adicionados controlador para sons (ligado/desligado) para BGM e efeitos sonoros;
-* Adicionado localStorage para guardar o record no browser e ajustes de condicional rendering no HUD.
+</div>
 
-&nbsp;
+---
 
-Link do projeto para acessar online: https://jungle-infinite-runner.netlify.app <br/>
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9b3537f4-890c-41ab-9c91-44ae3e1ff0d1/deploy-status)](https://app.netlify.com/sites/jungle-infinite-runner/deploys)
+## 📋 Table of Contents
 
-&nbsp;
+- [About](#-about)
+- [Features](#-features)
+- [Technologies](#-technologies)
+- [Architecture](#-architecture)
+- [Getting Started](#-getting-started)
+- [Game Story](#-game-story)
+- [Development](#-development)
+- [Credits](#-credits)
+- [License](#-license)
 
-Para rodar o projeto localmente:
-* Na pasta do projeto executar o comando `npm install` para que o npm carregue os módulos;
-* Após concluído, basta executar o comando `npm run dev` e conferir ele funcionando, normalmente em `http://localhost:3000/`.
+---
 
-&nbsp;
+## 🎮 About
 
-*Sinopse do Game:*<br/>
-*Josué, pescador, estava na calmaria da pescaria, até que de tão calmo caiu no sono. De repente ele acorda e se vê sozinho no meio de uma floresta, então ele escuta um lobo uivar e uma coruja chirriar e, assustado, sem arma e sozinho, começa a correr mesmo sem saber que rumo tomar ou que perigos vai encontrar...*
+Jungle Infinite Runner is a modern browser-based infinite runner game developed as part of the **Digital Innovation One Bootcamp - Impulso React Web Developer**, under the guidance of [Celso Henrique](https://www.linkedin.com/in/devfrontend/). 
 
-&nbsp;
+This project evolved from a Chrome's dinosaur game recreation ([original project](https://github.com/celso-henrique/dio-dino-game)) into a fully-featured game with modern React architecture, state management, and responsive design.
 
-Desenvolvido com:
-* [Visual Studio Code](https://code.visualstudio.com/) 1.61.2;
-* [NodeJS](https://nodejs.org/en/) 14.18.1 LTS;
-* [Vite](https://vitejs.dev/) 5.4.6;
-* [React](https://reactjs.org/) 19.2.4;
-* [Redux](https://redux.js.org/);
-* [styled-components](https://styled-components.com/);
-* [react-player](https://www.npmjs.com/package/react-player);
-* [react-device-detect](https://www.npmjs.com/package/react-device-detect);
-* [Google Fonts](https://fonts.google.com/);
-* [Font Awesome](https://fontawesome.com/);
-* [ICONS8](https://icons8.com/);
-* [GIFMaker](https://www.gifmaker.me/);
-* [Favicon.io](https://favicon.io/);
-* [itch.io](https://itch.io/):
-  * [Jungle Pack](https://jesse-m.itch.io/jungle-pack);
-  * [Monsters Creatures Fantasy](https://luizmelo.itch.io/monsters-creatures-fantasy);
-* [freesound](https://freesound.org/);
-  * [Jump Hop » hop9.wav](https://freesound.org/people/felixyadomi/sounds/456373/);
-  * [Forest jungle nature dark Atmo](https://freesound.org/people/felixyadomi/sounds/456371/);
-  * [Robotic Voice 'Now You Are Dead'](https://freesound.org/people/MuzoTV/sounds/384903/);
-  * [Damage Hit Voice Vocal](https://freesound.org/people/dersuperanton/sounds/437651/);
-* [Shields.io](https://shields.io).
+The main goal was to migrate from vanilla JavaScript to a comprehensive React application using **Vite**, **Redux**, and **styled-components**, demonstrating advanced concepts such as hooks, global state management, conditional rendering, and game loop implementation.
+
+---
+
+## ✨ Features
+
+- ⚡ **Modern Build Tool**: Built with Vite for fast development and optimized production builds
+- 🎯 **State Management**: Redux-powered centralized state management
+- 🎨 **Styled Components**: Dynamic styling with styled-components
+- 📱 **Responsive Design**: Fully responsive with support for desktop and mobile devices
+- 🎮 **Multiple Input Methods**: Keyboard (spacebar) and touchscreen support
+- 🎵 **Sound System**: Background music and sound effects with toggle controls
+- 💾 **Persistent High Scores**: LocalStorage integration for record tracking
+- 🌍 **Parallax Background**: Multi-layer parallax effect for immersive experience
+- 👾 **Multiple Enemy Types**: Three different enemy types (Goblin, Mushroom, Skeleton)
+- ❤️ **Life System**: Health point management with visual feedback
+- 📊 **Score System**: Real-time score tracking with high score records
+- 🔄 **Dynamic Difficulty**: Adaptive difficulty based on enemy count
+
+---
+
+## 🛠 Technologies
+
+### Core Technologies
+- **[React](https://reactjs.org/)** (v19.2.4) - UI library
+- **[Redux](https://redux.js.org/)** - State management
+- **[Vite](https://vitejs.dev/)** (v5.4.6) - Build tool and development server
+- **[styled-components](https://styled-components.com/)** - CSS-in-JS styling
+
+### Additional Libraries
+- **[react-player](https://www.npmjs.com/package/react-player)** - Audio player component
+- **[react-device-detect](https://www.npmjs.com/package/react-device-detect)** - Device detection
+
+### Design Resources
+- **[Google Fonts](https://fonts.google.com/)** - Typography
+- **[Font Awesome](https://fontawesome.com/)** - Icons
+- **[ICONS8](https://icons8.com/)** - Additional icons
+
+### Assets
+- **Graphics**: [Jungle Pack](https://jesse-m.itch.io/jungle-pack) and [Monsters Creatures Fantasy](https://luizmelo.itch.io/monsters-creatures-fantasy) from itch.io
+- **Sound Effects**: Audio assets from [freesound.org](https://freesound.org/)
+
+---
+
+## 🏗 Architecture
+
+### Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   ├── GlobalStyles/   # Global styling
+│   ├── Modal/          # Modal component
+│   └── Notice/         # Notice component
+├── containers/         # Container components
+│   ├── App/           # Root application container
+│   ├── Game/          # Game container and logic
+│   ├── Hud/           # Heads-Up Display
+│   └── Scenario/      # Game scenario and background
+├── hooks/             # Custom React hooks
+│   ├── useGameLogic.jsx
+│   └── useGameLoop.jsx
+└── store/             # Redux store
+    ├── actions/       # Action creators
+    └── reducers/      # State reducers
+```
+
+### Component Breakdown
+
+#### Root Components
+- **GlobalStyles**: Global CSS styles using styled-components
+- **Modal**: Reusable modal component for Info and Game Over screens
+- **Notice**: Information notices for game controls
+
+#### Game Container
+- **Character**: Player character with jump mechanics
+- **Controls**: Display available game commands
+- **Enemies**: Enemy management with three enemy types
+- **Header**: Game header display
+- **Info**: Modal panel for game information and Game Over state
+
+#### HUD (Heads-Up Display)
+- **Life**: Health point display and management
+- **Record**: High score display
+- **Score**: Current score tracking and display
+
+#### Scenario
+- **BackgroundParalax**: 4-layer parallax background effect
+- **Ground**: Ground layer for the game scenario
+
+### State Management
+
+Redux store with the following reducers:
+
+- **characterReducer**: Character state and jump mechanics
+- **enemyReducer**: Enemy spawning and movement
+- **gameReducer**: Overall game state (running, paused, game over)
+- **lifeReducer**: Player health management
+- **scoreReducer**: Score tracking and high score management
+- **soundsReducer**: Audio settings and controls
+
+### Key Features Implementation
+
+- **Event Handlers**: `keyup` and `touchend` events for cross-device compatibility
+- **Conditional Rendering**: Dynamic component rendering based on game state
+- **Dynamic Rendering**: `.map()` method for multiple simultaneous enemy rendering
+- **Responsive Design**: Viewport-based units (`vh`, `vw`, `em`) and media queries
+- **LocalStorage**: Persistent high score storage
+- **Reset Actions**: Game state reset functionality for replay capability
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** 14.18.1 LTS or higher
+- **npm** or **yarn** package manager
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/didifive/jungle-game-react.git
+   cd jungle-game-react
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   
+   Navigate to `http://localhost:3000` (or the port shown in your terminal)
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+
+---
+
+## 📖 Game Story
+
+> *Josué, a humble fisherman, was peacefully fishing when the calmness lulled him to sleep. Suddenly, he awakens to find himself alone in the middle of a dense jungle. As a wolf howls and an owl hoots in the distance, fear grips him. Unarmed and alone, he begins to run without knowing which direction to take or what dangers lie ahead...*
+
+Will you help Josué survive the jungle?
+
+---
+
+## 💻 Development
+
+### Development Setup
+
+This project was developed with:
+- **IDE**: Visual Studio Code 1.61.2
+- **Node.js**: 14.18.1 LTS
+- **Build Tool**: Vite 5.4.6
+
+### Migration from Create React App
+
+This project was successfully migrated from Create React App (deprecated) to Vite, resulting in:
+- Faster development server startup
+- Near-instant hot module replacement (HMR)
+- Optimized production builds
+- Better developer experience
+
+---
+
+## 🙏 Credits
+
+### Original Project
+Based on [dio-dino-game](https://github.com/celso-henrique/dio-dino-game) by [Celso Henrique](https://www.linkedin.com/in/devfrontend/)
+
+### Bootcamp
+Developed as part of the **Impulso React Web Developer Bootcamp** by [Digital Innovation One](https://digitalinnovation.one/)
+
+### Graphics & Assets
+- [Jungle Pack](https://jesse-m.itch.io/jungle-pack) by Jesse M. (itch.io)
+- [Monsters Creatures Fantasy](https://luizmelo.itch.io/monsters-creatures-fantasy) by Luiz Melo (itch.io)
+
+### Sound Effects
+All sound effects from [freesound.org](https://freesound.org/):
+- [Jump/Hop Sound](https://freesound.org/people/felixyadomi/sounds/456373/) by felixyadomi
+- [Forest Jungle Dark Atmosphere](https://freesound.org/people/felixyadomi/sounds/456371/) by felixyadomi
+- [Robotic Voice 'Now You Are Dead'](https://freesound.org/people/MuzoTV/sounds/384903/) by MuzoTV
+- [Damage Hit Voice](https://freesound.org/people/dersuperanton/sounds/437651/) by dersuperanton
+
+### Tools & Services
+- [Favicon.io](https://favicon.io/) - Favicon generation
+- [GIFMaker](https://www.gifmaker.me/) - GIF creation
+- [Shields.io](https://shields.io/) - Badge generation
+- [Netlify](https://www.netlify.com/) - Hosting and deployment
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**Made with ❤️ by [Luis Carlos Zancanela](https://www.linkedin.com/in/luis-carlos-zancanela/)**
+
+[![GitHub](https://img.shields.io/badge/GitHub-didifive-181717?logo=github)](https://github.com/didifive)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?logo=linkedin)](https://www.linkedin.com/in/luis-carlos-zancanela/)
+
+</div>
