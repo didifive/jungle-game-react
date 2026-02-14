@@ -60,6 +60,8 @@ const Character = (props) => {
         clearInterval(jumpInterval);
       }
     } else {
+      // Quando pausado ou game over, personagem fica idle
+      setCharacterEvent('idle');
       setIsJumping(false);
       setIsLanding(false);
       charReset();
