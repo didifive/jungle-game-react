@@ -53,10 +53,28 @@ const Game = (props) => {
     // Não cria inimigos quando o jogo não está rodando
     if (gameState !== 'start') return;
 
-    // Tempo mínimo de 1.2s e máximo de 4s entre inimigos (desafiador mas justo)
-    const randomTime = 1200 + Math.random() * 2800;
+    // Dificuldade progressiva
+    const difficulty = Math.min(Math.floor(scoreRef.current / 50), 6);
+    
+    // Randomiza entre spawn próximo (um pulo) ou distante (pousar e pular)
+    const isCloseSpawn = Math.random() > 0.4; // 60% chance de spawn próximo
+    
+    let randomTime;
+    if (isCloseSpawn) {
+      // Spawn próximo: 800-1100ms (distância de um pulo)
+      const minClose = Math.max(700, 1000 - (difficulty * 50));
+      const maxClose = Math.max(900, 1200 - (difficulty * 50));
+      randomTime = minClose + Math.random() * (maxClose - minClose);
+    } else {
+      // Spawn distante: 1500-2500ms (precisa pousar e pular novamente)
+      const minFar = Math.max(1200, 1800 - (difficulty * 100));
+      const maxFar = Math.max(1800, 2800 - (difficulty * 150));
+      randomTime = minFar + Math.random() * (maxFar - minFar);
+    }
+    
     const enemyTimer = setTimeout(() => {
-      const maxEnemiesScreen = Math.max(1, Math.floor(scoreRef.current/25));
+      // Mais inimigos conforme score aumenta
+      const maxEnemiesScreen = Math.max(1, Math.floor(scoreRef.current/20));
       
       if ( enemyList.length < maxEnemiesScreen ) {
         const newEnemyId = enemyCounterRef.current;
