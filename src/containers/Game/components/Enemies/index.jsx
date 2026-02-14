@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import { connect } from 'react-redux';
 
 import { EnemyStyled, enemyImg } from './styled';
@@ -10,9 +10,6 @@ import { gameOver } from '../../../../store/actions/game';
 
 import gameOverSound from '../../../../assets/sound/384903__muzotv__robotic-voice-now-you-are-dead-hd.mp3'
 import hitDamageSound from '../../../../assets/sound/437651__dersuperanton__damage-hit-voice-vocal.mp3'
-
-const audioGameOver = new Audio(gameOverSound);
-const audioHitDamage = new Audio(hitDamageSound);
 
 const Enemy = (props) => {
 
@@ -29,6 +26,8 @@ const Enemy = (props) => {
   
   const [left, setLeft] = useState(viewportWidth);
   const [lostLife, setLostLife] = useState(false);
+  const audioGameOverRef = useRef(null);
+  const audioHitDamageRef = useRef(null);
 
   useEffect(() => {
     if (gameState === 'start') {
@@ -50,11 +49,24 @@ const Enemy = (props) => {
         if (!lostLife) {
           if (life > 0) {
             handleLife(-1);
-            if (soundEffects) {audioHitDamage.play();} 
+            if (soundEffects && audioHitDamageRef.current) {
+              audioHitDamageRef.current.currentTime = 0;
+              audioHitDamageRef.current.play().catch(() => {});
+            }
             setLostLife(true);
           } else {
-            if (soundEffects) {audioGameOver.play();}
-            gameOver();
+            console.log('Game Over - Tocando som');
+            if (audioGameOverRef.current && soundEffects) {
+              audioGameOverRef.current.currentTime = 0;
+              audioGameOverRef.current.play()
+                .then(() => console.log('Som tocou'))
+                .catch((err) => console.log('Erro ao tocar som:', err));
+            }
+            // Delay maior para garantir que o som toca
+            setTimeout(() => {
+              console.log('Chamando gameOver()');
+              gameOver();
+            }, 500);
           }
         }
       }
@@ -62,15 +74,19 @@ const Enemy = (props) => {
   },[characterCurrentPosition, gameOver,gameState, handleLife, left, life, lostLife, minEnemyAttackPx, maxEnemyAttackPx, soundEffects])
   
   return (
-    <EnemyStyled
-      image= {enemyImage}
-      left= {`${left}px`}
-      zIndex= "1"
-    />
+    <>
+      <audio ref={audioGameOverRef} src={gameOverSound} />
+      <audio ref={audioHitDamageRef} src={hitDamageSound} />
+      <EnemyStyled
+        image= {enemyImage}
+        left= {`${left}px`}
+        zIndex= "1"
+      />
+    </>
   )
 };
 
 export default connect(
   null,
   { addScore, defeatEnemy, handleLife, gameOver }
-  )(Enemy);
+)(Enemy);

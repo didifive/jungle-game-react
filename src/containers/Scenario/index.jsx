@@ -1,4 +1,4 @@
-import Sound from 'react-sound';
+import { useRef, useEffect } from 'react';
 
 import backgroundSound from '../../assets/sound/578056_szegvari_forest-jungle-nature-dark-atmo.mp3';
 
@@ -7,12 +7,21 @@ import { ScenarioStyled } from './styled';
 import Background from './components/BackgroundParalax';
 import Ground from './components/Ground';
 
-const soundBgLoop = true;
-const soundBgVolume = 40;
-
 const Scenario = (props) => {
 
   const { bgm, gameState } = props;
+  const audioRef = useRef(null);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      if (bgm && gameState === 'start') {
+        audioRef.current.volume = 0.4;
+        audioRef.current.play().catch(() => {});
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [bgm, gameState]);
 
   return (
     <ScenarioStyled>
@@ -22,11 +31,11 @@ const Scenario = (props) => {
       <Ground 
         gameState = {gameState}
       />
-      <Sound
-        loop={soundBgLoop}
-        playStatus={(bgm && gameState === 'start') ? 'PLAYING' : 'PAUSED'}
-        url={backgroundSound}
-        volume={soundBgVolume}
+      <audio 
+        ref={audioRef} 
+        src={backgroundSound}
+        loop
+        style={{ display: 'none' }}
       />
     </ScenarioStyled>
   )

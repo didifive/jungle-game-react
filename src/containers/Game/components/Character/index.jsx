@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 
 import { CharacterStyled, characterImg } from './styled';
@@ -6,8 +6,6 @@ import { CharacterStyled, characterImg } from './styled';
 import characterJumpSound from '../../../../assets/sound/456373__felixyadomi__hop9.mp3';
 
 import { charPosition, charReset } from '../../../../store/actions/character';
-
-const audioCharacterJump = new Audio(characterJumpSound);
 
 const Character = (props) => {
 
@@ -17,6 +15,7 @@ const Character = (props) => {
   const [isJumping, setIsJumping] = useState(false);
   const [isLanding, setIsLanding] = useState(false);
   const [characterEvent, setCharacterEvent] = useState('run');
+  const audioRef = useRef(null);
   
   useEffect(() => {
     if (gameState === 'start') {
@@ -33,7 +32,10 @@ const Character = (props) => {
           setCharacterEvent('jump');
           charPosition(1);
           if (soundEffects && characterCurrentPosition === 8) {
-            audioCharacterJump.play();
+            if (audioRef.current) {
+              audioRef.current.currentTime = 0;
+              audioRef.current.play();
+            }
           }
           if (characterCurrentPosition >= 42) {
             setIsJumping(false);
@@ -67,6 +69,7 @@ const Character = (props) => {
   const renderCharacter = () => {
     return (
       <>
+        <audio ref={audioRef} src={characterJumpSound} />
         <CharacterStyled 
           heightChar= "15vh"
           image={(gameState === 'start') ? characterImg(characterEvent) : characterImg('idle')}
