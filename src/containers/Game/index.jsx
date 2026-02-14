@@ -39,7 +39,8 @@ const Game = (props) => {
     // Não cria inimigos quando o jogo não está rodando
     if (gameState !== 'start') return;
 
-    const randomTime = Math.random() * 4000;
+    // Tempo mínimo de 1.2s e máximo de 4s entre inimigos (desafiador mas justo)
+    const randomTime = 1200 + Math.random() * 2800;
     const enemyTimer = setTimeout(() => {
       const maxEnemiesScreen = Math.floor(score/25);
       if ( enemyList.length <= maxEnemiesScreen ) {
@@ -94,11 +95,7 @@ const Game = (props) => {
         record = {recordLocalStorage > recordStore ? recordLocalStorage : recordStore}
         score = {score}
       />
-      {gameState === 'start' &&
-        <>
-          {enemyList.map((enemy) => (renderEnemy(enemy)))}
-        </>
-      }
+      {enemyList.map((enemy) => (renderEnemy(enemy)))}
       {(gameState === 'stop' || gameState === 'over') &&
         <Info 
           gameState = {gameState}
