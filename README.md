@@ -10,7 +10,7 @@
 
 **A modern infinite runner game built with React, Redux, and Vite**
 
-[Live Demo](jungle-ir.zancanela.dev.br) · [Report Bug](https://github.com/didifive/jungle-game-react/issues) · [Request Feature](https://github.com/didifive/jungle-game-react/issues)
+[Live Demo](https://jungle-ir.zancanela.dev.br) · [Report Bug](https://github.com/didifive/jungle-game-react/issues) · [Request Feature](https://github.com/didifive/jungle-game-react/issues)
 
 </div>
 
