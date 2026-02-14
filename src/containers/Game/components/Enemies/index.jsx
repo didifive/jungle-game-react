@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo, useRef } from 'react';
 import { connect } from 'react-redux';
 
-import { EnemyStyled, enemyImg } from './styled';
+import { EnemyStyled, enemyImg, getColorFilter } from './styled';
 
 import { addScore } from '../../../../store/actions/score';
 import { defeatEnemy } from '../../../../store/actions/enemy';
@@ -21,6 +21,7 @@ const Enemy = (props) => {
   const { characterCurrentPosition, enemyId, enemyType, gameState, life, soundEffects } = props;
 
   const enemyImage = useMemo(() => enemyImg(enemyType), [enemyType]);
+  const colorFilter = useMemo(() => getColorFilter(), [enemyId]); // Cor única por inimigo
 
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
@@ -84,6 +85,7 @@ const Enemy = (props) => {
       $image={enemyImage}
       $left={`${left}px`}
       $zIndex="1"
+      $colorFilter={colorFilter}
     />
   )
 };
