@@ -17,7 +17,12 @@ const Info = (props) => {
   const { gameState, record, score } = props;
   
   const handleClickPlay = () => {
-    gameStart();
+    // Só inicia o jogo se já tiver sido jogado antes (score > 0)
+    if (score > 0) {
+      gameStart();
+    } else {
+      gameReset(); // Apenas fecha o modal
+    }
   }
 
   const handleClickReset = () => {
@@ -222,7 +227,7 @@ const Info = (props) => {
             className="gameload"
             onClick={handleClickPlay}
           >
-            Voltar ao game
+            {score > 0 ? 'Voltar ao game' : 'Fechar'}
           </p>
         }
         <img 
