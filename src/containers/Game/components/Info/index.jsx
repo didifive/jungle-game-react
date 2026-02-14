@@ -67,7 +67,8 @@ const Info = (props) => {
           </i>
         </p>
         <p>
-          Game desenvolvido em React com Redux e Vite.
+          Game desenvolvido em React com Redux e Vite.&nbsp;
+          <strong>Versão: {import.meta.env.VITE_APP_VERSION}</strong>
         </p>
         <p>
           Link da fonte deste game:{'\u00A0'}
