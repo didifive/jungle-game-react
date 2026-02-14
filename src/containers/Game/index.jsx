@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import { connect } from 'react-redux';
 
 import Character from './components/Character';
@@ -26,31 +26,72 @@ const Game = (props) => {
   const score = useMemo(() => storeScore.score,[storeScore.score]);
   const soundEffects = useMemo(() => storeSounds.soundEffects,[storeSounds.soundEffects]);                   
 
-  const [enemyCounter, setEnemyCounter] = useState(0);
+  const enemyCounterRef = useRef(0);
+  const [triggerSpawn, setTriggerSpawn] = useState(0);
+  const scoreRef = useRef(score);
+
+  // Atualiza scoreRef quando score muda
+  useEffect(() => {
+    scoreRef.current = score;
+  }, [score]);
 
   /* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
-  const getRandomIntInclusive = (min,max) => {
+  const getRandomIntInclusive = useCallback((min,max) => {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
+  }, []);
+
+  // Reset do contador quando o jogo reinicia
+  useEffect(() => {
+    if (enemyList.length === 0) {
+      enemyCounterRef.current = 0;
+    }
+  }, [enemyList.length]);
 
   useEffect(() => {
-    const randomTime = Math.random() * 4000;
+    // Não cria inimigos quando o jogo não está rodando
+    if (gameState !== 'start') return;
+
+    // Dificuldade progressiva
+    const difficulty = Math.min(Math.floor(scoreRef.current / 50), 6);
+    
+    // Randomiza entre spawn próximo (um pulo) ou distante (pousar e pular)
+    const isCloseSpawn = Math.random() > 0.4; // 60% chance de spawn próximo
+    
+    let randomTime;
+    if (isCloseSpawn) {
+      // Spawn próximo: 600-1000ms (distância de um pulo - mais próximos)
+      const minClose = Math.max(550, 900 - (difficulty * 60));
+      const maxClose = Math.max(750, 1100 - (difficulty * 60));
+      randomTime = minClose + Math.random() * (maxClose - minClose);
+    } else {
+      // Spawn distante: 1500-2500ms (precisa pousar e pular novamente)
+      const minFar = Math.max(1200, 1800 - (difficulty * 100));
+      const maxFar = Math.max(1800, 2800 - (difficulty * 150));
+      randomTime = minFar + Math.random() * (maxFar - minFar);
+    }
+    
     const enemyTimer = setTimeout(() => {
-      const maxEnemiesScreen = Math.floor(score/25);
-      if ( enemyList.length <= maxEnemiesScreen ) {
-        setEnemyCounter(enemyCounter + 1);
+      // Mais inimigos conforme score aumenta
+      const maxEnemiesScreen = Math.max(1, Math.floor(scoreRef.current/20));
+      
+      if ( enemyList.length < maxEnemiesScreen ) {
+        const newEnemyId = enemyCounterRef.current;
+        enemyCounterRef.current += 1;
         addEnemy(
-          enemyCounter,
+          newEnemyId,
           getRandomIntInclusive(0,2)
         );
       }
+      // Força o useEffect a rodar novamente
+      setTriggerSpawn(prev => prev + 1);
     }, randomTime);
-    return () => clearInterval(enemyTimer);
-  },[addEnemy, enemyCounter, enemyList.length, score])
+    return () => clearTimeout(enemyTimer);
+  },[enemyList.length, gameState, triggerSpawn, getRandomIntInclusive, addEnemy])
+  // Removido 'score' e 'addEnemy' das dependências para evitar cancelamento do timeout
 
-  const renderEnemy = (enemy) => {
+  const renderEnemy = useCallback((enemy) => {
     return (
       <Enemy 
         key={`${enemy.type}-${enemy.id}`}
@@ -64,7 +105,7 @@ const Game = (props) => {
         soundEffects = {soundEffects}
       />
     )
-  };
+  }, [characterCurrentPosition, gameState, life, recordLocalStorage, recordStore, score, soundEffects]);
 
   return (
     <>
@@ -91,11 +132,7 @@ const Game = (props) => {
         record = {recordLocalStorage > recordStore ? recordLocalStorage : recordStore}
         score = {score}
       />
-      {gameState === 'start' &&
-        <>
-          {enemyList.map((enemy) => (renderEnemy(enemy)))}
-        </>
-      }
+      {enemyList.map((enemy) => (renderEnemy(enemy)))}
       {(gameState === 'stop' || gameState === 'over') &&
         <Info 
           gameState = {gameState}

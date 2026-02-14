@@ -17,7 +17,12 @@ const Info = (props) => {
   const { gameState, record, score } = props;
   
   const handleClickPlay = () => {
-    gameStart();
+    // Só inicia o jogo se já tiver sido jogado antes (score > 0)
+    if (score > 0) {
+      gameStart();
+    } else {
+      gameReset(); // Apenas fecha o modal
+    }
   }
 
   const handleClickReset = () => {
@@ -37,33 +42,38 @@ const Info = (props) => {
       <div>
         {gameState === 'over' &&
           <h3>
-            Você Morreu! Game Over!
+            Game Over! Você foi derrotado pela floresta!
           </h3>
         }
         {gameState === 'stop' &&
           <h3>
-            Bem-vindo ao game Jungle Infinte Runner.
+            Bem-vindo ao Jungle Infinite Runner
           </h3>
         }
         <p>
-          Você deve fugir dos perigos da floresta, seu único recurso é pular!
+          Você é Josué, um pescador que se viu preso em uma floresta desconhecida. Sua única chance de sobrevivência é fugir dos perigos que a cercam!
         </p>
         <p>
-          Para pular você pode apertar a tecla Espaço ou, para dispositivos com touchscreen, tocar na tela.
+          <strong>Como Jogar:</strong> Pressione a barra de espaço ou toque na tela para pular e desviar dos inimigos.
         </p>
         <p>
-          Para abrir o jogo clique ou toque em "play" no canto superior direito. Para pausar o game, clique ou toque em "pause" ou "informação".
+          Cada colisão com um inimigo faz você perder uma vida. A cada 200 pontos, você ganha uma vida extra (máximo de 5 vidas).
         </p>
         <p>
-          Cada vez que não escapar de um inimigo irá perder uma vida. A cada 200 pontos de score, você ganhará uma nova vida, com limite de 5 vidas.
+          <strong>Controles:</strong>
+          <br />• Espaço ou Toque: Pular
+          <br />• Play/Pause: Iniciar ou pausar o jogo
+          <br />• Info: Mostrar estas instruções
+          <br />• Volume: Ligar/desligar som
         </p>
         <p>
           <i>
-            Sinopse: Josué, pescador, estava na calmaria da pescaria, até que de tão calmo caiu no sono. De repente ele acorda e se vê sozinho no meio de uma floresta, então ele escuta um lobo uivar e uma coruja chirriar e, assustado, sem arma e sozinho, começa a correr mesmo sem saber que rumo tomar ou que perigos vai encontrar...
+            Josué estava pescando quando caiu no sono. De repente, acordou sozinho na floresta. Ouviu uivos de lobo e chiados de coruja. Assustado, começou a correr, sem saber os perigos que enfrentaria...
           </i>
         </p>
         <p>
-          Game construído em React com Redux.
+          Game desenvolvido em React com Redux e Vite.&nbsp;
+          <strong>Versão: {import.meta.env.VITE_APP_VERSION}</strong>
         </p>
         <p>
           Link da fonte deste game:{'\u00A0'}
@@ -217,7 +227,7 @@ const Info = (props) => {
             className="gameload"
             onClick={handleClickPlay}
           >
-            Voltar ao game
+            {score > 0 ? 'Voltar ao game' : 'Fechar'}
           </p>
         }
         <img 

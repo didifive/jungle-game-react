@@ -1,7 +1,7 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import { connect } from 'react-redux';
 
-import { EnemyStyled, enemyImg } from './styled';
+import { EnemyStyled, enemyImg, getColorFilter } from './styled';
 
 import { addScore } from '../../../../store/actions/score';
 import { defeatEnemy } from '../../../../store/actions/enemy';
@@ -11,6 +11,7 @@ import { gameOver } from '../../../../store/actions/game';
 import gameOverSound from '../../../../assets/sound/384903__muzotv__robotic-voice-now-you-are-dead-hd.mp3'
 import hitDamageSound from '../../../../assets/sound/437651__dersuperanton__damage-hit-voice-vocal.mp3'
 
+// Criar instâncias de áudio globais (fora do componente)
 const audioGameOver = new Audio(gameOverSound);
 const audioHitDamage = new Audio(hitDamageSound);
 
@@ -20,12 +21,18 @@ const Enemy = (props) => {
   const { characterCurrentPosition, enemyId, enemyType, gameState, life, soundEffects } = props;
 
   const enemyImage = useMemo(() => enemyImg(enemyType), [enemyType]);
+  const colorFilter = useMemo(() => getColorFilter(), [enemyId]); // Cor única por inimigo
 
   const viewportWidth = window.innerWidth;
   const viewportHeight = window.innerHeight;
+  
+  // Dimensões do inimigo
   const widthEnemyPx = useMemo(() => (viewportHeight * (0.15)), [viewportHeight]);
-  const minEnemyAttackPx = useMemo(() => (viewportHeight * 0.02), [viewportHeight]);
-  const maxEnemyAttackPx = useMemo(() => (viewportHeight * 0.04), [viewportHeight]);
+  
+  // Área de colisão ajustada (mais precisa que antes)
+  // Considerando o personagem tem ~10vh de largura em left: 3vh
+  const minEnemyAttackPx = useMemo(() => (viewportHeight * 0.008), [viewportHeight]); // Reduzido
+  const maxEnemyAttackPx = useMemo(() => (viewportHeight * 0.035), [viewportHeight]); // Ajustado
   
   const [left, setLeft] = useState(viewportWidth);
   const [lostLife, setLostLife] = useState(false);
@@ -50,22 +57,35 @@ const Enemy = (props) => {
         if (!lostLife) {
           if (life > 0) {
             handleLife(-1);
-            if (soundEffects) {audioHitDamage.play();} 
+            if (soundEffects) {
+              audioHitDamage.pause();
+              audioHitDamage.currentTime = 0;
+              audioHitDamage.play().catch(() => {});
+            }
             setLostLife(true);
-          } else {
-            if (soundEffects) {audioGameOver.play();}
+          } else if (life === 0) {
+            // Garante que gameOver seja chamado quando vida chegar a 0
             gameOver();
+            if (soundEffects) {
+              setTimeout(() => {
+                audioGameOver.pause();
+                audioGameOver.currentTime = 0;
+                audioGameOver.play().catch(() => {});
+              }, 400);
+            }
+            setLostLife(true);
           }
         }
       }
     }
-  },[characterCurrentPosition, gameOver,gameState, handleLife, left, life, lostLife, minEnemyAttackPx, maxEnemyAttackPx, soundEffects])
+  },[characterCurrentPosition, gameOver, gameState, handleLife, left, life, lostLife, minEnemyAttackPx, maxEnemyAttackPx, soundEffects])
   
   return (
     <EnemyStyled
-      image= {enemyImage}
-      left= {`${left}px`}
-      zIndex= "1"
+      $image={enemyImage}
+      $left={`${left}px`}
+      $zIndex="1"
+      $colorFilter={colorFilter}
     />
   )
 };
@@ -73,4 +93,4 @@ const Enemy = (props) => {
 export default connect(
   null,
   { addScore, defeatEnemy, handleLife, gameOver }
-  )(Enemy);
+)(Enemy);

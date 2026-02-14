@@ -21,17 +21,15 @@ export const characterImg = (characterState) => {
   }
 }
 
-export const CharacterStyled = styled.div.attrs(
-  ({ heightChar, image, position, widthChar, zIndex }) => ({
-    style: {
-      backgroundImage: `url(${image})` || errorPng,
-      bottom: position || '100px',
-      height: heightChar || '40px',
-      width: widthChar || '20px',
-
-    }
-  })
-)`
+export const CharacterStyled = styled.div.attrs(props => ({
+  style: {
+    backgroundImage: `url(${props.$image})`,
+    bottom: props.$position || '100px',
+    height: props.$heightChar || '40px',
+    width: props.$widthChar || '20px',
+    zIndex: props.$zIndex || 1
+  }
+}))`
   position: absolute;
   left: 3vh;
   background-size: auto 100%;

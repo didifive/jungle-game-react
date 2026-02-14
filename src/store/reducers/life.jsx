@@ -4,10 +4,13 @@ const initialState = {
 
 export function lifeReducer(state = initialState, action) {
   switch(action.type) {
-    case 'HANDLE_LIFE': 
+    case 'HANDLE_LIFE': {
+      // Garante que a vida nunca fica negativa
+      const newLife = Math.max(0, state.life + action.payload.life);
       return {
-        life: state.life + action.payload.life
+        life: newLife
       }
+    }
     case 'RESET_LIFE': 
       return {
         ...state,

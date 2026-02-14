@@ -10,10 +10,10 @@ const Ground = (props) => {
   return (
     <>
       <GroundImage
-        animate={(gameState === 'start') ? 'running' : 'paused'}
-        image={jungleGround} 
-        speed="600" 
-        zIndex="0"
+        $animate={(gameState === 'start') ? 'running' : 'paused'}
+        $image={jungleGround} 
+        $speed="600" 
+        $zIndex="0"
       />
     </>
   )

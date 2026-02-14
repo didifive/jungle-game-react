@@ -26,10 +26,11 @@ Projeto desenvolvido com instruções de [Celso Henrique](https://www.linkedin.c
 
 Link da base utilizada neste projeto: [celso-henrique/dio-dino-game](https://github.com/celso-henrique/dio-dino-game).
 
-O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript nativo/puro, para isso o projeto foi montado do zero em **React** com **Redux**, criando um desafio que proporcionou melhor entendimento sobre hooks, store, renderização, styled-components, além de como juntar as peças para desenvolver o game.
+O objetivo deste projeto foi ir além da interação de HTML, CSS e Javascript nativo/puro, para isso o projeto foi montado do zero com **Vite**, **React** com **Redux**, criando um desafio que proporcionou melhor entendimento sobre hooks, store, renderização, styled-components, além de como juntar as peças para desenvolver o game.
 
 Neste projeto os destaques são:
-* Construção do zero iniciando com o `npx create-react-app`;
+* Construção utilizando **Vite** (ferramenta de build moderna e rápida);
+* Migração do Create React App (descontinuado) para Vite;
 * O projeto foi organizado em *containers* e respectivos *components* conforme segue:
   * Raiz (importados diretamente no App):
     * `GlobalStyles` em styled-componentpara estilo global do projeto;
@@ -69,7 +70,7 @@ Link do projeto para acessar online: https://jungle-infinite-runner.netlify.app 
 
 Para rodar o projeto localmente:
 * Na pasta do projeto executar o comando `npm install` para que o npm carregue os módulos;
-* Após concluído, basta executar o comando `yarn start` e conferir ele funcionando, normalmente em `http://localhost:3000/`.
+* Após concluído, basta executar o comando `npm run dev` e conferir ele funcionando, normalmente em `http://localhost:3000/`.
 
 &nbsp;
 
@@ -81,9 +82,11 @@ Para rodar o projeto localmente:
 Desenvolvido com:
 * [Visual Studio Code](https://code.visualstudio.com/) 1.61.2;
 * [NodeJS](https://nodejs.org/en/) 14.18.1 LTS;
-* [React](https://reactjs.org/) 17.0.2;
+* [Vite](https://vitejs.dev/) 5.4.6;
+* [React](https://reactjs.org/) 19.2.4;
+* [Redux](https://redux.js.org/);
 * [styled-components](https://styled-components.com/);
-* [react-sound](https://www.npmjs.com/package/react-sound);
+* [react-player](https://www.npmjs.com/package/react-player);
 * [react-device-detect](https://www.npmjs.com/package/react-device-detect);
 * [Google Fonts](https://fonts.google.com/);
 * [Font Awesome](https://fontawesome.com/);
