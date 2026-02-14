@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import { connect } from 'react-redux';
 
 import Character from './components/Character';
@@ -26,7 +26,14 @@ const Game = (props) => {
   const score = useMemo(() => storeScore.score,[storeScore.score]);
   const soundEffects = useMemo(() => storeSounds.soundEffects,[storeSounds.soundEffects]);                   
 
-  const [enemyCounter, setEnemyCounter] = useState(0);
+  const enemyCounterRef = useRef(0);
+  const [triggerSpawn, setTriggerSpawn] = useState(0);
+  const scoreRef = useRef(score);
+
+  // Atualiza scoreRef quando score muda
+  useEffect(() => {
+    scoreRef.current = score;
+  }, [score]);
 
   /* https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Math/random */
   const getRandomIntInclusive = (min,max) => {
@@ -35,6 +42,13 @@ const Game = (props) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
 
+  // Reset do contador quando o jogo reinicia
+  useEffect(() => {
+    if (enemyList.length === 0) {
+      enemyCounterRef.current = 0;
+    }
+  }, [enemyList.length]);
+
   useEffect(() => {
     // Não cria inimigos quando o jogo não está rodando
     if (gameState !== 'start') return;
@@ -42,17 +56,22 @@ const Game = (props) => {
     // Tempo mínimo de 1.2s e máximo de 4s entre inimigos (desafiador mas justo)
     const randomTime = 1200 + Math.random() * 2800;
     const enemyTimer = setTimeout(() => {
-      const maxEnemiesScreen = Math.floor(score/25);
-      if ( enemyList.length <= maxEnemiesScreen ) {
-        setEnemyCounter(enemyCounter + 1);
+      const maxEnemiesScreen = Math.max(1, Math.floor(scoreRef.current/25));
+      
+      if ( enemyList.length < maxEnemiesScreen ) {
+        const newEnemyId = enemyCounterRef.current;
+        enemyCounterRef.current += 1;
         addEnemy(
-          enemyCounter,
+          newEnemyId,
           getRandomIntInclusive(0,2)
         );
       }
+      // Força o useEffect a rodar novamente
+      setTriggerSpawn(prev => prev + 1);
     }, randomTime);
     return () => clearTimeout(enemyTimer);
-  },[addEnemy, enemyCounter, enemyList.length, score, gameState])
+  },[enemyList.length, gameState, triggerSpawn])
+  // Removido 'score' e 'addEnemy' das dependências para evitar cancelamento do timeout
 
   const renderEnemy = (enemy) => {
     return (
