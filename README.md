@@ -3,9 +3,9 @@
 # Jungle Infinite Runner
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![React](https://img.shields.io/badge/React-19.2.4-61DAFB?logo=react)](https://reactjs.org/)
+[![React](https://img.shields.io/badge/React-19.2.7-61DAFB?logo=react)](https://reactjs.org/)
 [![Redux](https://img.shields.io/badge/Redux-State%20Management-764ABC?logo=redux)](https://redux.js.org/)
-[![Vite](https://img.shields.io/badge/Vite-5.4.6-646CFF?logo=vite)](https://vitejs.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8.1.5-646CFF?logo=vite)](https://vitejs.dev/)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/9b3537f4-890c-41ab-9c91-44ae3e1ff0d1/deploy-status)](https://app.netlify.com/projects/jungle-infinite-runner/deploys)
 
 **A modern infinite runner game built with React, Redux, and Vite**
