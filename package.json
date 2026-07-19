@@ -1,26 +1,32 @@
 {
-  "name": "dino-game-react",
+  "name": "jungle-game-react",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^7.2.0",
+    "@fortawesome/fontawesome-free": "^7.3.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "immer": "^11.1.4",
-    "react": "^19.2.4",
+    "immer": "^11.1.15",
+    "react": "^19.2.7",
     "react-device-detect": "^2.2.3",
-    "react-dom": "^19.2.4",
+    "react-dom": "^19.2.7",
     "react-player": "^3.4.0",
-    "react-redux": "^9.2.0",
+    "react-redux": "^9.3.0",
     "redux": "^5.0.1",
-    "styled-components": "^6.3.9",
-    "web-vitals": "^5.1.0"
+    "styled-components": "^6.4.4",
+    "web-vitals": "^5.3.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.1",
-    "vite": "^7.3.1"
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.9",
+    "@semantic-release/npm": "^13.1.5",
+    "@vitejs/plugin-react": "^6.0.3",
+    "semantic-release": "^25.0.8",
+    "vite": "^8.1.5"
   },
   "scripts": {
     "dev": "vite",
